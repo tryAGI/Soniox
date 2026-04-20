@@ -30,6 +30,12 @@ namespace Soniox
         /// <param name="clientReferenceId">
         /// Optional tracking identifier string. Does not need to be unique.
         /// </param>
+        /// <param name="singleUse">
+        /// If true, the temporary API key can be used only once.
+        /// </param>
+        /// <param name="maxSessionDurationSeconds">
+        /// Maximum WebSocket connection duration in seconds. If exceeded, the connection will be dropped. If not set, no limit is applied.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -37,6 +43,8 @@ namespace Soniox
             int expiresInSeconds,
             global::Soniox.TemporaryApiKeyUsageType usageType = default,
             string? clientReferenceId = default,
+            bool? singleUse = default,
+            int? maxSessionDurationSeconds = default,
             global::Soniox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
