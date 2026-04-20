@@ -4,7 +4,7 @@
 namespace Soniox
 {
     /// <summary>
-    /// Example: {"client_reference_id":"reference_id","expires_in_seconds":1800,"usage_type":"transcribe_websocket"}
+    /// Example: {"client_reference_id":"reference_id","expires_in_seconds":1800,"max_session_duration_seconds":120,"single_use":true,"usage_type":"transcribe_websocket"}
     /// </summary>
     public sealed partial class CreateTemporaryApiKeyPayload
     {
@@ -29,6 +29,18 @@ namespace Soniox
         public string? ClientReferenceId { get; set; }
 
         /// <summary>
+        /// If true, the temporary API key can be used only once.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("single_use")]
+        public bool? SingleUse { get; set; }
+
+        /// <summary>
+        /// Maximum WebSocket connection duration in seconds. If exceeded, the connection will be dropped. If not set, no limit is applied.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_session_duration_seconds")]
+        public int? MaxSessionDurationSeconds { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -46,17 +58,27 @@ namespace Soniox
         /// <param name="clientReferenceId">
         /// Optional tracking identifier string. Does not need to be unique.
         /// </param>
+        /// <param name="singleUse">
+        /// If true, the temporary API key can be used only once.
+        /// </param>
+        /// <param name="maxSessionDurationSeconds">
+        /// Maximum WebSocket connection duration in seconds. If exceeded, the connection will be dropped. If not set, no limit is applied.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateTemporaryApiKeyPayload(
             int expiresInSeconds,
             global::Soniox.TemporaryApiKeyUsageType usageType,
-            string? clientReferenceId)
+            string? clientReferenceId,
+            bool? singleUse,
+            int? maxSessionDurationSeconds)
         {
             this.UsageType = usageType;
             this.ExpiresInSeconds = expiresInSeconds;
             this.ClientReferenceId = clientReferenceId;
+            this.SingleUse = singleUse;
+            this.MaxSessionDurationSeconds = maxSessionDurationSeconds;
         }
 
         /// <summary>
