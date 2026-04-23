@@ -13,7 +13,8 @@ namespace Soniox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage_type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Soniox.JsonConverters.TemporaryApiKeyUsageTypeJsonConverter))]
-        public global::Soniox.TemporaryApiKeyUsageType UsageType { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Soniox.TemporaryApiKeyUsageType UsageType { get; set; }
 
         /// <summary>
         /// Duration in seconds until the temporary API key expires.
@@ -49,11 +50,11 @@ namespace Soniox
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateTemporaryApiKeyPayload" /> class.
         /// </summary>
-        /// <param name="expiresInSeconds">
-        /// Duration in seconds until the temporary API key expires.
-        /// </param>
         /// <param name="usageType">
         /// Intended usage of the temporary API key.
+        /// </param>
+        /// <param name="expiresInSeconds">
+        /// Duration in seconds until the temporary API key expires.
         /// </param>
         /// <param name="clientReferenceId">
         /// Optional tracking identifier string. Does not need to be unique.
@@ -68,8 +69,8 @@ namespace Soniox
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreateTemporaryApiKeyPayload(
-            int expiresInSeconds,
             global::Soniox.TemporaryApiKeyUsageType usageType,
+            int expiresInSeconds,
             string? clientReferenceId,
             bool? singleUse,
             int? maxSessionDurationSeconds)

@@ -78,6 +78,11 @@ namespace Soniox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.Language>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.TranslationTarget>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TranslationTarget))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetTTSModelsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.TTSModel>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TTSModel))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.TTSVoice>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TTSVoice))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CreateTemporaryApiKeyResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CreateTemporaryApiKeyPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TemporaryApiKeyUsageType), TypeInfoPropertyName = "TemporaryApiKeyUsageType2")]
@@ -93,6 +98,8 @@ namespace Soniox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.Model>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.Language>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.TranslationTarget>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.TTSModel>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.TTSVoice>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }

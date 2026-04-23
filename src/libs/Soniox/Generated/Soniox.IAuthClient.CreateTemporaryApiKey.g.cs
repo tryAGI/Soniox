@@ -40,8 +40,8 @@ namespace Soniox
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Soniox.CreateTemporaryApiKeyResponse> CreateTemporaryApiKeyAsync(
+            global::Soniox.TemporaryApiKeyUsageType usageType,
             int expiresInSeconds,
-            global::Soniox.TemporaryApiKeyUsageType usageType = default,
             string? clientReferenceId = default,
             bool? singleUse = default,
             int? maxSessionDurationSeconds = default,
