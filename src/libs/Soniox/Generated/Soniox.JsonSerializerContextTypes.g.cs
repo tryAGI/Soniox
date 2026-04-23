@@ -204,23 +204,43 @@ namespace Soniox
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.CreateTemporaryApiKeyResponse? Type44 { get; set; }
+        public global::Soniox.GetTTSModelsResponse? Type44 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.CreateTemporaryApiKeyPayload? Type45 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.TTSModel>? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.TemporaryApiKeyUsageType? Type46 { get; set; }
+        public global::Soniox.TTSModel? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.UploadFileRequest? Type47 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.TTSVoice>? Type47 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type48 { get; set; }
+        public global::Soniox.TTSVoice? Type48 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.CreateTemporaryApiKeyResponse? Type49 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.CreateTemporaryApiKeyPayload? Type50 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.TemporaryApiKeyUsageType? Type51 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.UploadFileRequest? Type52 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte[]? Type53 { get; set; }
 
         /// <summary>
         /// 
@@ -262,5 +282,13 @@ namespace Soniox
         /// 
         /// </summary>
         public global::System.Collections.Generic.List<global::Soniox.TranslationTarget>? ListType9 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Soniox.TTSModel>? ListType10 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Soniox.TTSVoice>? ListType11 { get; set; }
     }
 }

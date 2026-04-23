@@ -3,11 +3,11 @@
 
 namespace Soniox
 {
-    public partial class AuthClient
+    public partial class TtsModelsClient
     {
 
 
-        private static readonly global::Soniox.EndPointSecurityRequirement s_CreateTemporaryApiKeySecurityRequirement0 =
+        private static readonly global::Soniox.EndPointSecurityRequirement s_GetTtsModelsSecurityRequirement0 =
             new global::Soniox.EndPointSecurityRequirement
             {
                 Authorizations = new global::Soniox.EndPointAuthorizationRequirement[]
@@ -21,53 +21,45 @@ namespace Soniox
                     },
                 },
             };
-        private static readonly global::Soniox.EndPointSecurityRequirement[] s_CreateTemporaryApiKeySecurityRequirements =
+        private static readonly global::Soniox.EndPointSecurityRequirement[] s_GetTtsModelsSecurityRequirements =
             new global::Soniox.EndPointSecurityRequirement[]
-            {                s_CreateTemporaryApiKeySecurityRequirement0,
+            {                s_GetTtsModelsSecurityRequirement0,
             };
-        partial void PrepareCreateTemporaryApiKeyArguments(
+        partial void PrepareGetTtsModelsArguments(
+            global::System.Net.Http.HttpClient httpClient);
+        partial void PrepareGetTtsModelsRequest(
             global::System.Net.Http.HttpClient httpClient,
-            global::Soniox.CreateTemporaryApiKeyPayload request);
-        partial void PrepareCreateTemporaryApiKeyRequest(
-            global::System.Net.Http.HttpClient httpClient,
-            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Soniox.CreateTemporaryApiKeyPayload request);
-        partial void ProcessCreateTemporaryApiKeyResponse(
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage);
+        partial void ProcessGetTtsModelsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCreateTemporaryApiKeyResponseContent(
+        partial void ProcessGetTtsModelsResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Create temporary API key<br/>
-        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.
+        /// Get TTS models<br/>
+        /// Retrieves list of available TTS models and their attributes.
         /// </summary>
-        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Soniox.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Soniox.CreateTemporaryApiKeyResponse> CreateTemporaryApiKeyAsync(
-
-            global::Soniox.CreateTemporaryApiKeyPayload request,
+        public async global::System.Threading.Tasks.Task<global::Soniox.GetTTSModelsResponse> GetTtsModelsAsync(
             global::Soniox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareCreateTemporaryApiKeyArguments(
-                httpClient: HttpClient,
-                request: request);
+            PrepareGetTtsModelsArguments(
+                httpClient: HttpClient);
 
 
             var __authorizations = global::Soniox.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CreateTemporaryApiKeySecurityRequirements,
-                operationName: "CreateTemporaryApiKeyAsync");
+                securityRequirements: s_GetTtsModelsSecurityRequirements,
+                operationName: "GetTtsModelsAsync");
 
             using var __timeoutCancellationTokenSource = global::Soniox.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -86,7 +78,7 @@ namespace Soniox
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
                             var __pathBuilder = new global::Soniox.PathBuilder(
-                                path: "/v1/auth/temporary-api-key",
+                                path: "/v1/tts-models",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Soniox.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -94,7 +86,7 @@ namespace Soniox
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Get,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -117,12 +109,6 @@ namespace Soniox
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Soniox.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -131,10 +117,9 @@ namespace Soniox
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCreateTemporaryApiKeyRequest(
+                PrepareGetTtsModelsRequest(
                     httpClient: HttpClient,
-                    httpRequestMessage: __httpRequest,
-                    request: request);
+                    httpRequestMessage: __httpRequest);
 
                 return __httpRequest;
             }
@@ -151,10 +136,10 @@ namespace Soniox
                     await global::Soniox.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Soniox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CreateTemporaryApiKey",
-                                methodName: "CreateTemporaryApiKeyAsync",
-                                pathTemplate: "\"/v1/auth/temporary-api-key\"",
-                                httpMethod: "POST",
+                                operationId: "GetTtsModels",
+                                methodName: "GetTtsModelsAsync",
+                                pathTemplate: "\"/v1/tts-models\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -178,10 +163,10 @@ namespace Soniox
                         await global::Soniox.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Soniox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CreateTemporaryApiKey",
-                                methodName: "CreateTemporaryApiKeyAsync",
-                                pathTemplate: "\"/v1/auth/temporary-api-key\"",
-                                httpMethod: "POST",
+                                operationId: "GetTtsModels",
+                                methodName: "GetTtsModelsAsync",
+                                pathTemplate: "\"/v1/tts-models\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -213,10 +198,10 @@ namespace Soniox
                         await global::Soniox.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Soniox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CreateTemporaryApiKey",
-                                methodName: "CreateTemporaryApiKeyAsync",
-                                pathTemplate: "\"/v1/auth/temporary-api-key\"",
-                                httpMethod: "POST",
+                                operationId: "GetTtsModels",
+                                methodName: "GetTtsModelsAsync",
+                                pathTemplate: "\"/v1/tts-models\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -252,7 +237,7 @@ namespace Soniox
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCreateTemporaryApiKeyResponse(
+                ProcessGetTtsModelsResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -260,10 +245,10 @@ namespace Soniox
                     await global::Soniox.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Soniox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CreateTemporaryApiKey",
-                                methodName: "CreateTemporaryApiKeyAsync",
-                                pathTemplate: "\"/v1/auth/temporary-api-key\"",
-                                httpMethod: "POST",
+                                operationId: "GetTtsModels",
+                                methodName: "GetTtsModelsAsync",
+                                pathTemplate: "\"/v1/tts-models\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -280,10 +265,10 @@ namespace Soniox
                     await global::Soniox.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Soniox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CreateTemporaryApiKey",
-                                methodName: "CreateTemporaryApiKeyAsync",
-                                pathTemplate: "\"/v1/auth/temporary-api-key\"",
-                                httpMethod: "POST",
+                                operationId: "GetTtsModels",
+                                methodName: "GetTtsModelsAsync",
+                                pathTemplate: "\"/v1/tts-models\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -295,44 +280,6 @@ namespace Soniox
                                 willRetry: false,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Invalid request.  Error types: - `invalid_request`: Invalid request. 
-                            if ((int)__response.StatusCode == 400)
-                            {
-                                string? __content_400 = null;
-                                global::System.Exception? __exception_400 = null;
-                                global::Soniox.ApiError? __value_400 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_400 = global::Soniox.ApiError.FromJson(__content_400, JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_400 = global::Soniox.ApiError.FromJson(__content_400, JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_400 = __ex;
-                                }
-
-                                throw new global::Soniox.ApiException<global::Soniox.ApiError>(
-                                    message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_400,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_400,
-                                    ResponseObject = __value_400,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value),
-                                };
-                            }
                             // Authentication error.
                             if ((int)__response.StatusCode == 401)
                             {
@@ -422,7 +369,7 @@ namespace Soniox
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCreateTemporaryApiKeyResponseContent(
+                                ProcessGetTtsModelsResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -432,7 +379,7 @@ namespace Soniox
                                     __response.EnsureSuccessStatusCode();
 
                                     return
-                                        global::Soniox.CreateTemporaryApiKeyResponse.FromJson(__content, JsonSerializerContext) ??
+                                        global::Soniox.GetTTSModelsResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                                 }
                                 catch (global::System.Exception __ex)
@@ -462,7 +409,7 @@ namespace Soniox
                                     ).ConfigureAwait(false);
 
                                     return
-                                        await global::Soniox.CreateTemporaryApiKeyResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        await global::Soniox.GetTTSModelsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                                 }
                                 catch (global::System.Exception __ex)
@@ -500,51 +447,6 @@ namespace Soniox
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        /// Create temporary API key<br/>
-        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.
-        /// </summary>
-        /// <param name="usageType">
-        /// Intended usage of the temporary API key.
-        /// </param>
-        /// <param name="expiresInSeconds">
-        /// Duration in seconds until the temporary API key expires.
-        /// </param>
-        /// <param name="clientReferenceId">
-        /// Optional tracking identifier string. Does not need to be unique.
-        /// </param>
-        /// <param name="singleUse">
-        /// If true, the temporary API key can be used only once.
-        /// </param>
-        /// <param name="maxSessionDurationSeconds">
-        /// Maximum WebSocket connection duration in seconds. If exceeded, the connection will be dropped. If not set, no limit is applied.
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Soniox.CreateTemporaryApiKeyResponse> CreateTemporaryApiKeyAsync(
-            global::Soniox.TemporaryApiKeyUsageType usageType,
-            int expiresInSeconds,
-            string? clientReferenceId = default,
-            bool? singleUse = default,
-            int? maxSessionDurationSeconds = default,
-            global::Soniox.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Soniox.CreateTemporaryApiKeyPayload
-            {
-                UsageType = usageType,
-                ExpiresInSeconds = expiresInSeconds,
-                ClientReferenceId = clientReferenceId,
-                SingleUse = singleUse,
-                MaxSessionDurationSeconds = maxSessionDurationSeconds,
-            };
-
-            return await CreateTemporaryApiKeyAsync(
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

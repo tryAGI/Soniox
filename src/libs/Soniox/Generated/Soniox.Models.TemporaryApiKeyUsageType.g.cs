@@ -12,6 +12,10 @@ namespace Soniox
         /// 
         /// </summary>
         TranscribeWebsocket,
+        /// <summary>
+        /// 
+        /// </summary>
+        TtsRt,
     }
 
     /// <summary>
@@ -27,6 +31,7 @@ namespace Soniox
             return value switch
             {
                 TemporaryApiKeyUsageType.TranscribeWebsocket => "transcribe_websocket",
+                TemporaryApiKeyUsageType.TtsRt => "tts_rt",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -38,6 +43,7 @@ namespace Soniox
             return value switch
             {
                 "transcribe_websocket" => TemporaryApiKeyUsageType.TranscribeWebsocket,
+                "tts_rt" => TemporaryApiKeyUsageType.TtsRt,
                 _ => null,
             };
         }
