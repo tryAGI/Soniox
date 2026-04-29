@@ -125,7 +125,7 @@ namespace Soniox
                 PrepareGetTranscriptionRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    transcriptionId: transcriptionId);
+                    transcriptionId: transcriptionId!);
 
                 return __httpRequest;
             }
