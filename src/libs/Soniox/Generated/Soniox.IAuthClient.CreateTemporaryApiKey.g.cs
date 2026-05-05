@@ -21,6 +21,19 @@ namespace Soniox
         /// Create temporary API key<br/>
         /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Soniox.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Soniox.AutoSDKHttpResponse<global::Soniox.CreateTemporaryApiKeyResponse>> CreateTemporaryApiKeyAsResponseAsync(
+
+            global::Soniox.CreateTemporaryApiKeyPayload request,
+            global::Soniox.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Create temporary API key<br/>
+        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.
+        /// </summary>
         /// <param name="usageType">
         /// Intended usage of the temporary API key.
         /// </param>
