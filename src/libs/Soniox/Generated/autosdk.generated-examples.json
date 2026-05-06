@@ -153,6 +153,17 @@
       "Format": "sdk",
       "OperationId": "get_tts_models",
       "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+    },
+    {
+      "Order": 15,
+      "Title": "Get usage logs",
+      "Slug": "get-usage-logs",
+      "Description": "Returns per-request usage log entries for the project. The project is implied by the API key used for authentication. Filters by request end time. The window between start_time and end_time must not exceed 31 days. start_time must not be earlier than 91 days ago.",
+      "Language": "http",
+      "Code": "### Get usage logs\n# @name get_usage_logs\nGET {{host}}/v1/usage-logs?start_time={{start_time}}\u0026end_time={{end_time}}\u0026limit=1000\u0026sort=end_time_asc\u0026cursor={{cursor}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: Per-request usage log entries.\n# Content-Type: application/json\n# 400\n# Description: Invalid request.\n\nError types:\n- \u0060invalid_request\u0060: Invalid request.\n- \u0060invalid_cursor\u0060: Invalid cursor parameter.\n\n# Content-Type: application/json\n# 401\n# Description: Authentication error.\n# Content-Type: application/json\n# 500\n# Description: Internal server error.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "get_usage_logs",
+      "Setup": null
     }
   ]
 }
