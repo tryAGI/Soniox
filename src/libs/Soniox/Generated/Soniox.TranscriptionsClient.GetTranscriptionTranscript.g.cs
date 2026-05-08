@@ -364,7 +364,7 @@ namespace Soniox
                                         h => h.Value),
                                 };
                             }
-                            // Transcription not found.  Error types: - `transcription_not_found`: Transcription could not be found. 
+                            // Transcription not found.  Error types: - `transcription_not_found`: No transcription with this ID exists in your project. It may have been deleted, the ID may be incorrect, or the transcription may belong to a different project. Verify the ID by listing transcriptions with GET /transcriptions. 
                             if ((int)__response.StatusCode == 404)
                             {
                                 string? __content_404 = null;
@@ -402,7 +402,7 @@ namespace Soniox
                                         h => h.Value),
                                 };
                             }
-                            // Invalid transcription state.  Error types: - `transcription_invalid_state`:   - Can only get transcript with completed status.   - File transcription has failed.   - Transcript no longer available. 
+                            // Invalid transcription state.  Error types: - `transcription_invalid_state`:   - The transcript is not ready yet — transcription is still in progress. Poll GET /transcriptions/{id} until `status` is `completed`, or configure a webhook when creating the transcription to be notified when it finishes.   - The transcription failed, so there is no transcript to return. Call GET /transcriptions/{id} and inspect the `error_type` and `error_message` fields for the specific failure reason.   - The transcript for this transcription is no longer stored. Transcript data is retained for a limited period after completion; if you still need the results, create a new transcription from the original audio. 
                             if ((int)__response.StatusCode == 409)
                             {
                                 string? __content_409 = null;
@@ -434,6 +434,44 @@ namespace Soniox
                                 {
                                     ResponseBody = __content_409,
                                     ResponseObject = __value_409,
+                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value),
+                                };
+                            }
+                            // Too Many Requests
+                            if ((int)__response.StatusCode == 429)
+                            {
+                                string? __content_429 = null;
+                                global::System.Exception? __exception_429 = null;
+                                global::Soniox.ApiError? __value_429 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_429 = global::Soniox.ApiError.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_429 = global::Soniox.ApiError.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_429 = __ex;
+                                }
+
+                                throw new global::Soniox.ApiException<global::Soniox.ApiError>(
+                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_429,
+                                    statusCode: __response.StatusCode)
+                                {
+                                    ResponseBody = __content_429,
+                                    ResponseObject = __value_429,
                                     ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
