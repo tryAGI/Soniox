@@ -349,7 +349,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Invalid request.  Error types: - `invalid_cursor`: Invalid cursor parameter. 
+                            // Invalid request.  Error types: - `invalid_cursor`: The `cursor` parameter is invalid. Omit `cursor` to start pagination from the beginning. 
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -419,6 +419,44 @@ namespace Soniox
                                 {
                                     ResponseBody = __content_401,
                                     ResponseObject = __value_401,
+                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value),
+                                };
+                            }
+                            // Too Many Requests
+                            if ((int)__response.StatusCode == 429)
+                            {
+                                string? __content_429 = null;
+                                global::System.Exception? __exception_429 = null;
+                                global::Soniox.ApiError? __value_429 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_429 = global::Soniox.ApiError.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_429 = global::Soniox.ApiError.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_429 = __ex;
+                                }
+
+                                throw new global::Soniox.ApiException<global::Soniox.ApiError>(
+                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_429,
+                                    statusCode: __response.StatusCode)
+                                {
+                                    ResponseBody = __content_429,
+                                    ResponseObject = __value_429,
                                     ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
