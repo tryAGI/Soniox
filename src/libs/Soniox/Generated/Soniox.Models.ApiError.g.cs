@@ -101,5 +101,6 @@ namespace Soniox
         public ApiError()
         {
         }
+
     }
 }

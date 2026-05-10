@@ -123,5 +123,6 @@ namespace Soniox
         public TranscriptionTranscriptToken()
         {
         }
+
     }
 }

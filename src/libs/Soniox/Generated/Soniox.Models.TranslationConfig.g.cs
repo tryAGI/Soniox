@@ -68,5 +68,6 @@ namespace Soniox
         public TranslationConfig()
         {
         }
+
     }
 }

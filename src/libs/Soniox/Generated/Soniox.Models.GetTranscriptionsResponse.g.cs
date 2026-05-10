@@ -53,5 +53,6 @@ namespace Soniox
         public GetTranscriptionsResponse()
         {
         }
+
     }
 }

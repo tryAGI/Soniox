@@ -237,5 +237,6 @@ namespace Soniox
         public Transcription()
         {
         }
+
     }
 }

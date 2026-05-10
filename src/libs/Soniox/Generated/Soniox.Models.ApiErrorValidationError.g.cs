@@ -60,5 +60,6 @@ namespace Soniox
         public ApiErrorValidationError()
         {
         }
+
     }
 }

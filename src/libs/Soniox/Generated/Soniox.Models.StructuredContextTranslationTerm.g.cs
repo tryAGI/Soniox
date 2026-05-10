@@ -54,5 +54,6 @@ namespace Soniox
         public StructuredContextTranslationTerm()
         {
         }
+
     }
 }
