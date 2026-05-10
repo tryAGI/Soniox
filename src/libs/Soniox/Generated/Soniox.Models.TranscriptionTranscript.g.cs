@@ -67,5 +67,6 @@ namespace Soniox
         public TranscriptionTranscript()
         {
         }
+
     }
 }

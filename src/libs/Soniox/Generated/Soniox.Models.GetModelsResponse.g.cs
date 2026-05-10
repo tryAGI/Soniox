@@ -42,5 +42,6 @@ namespace Soniox
         public GetModelsResponse()
         {
         }
+
     }
 }

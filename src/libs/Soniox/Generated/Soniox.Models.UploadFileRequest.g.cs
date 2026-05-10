@@ -65,5 +65,6 @@ namespace Soniox
         public UploadFileRequest()
         {
         }
+
     }
 }

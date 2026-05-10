@@ -232,5 +232,6 @@ namespace Soniox
         public UsageLogEntry()
         {
         }
+
     }
 }

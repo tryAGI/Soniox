@@ -41,5 +41,6 @@ namespace Soniox
         public UploadFilePayload()
         {
         }
+
     }
 }

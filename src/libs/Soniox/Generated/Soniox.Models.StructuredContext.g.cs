@@ -74,5 +74,6 @@ namespace Soniox
         public StructuredContext()
         {
         }
+
     }
 }
