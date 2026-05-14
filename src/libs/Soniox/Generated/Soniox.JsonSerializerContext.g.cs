@@ -25,6 +25,10 @@ namespace Soniox
 
             typeof(global::Soniox.JsonConverters.TranscriptionModeNullableJsonConverter),
 
+            typeof(global::Soniox.JsonConverters.TTSVoiceGenderJsonConverter),
+
+            typeof(global::Soniox.JsonConverters.TTSVoiceGenderNullableJsonConverter),
+
             typeof(global::Soniox.JsonConverters.GetUsageLogsPayloadSortJsonConverter),
 
             typeof(global::Soniox.JsonConverters.GetUsageLogsPayloadSortNullableJsonConverter),
@@ -95,6 +99,7 @@ namespace Soniox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TTSModel))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.TTSVoice>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TTSVoice))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TTSVoiceGender), TypeInfoPropertyName = "TTSVoiceGender2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetUsageLogsPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetUsageLogsPayloadSort), TypeInfoPropertyName = "GetUsageLogsPayloadSort2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.UsageLogsSort), TypeInfoPropertyName = "UsageLogsSort2")]
@@ -104,6 +109,10 @@ namespace Soniox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CreateTemporaryApiKeyResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CreateTemporaryApiKeyPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TemporaryApiKeyUsageType), TypeInfoPropertyName = "TemporaryApiKeyUsageType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CurrentValues))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetConcurrencyLimitsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.ScopeValues))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.LimitValues))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.UploadFileRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetUsageLogsSort2), TypeInfoPropertyName = "GetUsageLogsSort22")]
