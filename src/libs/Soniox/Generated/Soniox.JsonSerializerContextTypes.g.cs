@@ -224,51 +224,71 @@ namespace Soniox
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.GetUsageLogsPayload? Type49 { get; set; }
+        public global::Soniox.TTSVoiceGender? Type49 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.GetUsageLogsPayloadSort? Type50 { get; set; }
+        public global::Soniox.GetUsageLogsPayload? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.UsageLogsSort? Type51 { get; set; }
+        public global::Soniox.GetUsageLogsPayloadSort? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.GetUsageLogsResponse? Type52 { get; set; }
+        public global::Soniox.UsageLogsSort? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Soniox.UsageLogEntry>? Type53 { get; set; }
+        public global::Soniox.GetUsageLogsResponse? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.UsageLogEntry? Type54 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.UsageLogEntry>? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.CreateTemporaryApiKeyResponse? Type55 { get; set; }
+        public global::Soniox.UsageLogEntry? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.CreateTemporaryApiKeyPayload? Type56 { get; set; }
+        public global::Soniox.CreateTemporaryApiKeyResponse? Type56 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.TemporaryApiKeyUsageType? Type57 { get; set; }
+        public global::Soniox.CreateTemporaryApiKeyPayload? Type57 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.UploadFileRequest? Type58 { get; set; }
+        public global::Soniox.TemporaryApiKeyUsageType? Type58 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type59 { get; set; }
+        public global::Soniox.CurrentValues? Type59 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.GetUsageLogsSort2? Type60 { get; set; }
+        public global::Soniox.GetConcurrencyLimitsResponse? Type60 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.ScopeValues? Type61 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.LimitValues? Type62 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.UploadFileRequest? Type63 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte[]? Type64 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.GetUsageLogsSort2? Type65 { get; set; }
 
         /// <summary>
         /// 
