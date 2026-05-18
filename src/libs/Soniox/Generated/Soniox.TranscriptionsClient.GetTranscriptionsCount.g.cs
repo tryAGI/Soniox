@@ -317,7 +317,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Authentication error.
+                            // Unauthorized
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -393,7 +393,7 @@ namespace Soniox
                                         h => h.Value),
                                 };
                             }
-                            // Internal server error.
+                            // Internal Server Error
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;

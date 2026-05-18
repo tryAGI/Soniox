@@ -326,7 +326,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Authentication error.
+                            // Unauthorized
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -364,7 +364,7 @@ namespace Soniox
                                         h => h.Value),
                                 };
                             }
-                            // Transcription not found.  Error types: - `transcription_not_found`: No transcription with this ID exists in your project. It may have been deleted, the ID may be incorrect, or the transcription may belong to a different project. Verify the ID by listing transcriptions with GET /transcriptions. 
+                            // Not Found
                             if ((int)__response.StatusCode == 404)
                             {
                                 string? __content_404 = null;
@@ -402,7 +402,7 @@ namespace Soniox
                                         h => h.Value),
                                 };
                             }
-                            // Invalid transcription state.  Error types: - `transcription_invalid_state`:   - The transcript is not ready yet — transcription is still in progress. Poll GET /transcriptions/{id} until `status` is `completed`, or configure a webhook when creating the transcription to be notified when it finishes.   - The transcription failed, so there is no transcript to return. Call GET /transcriptions/{id} and inspect the `error_type` and `error_message` fields for the specific failure reason.   - The transcript for this transcription is no longer stored. Transcript data is retained for a limited period after completion; if you still need the results, create a new transcription from the original audio. 
+                            // Conflict
                             if ((int)__response.StatusCode == 409)
                             {
                                 string? __content_409 = null;
@@ -478,7 +478,7 @@ namespace Soniox
                                         h => h.Value),
                                 };
                             }
-                            // Internal server error.
+                            // Internal Server Error
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
