@@ -319,7 +319,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Authentication error.
+                            // Unauthorized
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -357,7 +357,7 @@ namespace Soniox
                                         h => h.Value),
                                 };
                             }
-                            // File not found.  Error types: - `file_not_found`: No file with this ID exists in your project. The file may have been deleted, the ID may be incorrect, or the file may belong to a different project. Verify the ID by listing files with GET /files. 
+                            // Not Found
                             if ((int)__response.StatusCode == 404)
                             {
                                 string? __content_404 = null;
@@ -433,7 +433,7 @@ namespace Soniox
                                         h => h.Value),
                                 };
                             }
-                            // Internal server error.
+                            // Internal Server Error
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;

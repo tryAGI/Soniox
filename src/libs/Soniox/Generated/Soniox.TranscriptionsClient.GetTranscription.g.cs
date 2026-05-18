@@ -326,7 +326,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Authentication error.
+                            // Unauthorized
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -364,7 +364,7 @@ namespace Soniox
                                         h => h.Value),
                                 };
                             }
-                            // Transcription not found.  Error types: - `transcription_not_found`: No transcription with this ID exists in your project. It may have been deleted, the ID may be incorrect, or the transcription may belong to a different project. Verify the ID by listing transcriptions with GET /transcriptions. 
+                            // Not Found
                             if ((int)__response.StatusCode == 404)
                             {
                                 string? __content_404 = null;
@@ -440,7 +440,7 @@ namespace Soniox
                                         h => h.Value),
                                 };
                             }
-                            // Internal server error.
+                            // Internal Server Error
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;

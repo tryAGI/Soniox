@@ -337,7 +337,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Invalid request.  Error types: - `invalid_request`: Your request did not pass validation. One or more fields in the request body are missing or have invalid values. See `validation_errors` for the specific field and retry with corrected values. 
+                            // Bad Request
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -375,7 +375,7 @@ namespace Soniox
                                         h => h.Value),
                                 };
                             }
-                            // Authentication error.
+                            // Unauthorized
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -413,7 +413,7 @@ namespace Soniox
                                         h => h.Value),
                                 };
                             }
-                            // Balance or budget exhausted.  Error types: - `organization_balance_exhausted`: The organization's prepaid balance has dropped to zero. Top up or enable autopay. - `organization_monthly_budget_exhausted`: The organization has hit its configured monthly budget cap. Raise the cap or wait for the month to roll over. - `project_monthly_budget_exhausted`: The project has hit its configured monthly budget cap. Raise the cap or wait for the month to roll over. 
+                            // Payment Required
                             if ((int)__response.StatusCode == 402)
                             {
                                 string? __content_402 = null;
@@ -489,7 +489,7 @@ namespace Soniox
                                         h => h.Value),
                                 };
                             }
-                            // Internal server error.
+                            // Internal Server Error
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;

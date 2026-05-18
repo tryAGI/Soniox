@@ -13,72 +13,39 @@
     },
     {
       "Order": 2,
-      "Title": "Get current concurrent sessions and configured limits",
-      "Slug": "get-concurrency-limits",
-      "Description": "Current concurrent counts plus configured concurrency limits for the project and its organization. Region-scoped.",
-      "Language": "csharp",
-      "Code": "using var client = new SonioxClient(apiKey);\nvar response = await client.ConcurrencyLimits.GetConcurrencyLimitsAsync();\n\n// Example response:\n// {\n//   \u0022project\u0022: {\n//     \u0022current\u0022: {\n//       \u0022transcribe_concurrent\u0022: 2,\n//       \u0022tts_concurrent\u0022: 0\n//     },\n//     \u0022limits\u0022: {\n//       \u0022transcribe_concurrent\u0022: 4,\n//       \u0022tts_concurrent\u0022: 1\n//     }\n//   },\n//   \u0022organization\u0022: {\n//     \u0022current\u0022: {\n//       \u0022transcribe_concurrent\u0022: 5,\n//       \u0022tts_concurrent\u0022: 1\n//     },\n//     \u0022limits\u0022: {\n//       \u0022transcribe_concurrent\u0022: 10,\n//       \u0022tts_concurrent\u0022: 2\n//     }\n//   }\n// }",
-      "Format": "sdk",
-      "OperationId": "get_concurrency_limits",
-      "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
-    },
-    {
-      "Order": 3,
-      "Title": "Delete file",
-      "Slug": "delete-file",
-      "Description": "Permanently deletes specified file.",
-      "Language": "http",
-      "Code": "### Delete file\n# @name delete_file\nDELETE {{host}}/v1/files/{{file_id}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 204\n# Description: File deleted.\n# 401\n# Description: Authentication error.\n# Content-Type: application/json\n# 404\n# Description: File not found.\n\nError types:\n- \u0060file_not_found\u0060: No file with this ID exists in your project. The file may have been deleted, the ID may be incorrect, or the file may belong to a different project. Verify the ID by listing files with GET /files.\n\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests\n# Content-Type: application/json\n# 500\n# Description: Internal server error.\n# Content-Type: application/json",
-      "Format": "http",
-      "OperationId": "delete_file",
-      "Setup": null
-    },
-    {
-      "Order": 4,
       "Title": "Get file",
       "Slug": "get-file",
       "Description": "Retrieve metadata for an uploaded file.",
       "Language": "http",
-      "Code": "### Get file\n# @name get_file\nGET {{host}}/v1/files/{{file_id}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: File metadata.\n# Content-Type: application/json\n# 401\n# Description: Authentication error.\n# Content-Type: application/json\n# 404\n# Description: File not found.\n\nError types:\n- \u0060file_not_found\u0060: No file with this ID exists in your project. The file may have been deleted, the ID may be incorrect, or the file may belong to a different project. Verify the ID by listing files with GET /files.\n\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests\n# Content-Type: application/json\n# 500\n# Description: Internal server error.\n# Content-Type: application/json",
+      "Code": "### Get file\n# @name get_file\nGET {{host}}/v1/files/{{file_id}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: OK\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 404\n# Description: Not Found\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "get_file",
       "Setup": null
     },
     {
-      "Order": 5,
+      "Order": 3,
       "Title": "Get files",
       "Slug": "get-files",
       "Description": "Retrieves list of uploaded files.",
       "Language": "csharp",
-      "Code": "using var client = new SonioxClient(apiKey);\nvar response = await client.Files.GetFilesAsync();\n\n// Example response:\n// {\n//   \u0022files\u0022: [\n//     {\n//       \u0022id\u0022: \u002284c32fc6-4fb5-4e7a-b656-b5ec70493753\u0022,\n//       \u0022filename\u0022: \u0022example.mp3\u0022,\n//       \u0022size\u0022: 123456,\n//       \u0022created_at\u0022: \u00222024-11-26T00:00:00Z\u0022\n//     }\n//   ],\n//   \u0022next_page_cursor\u0022: \u0022cursor_or_null\u0022\n// }",
+      "Code": "using var client = new SonioxClient(apiKey);\nvar response = await client.Files.GetFilesAsync();\n\n// Example response:\n// {\n//   \u0022files\u0022: [\n//     {\n//       \u0022created_at\u0022: \u00222024-11-26T00:00:00Z\u0022,\n//       \u0022filename\u0022: \u0022example.mp3\u0022,\n//       \u0022id\u0022: \u002284c32fc6-4fb5-4e7a-b656-b5ec70493753\u0022,\n//       \u0022size\u0022: 123456\n//     }\n//   ],\n//   \u0022next_page_cursor\u0022: \u0022cursor_or_null\u0022\n// }",
       "Format": "sdk",
       "OperationId": "get_files",
       "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 6,
-      "Title": "Get files count",
-      "Slug": "get-files-count",
-      "Description": "Returns the total number of files, split by source.",
-      "Language": "csharp",
-      "Code": "using var client = new SonioxClient(apiKey);\nvar response = await client.Files.GetFilesCountAsync();\n\n// Example response:\n// {\n//   \u0022total\u0022: 50,\n//   \u0022public_api\u0022: 42,\n//   \u0022playground\u0022: 8\n// }",
-      "Format": "sdk",
-      "OperationId": "get_files_count",
-      "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
-    },
-    {
-      "Order": 7,
+      "Order": 4,
       "Title": "Upload file",
       "Slug": "upload-file",
       "Description": "Uploads a new file.",
       "Language": "http",
-      "Code": "### Upload file\n# @name upload_file\nPOST {{host}}/v1/files\nAuthorization: Bearer {{token}}\nContent-Type: multipart/form-data\nAccept: application/json\n\n## Responses\n# 201\n# Description: Uploaded file.\n# Content-Type: application/json\n# 400\n# Description: Invalid request.\n\nError types:\n- \u0060invalid_request\u0060:\n  - Your request did not pass validation. One or more fields in the request body are missing or have invalid values. See \u0060validation_errors\u0060 for the specific field and retry with corrected values.\n  - Exceeded maximum file size (maximum is 1073741824 bytes).\n\n# Content-Type: application/json\n# 401\n# Description: Authentication error.\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests\n# Content-Type: application/json\n# 500\n# Description: Internal server error.\n# Content-Type: application/json",
+      "Code": "### Upload file\n# @name upload_file\nPOST {{host}}/v1/files\nAuthorization: Bearer {{token}}\nContent-Type: multipart/form-data\nAccept: application/json\n\n## Responses\n# 201\n# Description: Created\n# Content-Type: application/json\n# 400\n# Description: Bad Request\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "upload_file",
       "Setup": null
     },
     {
-      "Order": 8,
+      "Order": 5,
       "Title": "Get models",
       "Slug": "get-models",
       "Description": "Retrieves list of available models and their attributes.",
@@ -89,73 +56,40 @@
       "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 9,
+      "Order": 6,
       "Title": "Create transcription",
       "Slug": "create-transcription",
       "Description": "Creates a new transcription.",
       "Language": "http",
-      "Code": "### Create transcription\n# @name create_transcription\nPOST {{host}}/v1/transcriptions\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022model\u0022: \u0022string\u0022,\n  \u0022audio_url\u0022: \u0022string\u0022,\n  \u0022file_id\u0022: \u002200000000-0000-0000-0000-000000000000\u0022,\n  \u0022language_hints\u0022: [\n    \u0022string\u0022\n  ],\n  \u0022language_hints_strict\u0022: true,\n  \u0022enable_speaker_diarization\u0022: true,\n  \u0022enable_language_identification\u0022: true,\n  \u0022translation\u0022: {\n    \u0022type\u0022: \u0022one_way\u0022,\n    \u0022target_language\u0022: \u0022string\u0022,\n    \u0022language_a\u0022: \u0022string\u0022,\n    \u0022language_b\u0022: \u0022string\u0022\n  },\n  \u0022context\u0022: {\n    \u0022general\u0022: [\n      {}\n    ],\n    \u0022text\u0022: \u0022string\u0022,\n    \u0022terms\u0022: [\n      \u0022string\u0022\n    ],\n    \u0022translation_terms\u0022: [\n      {}\n    ]\n  },\n  \u0022webhook_url\u0022: \u0022string\u0022,\n  \u0022webhook_auth_header_name\u0022: \u0022string\u0022,\n  \u0022webhook_auth_header_value\u0022: \u0022string\u0022,\n  \u0022client_reference_id\u0022: \u0022string\u0022\n}\n\n## Responses\n# 201\n# Description: Created transcription.\n# Content-Type: application/json\n# 400\n# Description: Invalid request.\n\nError types:\n- \u0060invalid_request\u0060: Your request did not pass validation. One or more fields in the request body are missing or have invalid values. See \u0060validation_errors\u0060 for the specific field and retry with corrected values.\n\n# Content-Type: application/json\n# 401\n# Description: Authentication error.\n# Content-Type: application/json\n# 402\n# Description: Balance or budget exhausted.\n\nError types:\n- \u0060organization_balance_exhausted\u0060: The organization\u0027s prepaid balance has dropped to zero. Top up or enable autopay.\n- \u0060organization_monthly_budget_exhausted\u0060: The organization has hit its configured monthly budget cap. Raise the cap or wait for the month to roll over.\n- \u0060project_monthly_budget_exhausted\u0060: The project has hit its configured monthly budget cap. Raise the cap or wait for the month to roll over.\n\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests\n# Content-Type: application/json\n# 500\n# Description: Internal server error.\n# Content-Type: application/json",
+      "Code": "### Create transcription\n# @name create_transcription\nPOST {{host}}/v1/transcriptions\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022model\u0022: \u0022string\u0022,\n  \u0022audio_url\u0022: \u0022string\u0022,\n  \u0022file_id\u0022: \u002200000000-0000-0000-0000-000000000000\u0022,\n  \u0022language_hints\u0022: [\n    \u0022string\u0022\n  ],\n  \u0022language_hints_strict\u0022: true,\n  \u0022enable_speaker_diarization\u0022: true,\n  \u0022enable_language_identification\u0022: true,\n  \u0022translation\u0022: {\n    \u0022type\u0022: \u0022one_way\u0022,\n    \u0022target_language\u0022: \u0022string\u0022,\n    \u0022language_a\u0022: \u0022string\u0022,\n    \u0022language_b\u0022: \u0022string\u0022\n  },\n  \u0022context\u0022: {\n    \u0022general\u0022: [\n      {}\n    ],\n    \u0022text\u0022: \u0022string\u0022,\n    \u0022terms\u0022: [\n      \u0022string\u0022\n    ],\n    \u0022translation_terms\u0022: [\n      {}\n    ]\n  },\n  \u0022webhook_url\u0022: \u0022string\u0022,\n  \u0022webhook_auth_header_name\u0022: \u0022string\u0022,\n  \u0022webhook_auth_header_value\u0022: \u0022string\u0022,\n  \u0022client_reference_id\u0022: \u0022string\u0022\n}\n\n## Responses\n# 201\n# Description: Created\n# Content-Type: application/json\n# 400\n# Description: Bad Request\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 402\n# Description: Payment Required\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "create_transcription",
       "Setup": null
     },
     {
-      "Order": 10,
-      "Title": "Delete transcription",
-      "Slug": "delete-transcription",
-      "Description": "Permanently deletes a transcription and its associated files. Cannot delete transcriptions that are currently processing.",
-      "Language": "http",
-      "Code": "### Delete transcription\n# @name delete_transcription\nDELETE {{host}}/v1/transcriptions/{{transcription_id}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 204\n# Description: Transcription deleted.\n# 401\n# Description: Authentication error.\n# Content-Type: application/json\n# 404\n# Description: Transcription not found.\n\nError types:\n- \u0060transcription_not_found\u0060: No transcription with this ID exists in your project. It may have been deleted, the ID may be incorrect, or the transcription may belong to a different project. Verify the ID by listing transcriptions with GET /transcriptions.\n\n# Content-Type: application/json\n# 409\n# Description: Invalid transcription state.\n\nError types:\n- \u0060transcription_invalid_state\u0060:\n  - This transcription is currently being processed and cannot be deleted yet. Wait until \u0060status\u0060 reaches \u0060completed\u0060 or \u0060error\u0060 (check via GET /transcriptions/{id}), then retry the delete.\n\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests\n# Content-Type: application/json\n# 500\n# Description: Internal server error.\n# Content-Type: application/json",
-      "Format": "http",
-      "OperationId": "delete_transcription",
-      "Setup": null
-    },
-    {
-      "Order": 11,
+      "Order": 7,
       "Title": "Get transcription",
       "Slug": "get-transcription",
       "Description": "Retrieves detailed information about a specific transcription.",
       "Language": "http",
-      "Code": "### Get transcription\n# @name get_transcription\nGET {{host}}/v1/transcriptions/{{transcription_id}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: Transcription details.\n# Content-Type: application/json\n# 401\n# Description: Authentication error.\n# Content-Type: application/json\n# 404\n# Description: Transcription not found.\n\nError types:\n- \u0060transcription_not_found\u0060: No transcription with this ID exists in your project. It may have been deleted, the ID may be incorrect, or the transcription may belong to a different project. Verify the ID by listing transcriptions with GET /transcriptions.\n\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests\n# Content-Type: application/json\n# 500\n# Description: Internal server error.\n# Content-Type: application/json",
+      "Code": "### Get transcription\n# @name get_transcription\nGET {{host}}/v1/transcriptions/{{transcription_id}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: OK\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 404\n# Description: Not Found\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "get_transcription",
       "Setup": null
     },
     {
-      "Order": 12,
+      "Order": 8,
       "Title": "Get transcription transcript",
       "Slug": "get-transcription-transcript",
       "Description": "Retrieves the full transcript text and detailed tokens for a completed transcription. Only available for successfully completed transcriptions.",
       "Language": "http",
-      "Code": "### Get transcription transcript\n# @name get_transcription_transcript\nGET {{host}}/v1/transcriptions/{{transcription_id}}/transcript\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: Transcription transcript.\n# Content-Type: application/json\n# 401\n# Description: Authentication error.\n# Content-Type: application/json\n# 404\n# Description: Transcription not found.\n\nError types:\n- \u0060transcription_not_found\u0060: No transcription with this ID exists in your project. It may have been deleted, the ID may be incorrect, or the transcription may belong to a different project. Verify the ID by listing transcriptions with GET /transcriptions.\n\n# Content-Type: application/json\n# 409\n# Description: Invalid transcription state.\n\nError types:\n- \u0060transcription_invalid_state\u0060:\n  - The transcript is not ready yet \u2014 transcription is still in progress. Poll GET /transcriptions/{id} until \u0060status\u0060 is \u0060completed\u0060, or configure a webhook when creating the transcription to be notified when it finishes.\n  - The transcription failed, so there is no transcript to return. Call GET /transcriptions/{id} and inspect the \u0060error_type\u0060 and \u0060error_message\u0060 fields for the specific failure reason.\n  - The transcript for this transcription is no longer stored. Transcript data is retained for a limited period after completion; if you still need the results, create a new transcription from the original audio.\n\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests\n# Content-Type: application/json\n# 500\n# Description: Internal server error.\n# Content-Type: application/json",
+      "Code": "### Get transcription transcript\n# @name get_transcription_transcript\nGET {{host}}/v1/transcriptions/{{transcription_id}}/transcript\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: OK\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 404\n# Description: Not Found\n# Content-Type: application/json\n# 409\n# Description: Conflict\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "get_transcription_transcript",
       "Setup": null
     },
     {
-      "Order": 13,
-      "Title": "Get transcriptions",
-      "Slug": "get-transcriptions",
-      "Description": "Retrieves list of transcriptions.",
-      "Language": "csharp",
-      "Code": "using var client = new SonioxClient(apiKey);\nvar response = await client.Transcriptions.GetTranscriptionsAsync();\n\n// Example response:\n// {\n//   \u0022transcriptions\u0022: [\n//     {\n//       \u0022id\u0022: \u002273d4357d-cad2-4338-a60d-ec6f2044f721\u0022,\n//       \u0022status\u0022: \u0022completed\u0022,\n//       \u0022created_at\u0022: \u00222024-11-26T00:00:00Z\u0022,\n//       \u0022model\u0022: \u0022stt-async-preview\u0022,\n//       \u0022audio_url\u0022: \u0022https://soniox.com/media/examples/coffee_shop.mp3\u0022,\n//       \u0022file_id\u0022: null,\n//       \u0022filename\u0022: \u0022coffee_shop.mp3\u0022,\n//       \u0022language_hints\u0022: [\n//         \u0022en\u0022,\n//         \u0022fr\u0022\n//       ],\n//       \u0022context\u0022: \u0022extra context for the transcription\u0022,\n//       \u0022audio_duration_ms\u0022: 16079,\n//       \u0022error_message\u0022: null,\n//       \u0022webhook_url\u0022: \u0022https://example.com/webhook\u0022,\n//       \u0022webhook_auth_header_name\u0022: \u0022Authorization\u0022,\n//       \u0022webhook_auth_header_value\u0022: \u0022******************\u0022,\n//       \u0022webhook_status_code\u0022: null,\n//       \u0022client_reference_id\u0022: \u0022some_internal_id\u0022\n//     }\n//   ],\n//   \u0022next_page_cursor\u0022: \u0022cursor_or_null\u0022\n// }",
-      "Format": "sdk",
-      "OperationId": "get_transcriptions",
-      "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
-    },
-    {
-      "Order": 14,
-      "Title": "Get transcriptions count",
-      "Slug": "get-transcriptions-count",
-      "Description": "Returns the total number of transcriptions, split by request scope.",
-      "Language": "csharp",
-      "Code": "using var client = new SonioxClient(apiKey);\nvar response = await client.Transcriptions.GetTranscriptionsCountAsync();\n\n// Example response:\n// {\n//   \u0022total\u0022: 50,\n//   \u0022public_api\u0022: 42,\n//   \u0022playground\u0022: 8\n// }",
-      "Format": "sdk",
-      "OperationId": "get_transcriptions_count",
-      "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
-    },
-    {
-      "Order": 15,
+      "Order": 9,
       "Title": "Get TTS models",
       "Slug": "get-tts-models",
       "Description": "Retrieves list of available TTS models and their attributes.",
@@ -164,17 +98,6 @@
       "Format": "sdk",
       "OperationId": "get_tts_models",
       "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
-    },
-    {
-      "Order": 16,
-      "Title": "Get usage logs",
-      "Slug": "get-usage-logs",
-      "Description": "Returns per-request usage log entries for the project. The project is implied by the API key used for authentication. Filters by request end time. The window between start_time and end_time must not exceed 31 days. start_time must not be earlier than 91 days ago.",
-      "Language": "http",
-      "Code": "### Get usage logs\n# @name get_usage_logs\nGET {{host}}/v1/usage-logs?start_time={{start_time}}\u0026end_time={{end_time}}\u0026limit=1000\u0026sort=end_time_asc\u0026cursor={{cursor}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: Per-request usage log entries.\n# Content-Type: application/json\n# 400\n# Description: Invalid request.\n\nError types:\n- \u0060invalid_request\u0060: Your request did not pass validation. One or more fields in the request body are missing or have invalid values. See \u0060validation_errors\u0060 for the specific field and retry with corrected values.\n- \u0060invalid_cursor\u0060: The \u0060cursor\u0060 parameter is invalid. Omit \u0060cursor\u0060 to start pagination from the beginning.\n\n# Content-Type: application/json\n# 401\n# Description: Authentication error.\n# Content-Type: application/json\n# 429\n# Description: Too Many Requests\n# Content-Type: application/json\n# 500\n# Description: Internal server error.\n# Content-Type: application/json",
-      "Format": "http",
-      "OperationId": "get_usage_logs",
-      "Setup": null
     }
   ]
 }
