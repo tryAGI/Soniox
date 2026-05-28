@@ -52,6 +52,11 @@ namespace Soniox
         /// <summary>
         /// 
         /// </summary>
+        public ConcurrencyLimitsClient ConcurrencyLimits { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public FilesClient Files { get; }
 
         /// <summary>
@@ -68,6 +73,11 @@ namespace Soniox
         /// 
         /// </summary>
         public TtsModelsClient TtsModels { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public UsageLogsClient UsageLogs { get; }
 
     }
 }

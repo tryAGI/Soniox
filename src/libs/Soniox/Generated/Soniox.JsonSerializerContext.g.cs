@@ -25,9 +25,25 @@ namespace Soniox
 
             typeof(global::Soniox.JsonConverters.TranscriptionModeNullableJsonConverter),
 
+            typeof(global::Soniox.JsonConverters.TTSVoiceGenderJsonConverter),
+
+            typeof(global::Soniox.JsonConverters.TTSVoiceGenderNullableJsonConverter),
+
+            typeof(global::Soniox.JsonConverters.GetUsageLogsPayloadSortJsonConverter),
+
+            typeof(global::Soniox.JsonConverters.GetUsageLogsPayloadSortNullableJsonConverter),
+
+            typeof(global::Soniox.JsonConverters.UsageLogsSortJsonConverter),
+
+            typeof(global::Soniox.JsonConverters.UsageLogsSortNullableJsonConverter),
+
             typeof(global::Soniox.JsonConverters.TemporaryApiKeyUsageTypeJsonConverter),
 
             typeof(global::Soniox.JsonConverters.TemporaryApiKeyUsageTypeNullableJsonConverter),
+
+            typeof(global::Soniox.JsonConverters.GetUsageLogsSort2JsonConverter),
+
+            typeof(global::Soniox.JsonConverters.GetUsageLogsSort2NullableJsonConverter),
 
             typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<global::Soniox.StructuredContext, string, object>),
 
@@ -83,11 +99,23 @@ namespace Soniox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TTSModel))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.TTSVoice>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TTSVoice))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TTSVoiceGender), TypeInfoPropertyName = "TTSVoiceGender2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetUsageLogsPayload))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetUsageLogsPayloadSort), TypeInfoPropertyName = "GetUsageLogsPayloadSort2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.UsageLogsSort), TypeInfoPropertyName = "UsageLogsSort2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetUsageLogsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.UsageLogEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.UsageLogEntry))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CreateTemporaryApiKeyResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CreateTemporaryApiKeyPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TemporaryApiKeyUsageType), TypeInfoPropertyName = "TemporaryApiKeyUsageType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CurrentValues))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetConcurrencyLimitsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.ScopeValues))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.LimitValues))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.UploadFileRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetUsageLogsSort2), TypeInfoPropertyName = "GetUsageLogsSort22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.File>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.ApiErrorValidationError>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.Transcription>))]
@@ -100,6 +128,7 @@ namespace Soniox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.TranslationTarget>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.TTSModel>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.TTSVoice>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.UsageLogEntry>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
