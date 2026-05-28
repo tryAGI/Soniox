@@ -131,6 +131,21 @@ public partial class SonioxClient : ISpeechToTextClient
             ModelId = transcription.Model,
             StartTime = TimeSpan.Zero,
             EndTime = endTime,
+            AdditionalProperties = new AdditionalPropertiesDictionary
+            {
+                [SonioxSpeechToTextPropertyNames.Tokens] = transcript.Tokens
+                    .Select(static token => new SonioxRealtimeToken(
+                        Text: token.Text,
+                        StartMs: token.StartMs,
+                        EndMs: token.EndMs,
+                        Confidence: token.Confidence,
+                        Speaker: token.Speaker,
+                        Language: token.Language,
+                        IsAudioEvent: token.IsAudioEvent,
+                        TranslationStatus: token.TranslationStatus,
+                        IsFinal: true))
+                    .ToArray(),
+            },
         };
     }
 
@@ -405,43 +420,152 @@ public partial class SonioxClient : ISpeechToTextClient
 
         var finalText = new StringBuilder();
         var interimText = new StringBuilder();
+        var finalTokens = new List<SonioxRealtimeToken>();
+        var interimTokens = new List<SonioxRealtimeToken>();
         foreach (var token in tokensEl.EnumerateArray())
         {
-            string text = token.TryGetProperty("text", out var t) && t.ValueKind == JsonValueKind.String
-                ? t.GetString() ?? string.Empty
-                : string.Empty;
-            bool isFinalTok = token.TryGetProperty("is_final", out var f) && f.ValueKind == JsonValueKind.True;
+            var parsedToken = ParseToken(token);
+            string text = parsedToken.Text;
+            bool isFinalTok = parsedToken.IsFinal;
 
             if (isFinalTok)
             {
                 finalText.Append(text);
+                finalTokens.Add(parsedToken);
             }
             else
             {
                 interimText.Append(text);
+                interimTokens.Add(parsedToken);
             }
         }
 
         if (finalText.Length > 0)
         {
-            return new SpeechToTextResponseUpdate(finalText.ToString())
-            {
-                Kind = SpeechToTextResponseUpdateKind.TextUpdated,
-                ResponseId = responseId,
-                RawRepresentation = json,
-            };
+            return CreateUpdate(
+                finalText.ToString(),
+                SpeechToTextResponseUpdateKind.TextUpdated,
+                responseId,
+                json,
+                root,
+                finalTokens);
         }
 
         if (interimText.Length > 0)
         {
-            return new SpeechToTextResponseUpdate(interimText.ToString())
-            {
-                Kind = SpeechToTextResponseUpdateKind.TextUpdating,
-                ResponseId = responseId,
-                RawRepresentation = json,
-            };
+            return CreateUpdate(
+                interimText.ToString(),
+                SpeechToTextResponseUpdateKind.TextUpdating,
+                responseId,
+                json,
+                root,
+                interimTokens);
         }
 
         return null;
+    }
+
+    private static SpeechToTextResponseUpdate CreateUpdate(
+        string text,
+        SpeechToTextResponseUpdateKind kind,
+        string? responseId,
+        string rawJson,
+        JsonElement root,
+        IReadOnlyList<SonioxRealtimeToken> tokens)
+    {
+        var update = new SpeechToTextResponseUpdate(text)
+        {
+            Kind = kind,
+            ResponseId = responseId,
+            RawRepresentation = rawJson,
+            StartTime = tokens.Where(static token => token.StartMs is not null).Select(static token => TimeSpan.FromMilliseconds(token.StartMs!.Value)).DefaultIfEmpty().Min(),
+            EndTime = tokens.Where(static token => token.EndMs is not null).Select(static token => TimeSpan.FromMilliseconds(token.EndMs!.Value)).DefaultIfEmpty().Max(),
+            AdditionalProperties = new AdditionalPropertiesDictionary
+            {
+                [SonioxSpeechToTextPropertyNames.Tokens] = tokens,
+            },
+        };
+
+        var speakers = tokens
+            .Select(static token => token.Speaker)
+            .Where(static speaker => !string.IsNullOrWhiteSpace(speaker))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (speakers.Length > 0)
+        {
+            update.AdditionalProperties[SonioxSpeechToTextPropertyNames.Speakers] = speakers;
+        }
+
+        var languages = tokens
+            .Select(static token => token.Language)
+            .Where(static language => !string.IsNullOrWhiteSpace(language))
+            .Distinct(StringComparer.Ordinal)
+            .ToArray();
+        if (languages.Length > 0)
+        {
+            update.AdditionalProperties[SonioxSpeechToTextPropertyNames.Languages] = languages;
+        }
+
+        if (TryGetInt(root, SonioxSpeechToTextPropertyNames.FinalAudioProcessedMs) is int finalAudioProcessedMs)
+        {
+            update.AdditionalProperties[SonioxSpeechToTextPropertyNames.FinalAudioProcessedMs] = finalAudioProcessedMs;
+        }
+
+        if (TryGetInt(root, SonioxSpeechToTextPropertyNames.TotalAudioProcessedMs) is int totalAudioProcessedMs)
+        {
+            update.AdditionalProperties[SonioxSpeechToTextPropertyNames.TotalAudioProcessedMs] = totalAudioProcessedMs;
+        }
+
+        return update;
+    }
+
+    private static SonioxRealtimeToken ParseToken(JsonElement token)
+    {
+        return new SonioxRealtimeToken(
+            Text: TryGetString(token, "text") ?? string.Empty,
+            StartMs: TryGetInt(token, "start_ms"),
+            EndMs: TryGetInt(token, "end_ms"),
+            Confidence: TryGetDouble(token, "confidence"),
+            Speaker: TryGetString(token, "speaker"),
+            Language: TryGetString(token, "language"),
+            IsAudioEvent: TryGetBool(token, "is_audio_event"),
+            TranslationStatus: TryGetString(token, "translation_status"),
+            IsFinal: TryGetBool(token, "is_final") == true);
+    }
+
+    private static string? TryGetString(JsonElement element, string propertyName)
+    {
+        return element.TryGetProperty(propertyName, out var property) && property.ValueKind == JsonValueKind.String
+            ? property.GetString()
+            : null;
+    }
+
+    private static int? TryGetInt(JsonElement element, string propertyName)
+    {
+        return element.TryGetProperty(propertyName, out var property) && property.ValueKind == JsonValueKind.Number && property.TryGetInt32(out var value)
+            ? value
+            : null;
+    }
+
+    private static double? TryGetDouble(JsonElement element, string propertyName)
+    {
+        return element.TryGetProperty(propertyName, out var property) && property.ValueKind == JsonValueKind.Number && property.TryGetDouble(out var value)
+            ? value
+            : null;
+    }
+
+    private static bool? TryGetBool(JsonElement element, string propertyName)
+    {
+        if (!element.TryGetProperty(propertyName, out var property))
+        {
+            return null;
+        }
+
+        return property.ValueKind switch
+        {
+            JsonValueKind.True => true,
+            JsonValueKind.False => false,
+            _ => null,
+        };
     }
 }
