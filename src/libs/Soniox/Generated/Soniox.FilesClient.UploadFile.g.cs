@@ -43,7 +43,7 @@ namespace Soniox
 
         /// <summary>
         /// Upload file<br/>
-        /// Uploads a new file.
+        /// Uploads a new file. Files are automatically deleted 30 days after upload. However, we strongly recommend that you manually delete files as soon as you have obtained your transcription results, rather than waiting for automatic deletion.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -66,7 +66,7 @@ namespace Soniox
         }
         /// <summary>
         /// Upload file<br/>
-        /// Uploads a new file.
+        /// Uploads a new file. Files are automatically deleted 30 days after upload. However, we strongly recommend that you manually delete files as soon as you have obtained your transcription results, rather than waiting for automatic deletion.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -627,7 +627,7 @@ namespace Soniox
         }
         /// <summary>
         /// Upload file<br/>
-        /// Uploads a new file.
+        /// Uploads a new file. Files are automatically deleted 30 days after upload. However, we strongly recommend that you manually delete files as soon as you have obtained your transcription results, rather than waiting for automatic deletion.
         /// </summary>
         /// <param name="clientReferenceId">
         /// Optional tracking identifier string. Does not need to be unique.
@@ -663,7 +663,7 @@ namespace Soniox
 
         /// <summary>
         /// Upload file<br/>
-        /// Uploads a new file.
+        /// Uploads a new file. Files are automatically deleted 30 days after upload. However, we strongly recommend that you manually delete files as soon as you have obtained your transcription results, rather than waiting for automatic deletion.
         /// </summary>
         /// <param name="clientReferenceId">
         /// Optional tracking identifier string. Does not need to be unique.
@@ -1231,7 +1231,7 @@ namespace Soniox
         }
         /// <summary>
         /// Upload file<br/>
-        /// Uploads a new file.
+        /// Uploads a new file. Files are automatically deleted 30 days after upload. However, we strongly recommend that you manually delete files as soon as you have obtained your transcription results, rather than waiting for automatic deletion.
         /// </summary>
         /// <param name="clientReferenceId">
         /// Optional tracking identifier string. Does not need to be unique.
