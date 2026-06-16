@@ -64,6 +64,13 @@ namespace Soniox
         public required bool SupportsMaxEndpointDelay { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("supports_endpoint_sensitivity")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool SupportsEndpointSensitivity { get; set; }
+
+        /// <summary>
         /// List of supported one-way translation targets. If list is empty, check for one_way_translation field
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("translation_targets")]
@@ -112,6 +119,7 @@ namespace Soniox
         /// </param>
         /// <param name="supportsLanguageHintsStrict"></param>
         /// <param name="supportsMaxEndpointDelay"></param>
+        /// <param name="supportsEndpointSensitivity"></param>
         /// <param name="translationTargets">
         /// List of supported one-way translation targets. If list is empty, check for one_way_translation field
         /// </param>
@@ -140,6 +148,7 @@ namespace Soniox
             global::System.Collections.Generic.IList<global::Soniox.Language> languages,
             bool supportsLanguageHintsStrict,
             bool supportsMaxEndpointDelay,
+            bool supportsEndpointSensitivity,
             global::System.Collections.Generic.IList<global::Soniox.TranslationTarget> translationTargets,
             global::System.Collections.Generic.IList<string> twoWayTranslationPairs,
             string? aliasedModelId,
@@ -155,6 +164,7 @@ namespace Soniox
             this.Languages = languages ?? throw new global::System.ArgumentNullException(nameof(languages));
             this.SupportsLanguageHintsStrict = supportsLanguageHintsStrict;
             this.SupportsMaxEndpointDelay = supportsMaxEndpointDelay;
+            this.SupportsEndpointSensitivity = supportsEndpointSensitivity;
             this.TranslationTargets = translationTargets ?? throw new global::System.ArgumentNullException(nameof(translationTargets));
             this.TwoWayTranslationPairs = twoWayTranslationPairs ?? throw new global::System.ArgumentNullException(nameof(twoWayTranslationPairs));
             this.OneWayTranslation = oneWayTranslation;
