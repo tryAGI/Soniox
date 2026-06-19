@@ -172,123 +172,167 @@ namespace Soniox
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.GetModelsResponse? Type36 { get; set; }
+        public global::Soniox.GetVoicesPayload? Type36 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Soniox.Model>? Type37 { get; set; }
+        public global::Soniox.GetVoicesResponse? Type37 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.Model? Type38 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.Voice>? Type38 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.Language? Type39 { get; set; }
+        public global::Soniox.Voice? Type39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.TranscriptionMode? Type40 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.VoiceModel>? Type40 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Soniox.Language>? Type41 { get; set; }
+        public global::Soniox.VoiceModel? Type41 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Soniox.TranslationTarget>? Type42 { get; set; }
+        public global::Soniox.VoiceModelStatus? Type42 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.TranslationTarget? Type43 { get; set; }
+        public global::Soniox.UploadVoicePayload? Type43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.GetTTSModelsResponse? Type44 { get; set; }
+        public global::Soniox.GetVoicesCountResponse? Type44 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Soniox.TTSModel>? Type45 { get; set; }
+        public global::Soniox.RecomputeVoicePayload? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.TTSModel? Type46 { get; set; }
+        public global::Soniox.GetModelsResponse? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Soniox.TTSVoice>? Type47 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.Model>? Type47 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.TTSVoice? Type48 { get; set; }
+        public global::Soniox.Model? Type48 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.TTSVoiceGender? Type49 { get; set; }
+        public global::Soniox.Language? Type49 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.GetUsageLogsPayload? Type50 { get; set; }
+        public global::Soniox.TranscriptionMode? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.GetUsageLogsPayloadSort? Type51 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.Language>? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.UsageLogsSort? Type52 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.TranslationTarget>? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.GetUsageLogsResponse? Type53 { get; set; }
+        public global::Soniox.TranslationTarget? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Soniox.UsageLogEntry>? Type54 { get; set; }
+        public global::Soniox.GetTTSModelsResponse? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.UsageLogEntry? Type55 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.TTSModel>? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.CreateTemporaryApiKeyResponse? Type56 { get; set; }
+        public global::Soniox.TTSModel? Type56 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.CreateTemporaryApiKeyPayload? Type57 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.TTSVoice>? Type57 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.TemporaryApiKeyUsageType? Type58 { get; set; }
+        public global::Soniox.TTSVoice? Type58 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.CurrentValues? Type59 { get; set; }
+        public global::Soniox.TTSVoiceGender? Type59 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.GetConcurrencyLimitsResponse? Type60 { get; set; }
+        public global::Soniox.GetUsageLogsPayload? Type60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.ScopeValues? Type61 { get; set; }
+        public global::Soniox.GetUsageLogsPayloadSort? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.LimitValues? Type62 { get; set; }
+        public global::Soniox.UsageLogsSort? Type62 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.UploadFileRequest? Type63 { get; set; }
+        public global::Soniox.GetUsageLogsResponse? Type63 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type64 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.UsageLogEntry>? Type64 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.GetUsageLogsSort2? Type65 { get; set; }
+        public global::Soniox.UsageLogEntry? Type65 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.CreateTemporaryApiKeyResponse? Type66 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.CreateTemporaryApiKeyPayload? Type67 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.TemporaryApiKeyUsageType? Type68 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.CurrentValues? Type69 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.GetConcurrencyLimitsResponse? Type70 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.ScopeValues? Type71 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.LimitValues? Type72 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.UploadFileRequest? Type73 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte[]? Type74 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.CreateVoiceRequest? Type75 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.GetUsageLogsSort2? Type76 { get; set; }
 
         /// <summary>
         /// 
@@ -321,26 +365,34 @@ namespace Soniox
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Soniox.Model>? ListType7 { get; set; }
+        public global::System.Collections.Generic.List<global::Soniox.Voice>? ListType7 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Soniox.Language>? ListType8 { get; set; }
+        public global::System.Collections.Generic.List<global::Soniox.VoiceModel>? ListType8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Soniox.TranslationTarget>? ListType9 { get; set; }
+        public global::System.Collections.Generic.List<global::Soniox.Model>? ListType9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Soniox.TTSModel>? ListType10 { get; set; }
+        public global::System.Collections.Generic.List<global::Soniox.Language>? ListType10 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Soniox.TTSVoice>? ListType11 { get; set; }
+        public global::System.Collections.Generic.List<global::Soniox.TranslationTarget>? ListType11 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Soniox.UsageLogEntry>? ListType12 { get; set; }
+        public global::System.Collections.Generic.List<global::Soniox.TTSModel>? ListType12 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Soniox.TTSVoice>? ListType13 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Soniox.UsageLogEntry>? ListType14 { get; set; }
     }
 }
