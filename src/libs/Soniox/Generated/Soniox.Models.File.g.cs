@@ -4,8 +4,7 @@
 namespace Soniox
 {
     /// <summary>
-    /// File metadata.<br/>
-    /// Example: {"client_reference_id":"some_internal_id","created_at":"2024-11-26T00:00:00Z","filename":"example.mp3","id":"84c32fc6-4fb5-4e7a-b656-b5ec70493753","size":123456}
+    /// 
     /// </summary>
     public sealed partial class File
     {

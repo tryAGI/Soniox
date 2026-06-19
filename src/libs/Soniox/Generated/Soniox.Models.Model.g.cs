@@ -71,6 +71,20 @@ namespace Soniox
         public required bool SupportsEndpointSensitivity { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("supports_endpoint_latency_adjustment")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool SupportsEndpointLatencyAdjustment { get; set; }
+
+        /// <summary>
+        /// Maximum endpoint_latency_adjustment_level the model accepts. Valid levels are 0 (no adjustment) through this value; 0 means the feature is unsupported.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("endpoint_latency_adjustment_max_level")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int EndpointLatencyAdjustmentMaxLevel { get; set; }
+
+        /// <summary>
         /// List of supported one-way translation targets. If list is empty, check for one_way_translation field
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("translation_targets")]
@@ -120,6 +134,10 @@ namespace Soniox
         /// <param name="supportsLanguageHintsStrict"></param>
         /// <param name="supportsMaxEndpointDelay"></param>
         /// <param name="supportsEndpointSensitivity"></param>
+        /// <param name="supportsEndpointLatencyAdjustment"></param>
+        /// <param name="endpointLatencyAdjustmentMaxLevel">
+        /// Maximum endpoint_latency_adjustment_level the model accepts. Valid levels are 0 (no adjustment) through this value; 0 means the feature is unsupported.
+        /// </param>
         /// <param name="translationTargets">
         /// List of supported one-way translation targets. If list is empty, check for one_way_translation field
         /// </param>
@@ -149,6 +167,8 @@ namespace Soniox
             bool supportsLanguageHintsStrict,
             bool supportsMaxEndpointDelay,
             bool supportsEndpointSensitivity,
+            bool supportsEndpointLatencyAdjustment,
+            int endpointLatencyAdjustmentMaxLevel,
             global::System.Collections.Generic.IList<global::Soniox.TranslationTarget> translationTargets,
             global::System.Collections.Generic.IList<string> twoWayTranslationPairs,
             string? aliasedModelId,
@@ -165,6 +185,8 @@ namespace Soniox
             this.SupportsLanguageHintsStrict = supportsLanguageHintsStrict;
             this.SupportsMaxEndpointDelay = supportsMaxEndpointDelay;
             this.SupportsEndpointSensitivity = supportsEndpointSensitivity;
+            this.SupportsEndpointLatencyAdjustment = supportsEndpointLatencyAdjustment;
+            this.EndpointLatencyAdjustmentMaxLevel = endpointLatencyAdjustmentMaxLevel;
             this.TranslationTargets = translationTargets ?? throw new global::System.ArgumentNullException(nameof(translationTargets));
             this.TwoWayTranslationPairs = twoWayTranslationPairs ?? throw new global::System.ArgumentNullException(nameof(twoWayTranslationPairs));
             this.OneWayTranslation = oneWayTranslation;
