@@ -9,8 +9,8 @@ install_autosdk_cli() {
 fetch_spec() {
   curl "$@" \
     --fail --silent --show-error --location \
-    --retry 5 --retry-delay 10 --retry-all-errors \
-    --connect-timeout 30 --max-time 300
+    --retry 5 --retry-delay 10 --retry-all-errors --retry-max-time 90 \
+    --connect-timeout 15 --max-time 60
 }
 
 # Soniox Public API — official OpenAPI 3.1.0 spec.
@@ -24,9 +24,24 @@ fetch_spec() {
 # Auth: standard HTTP Bearer (Authorization: Bearer <API_KEY>).
 install_autosdk_cli
 
-rm -rf Generated
-fetch_spec --fail --silent --show-error --location https://api.soniox.com/v1/openapi.json -o openapi.json
+spec_url="https://api.soniox.com/v1/openapi.json"
+spec_path="openapi.json"
+spec_download_path="${spec_path}.tmp"
 
+rm -f "$spec_download_path"
+if fetch_spec "$spec_url" -o "$spec_download_path"; then
+  mv "$spec_download_path" "$spec_path"
+else
+  rm -f "$spec_download_path"
+  if [ -f "$spec_path" ]; then
+    echo "Warning: failed to fetch latest Soniox OpenAPI spec; using checked-in ${spec_path}." >&2
+  else
+    echo "Error: failed to fetch latest Soniox OpenAPI spec and no ${spec_path} fallback exists." >&2
+    exit 1
+  fi
+fi
+
+rm -rf Generated
 autosdk generate openapi.json \
   --namespace Soniox \
   --clientClassName SonioxClient \
