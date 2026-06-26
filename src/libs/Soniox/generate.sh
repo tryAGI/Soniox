@@ -18,8 +18,9 @@ fetch_spec() {
 #
 # Covers: Auth (temporary API keys), Files (upload/list/get/delete),
 # Models (list), Transcriptions (async create/get/list/delete, fetch
-# transcript). Real-time WebSocket streaming is handled manually in
-# Extensions/ (not part of the REST OpenAPI surface).
+# transcript). Real-time WebSocket streaming is generated from the
+# handcrafted AsyncAPI spec in asyncapi.yaml because it is not part of
+# the REST OpenAPI surface.
 #
 # Auth: standard HTTP Bearer (Authorization: Bearer <API_KEY>).
 install_autosdk_cli
@@ -49,3 +50,10 @@ autosdk generate openapi.json \
   --output Generated \
   --exclude-deprecated-operations \
   --security-scheme Http:Header:Bearer
+
+autosdk generate asyncapi.yaml \
+  --namespace Soniox.Realtime \
+  --websocket-class-name SonioxRealtimeClient \
+  --json-serializer-context RealtimeSourceGenerationContext \
+  --targetFramework net10.0 \
+  --output Generated

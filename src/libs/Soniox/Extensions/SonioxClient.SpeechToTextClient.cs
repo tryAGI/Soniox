@@ -237,203 +237,113 @@ public partial class SonioxClient : ISpeechToTextClient
             }
         }
 
-        using var ws = new ClientWebSocket();
-
         string? responseId = Guid.NewGuid().ToString("N");
 
-        await ws.ConnectAsync(new Uri(RealtimeWebSocketUrl), cancellationToken).ConfigureAwait(false);
-
-        // Initial configuration message (required first frame).
+        var realtime = new Realtime.SonioxRealtimeClient();
+        await using (realtime.ConfigureAwait(false))
         {
-            using var buf = new MemoryStream();
-            using (var writer = new Utf8JsonWriter(buf))
-            {
-                writer.WriteStartObject();
-                writer.WriteString("api_key", apiKey);
-                writer.WriteString("model", model);
-                writer.WriteString("audio_format", audioFormat ?? "auto");
-                if (sampleRate is int srv)
-                {
-                    writer.WriteNumber(SonioxSpeechToTextPropertyNames.SampleRate, srv);
-                }
-                if (numChannels is int ncv)
-                {
-                    writer.WriteNumber(SonioxSpeechToTextPropertyNames.NumChannels, ncv);
-                }
-                if (languageHints is { Count: > 0 })
-                {
-                    writer.WritePropertyName(SonioxSpeechToTextPropertyNames.LanguageHints);
-                    writer.WriteStartArray();
-                    foreach (var hint in languageHints)
-                    {
-                        writer.WriteStringValue(hint);
-                    }
-                    writer.WriteEndArray();
-                }
-                else if (!string.IsNullOrEmpty(language))
-                {
-                    writer.WritePropertyName(SonioxSpeechToTextPropertyNames.LanguageHints);
-                    writer.WriteStartArray();
-                    writer.WriteStringValue(language);
-                    writer.WriteEndArray();
-                }
-                if (languageHintsStrict is bool lhs)
-                {
-                    writer.WriteBoolean(SonioxSpeechToTextPropertyNames.LanguageHintsStrict, lhs);
-                }
-                if (enableSpeakerDiarization is bool ed)
-                {
-                    writer.WriteBoolean(SonioxSpeechToTextPropertyNames.EnableSpeakerDiarization, ed);
-                }
-                if (enableLanguageIdentification is bool el)
-                {
-                    writer.WriteBoolean(SonioxSpeechToTextPropertyNames.EnableLanguageIdentification, el);
-                }
-                if (enableEndpointDetection is bool eed)
-                {
-                    writer.WriteBoolean(SonioxSpeechToTextPropertyNames.EnableEndpointDetection, eed);
-                }
-                if (maxEndpointDelayMs is int med)
-                {
-                    writer.WriteNumber(SonioxSpeechToTextPropertyNames.MaxEndpointDelayMs, med);
-                }
-                if (endpointSensitivity is double es)
-                {
-                    writer.WriteNumber(SonioxSpeechToTextPropertyNames.EndpointSensitivity, es);
-                }
-                if (endpointLatencyAdjustmentLevel is int ela)
-                {
-                    writer.WriteNumber(SonioxSpeechToTextPropertyNames.EndpointLatencyAdjustmentLevel, ela);
-                }
-                if (!string.IsNullOrEmpty(clientReferenceId))
-                {
-                    writer.WriteString(SonioxSpeechToTextPropertyNames.ClientReferenceId, clientReferenceId);
-                }
-                writer.WriteEndObject();
-            }
+            await realtime.ConnectSpeechToTextAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
 
-            var configBytes = buf.ToArray();
-            await ws.SendAsync(
-                new ArraySegment<byte>(configBytes),
-                WebSocketMessageType.Text,
-                endOfMessage: true,
+            var configuredLanguageHints = languageHints is { Count: > 0 }
+                ? languageHints
+                : !string.IsNullOrEmpty(language)
+                    ? new List<string> { language }
+                    : null;
+
+            await realtime.SendRealtimeConfigAsync(
+                new Realtime.RealtimeConfig
+                {
+                    ApiKey = apiKey,
+                    Model = model,
+                    AudioFormat = audioFormat ?? "auto",
+                    SampleRate = sampleRate,
+                    NumChannels = numChannels,
+                    LanguageHints = configuredLanguageHints,
+                    LanguageHintsStrict = languageHintsStrict,
+                    EnableSpeakerDiarization = enableSpeakerDiarization,
+                    EnableLanguageIdentification = enableLanguageIdentification,
+                    EnableEndpointDetection = enableEndpointDetection,
+                    MaxEndpointDelayMs = maxEndpointDelayMs,
+                    EndpointSensitivity = endpointSensitivity,
+                    EndpointLatencyAdjustmentLevel = endpointLatencyAdjustmentLevel,
+                    ClientReferenceId = clientReferenceId,
+                },
                 cancellationToken).ConfigureAwait(false);
-        }
 
-        yield return new SpeechToTextResponseUpdate
-        {
-            Kind = SpeechToTextResponseUpdateKind.SessionOpen,
-            ResponseId = responseId,
-        };
-
-        // Stream audio in a background task. End-of-stream is signaled with
-        // an empty binary frame.
-        var sendTask = Task.Run(async () =>
-        {
-            try
+            yield return new SpeechToTextResponseUpdate
             {
-                var buffer = new byte[8192];
-                int bytesRead;
-                while ((bytesRead = await audioSpeechStream.ReadAsync(
-                    buffer.AsMemory(0, buffer.Length),
-                    cancellationToken).ConfigureAwait(false)) > 0)
+                Kind = SpeechToTextResponseUpdateKind.SessionOpen,
+                ResponseId = responseId,
+            };
+
+            // Stream audio in a background task. End-of-stream is signaled with
+            // an empty binary frame.
+            var sendTask = Task.Run(async () =>
+            {
+                try
                 {
-                    await ws.SendAsync(
-                        new ArraySegment<byte>(buffer, 0, bytesRead),
+                    var buffer = new byte[8192];
+                    int bytesRead;
+                    while ((bytesRead = await audioSpeechStream.ReadAsync(
+                        buffer.AsMemory(0, buffer.Length),
+                        cancellationToken).ConfigureAwait(false)) > 0)
+                    {
+                        await realtime.SendAsync(
+                            new ArraySegment<byte>(buffer, 0, bytesRead),
+                            WebSocketMessageType.Binary,
+                            endOfMessage: true,
+                            cancellationToken).ConfigureAwait(false);
+                    }
+
+                    await realtime.SendAsync(
+                        ArraySegment<byte>.Empty,
                         WebSocketMessageType.Binary,
                         endOfMessage: true,
                         cancellationToken).ConfigureAwait(false);
                 }
+                catch (OperationCanceledException)
+                {
+                }
+            }, cancellationToken);
 
-                await ws.SendAsync(
-                    ArraySegment<byte>.Empty,
-                    WebSocketMessageType.Binary,
-                    endOfMessage: true,
-                    cancellationToken).ConfigureAwait(false);
+            await foreach (var @event in realtime.ReceiveUpdatesAsync(cancellationToken).ConfigureAwait(false))
+            {
+                if (@event.IsRealtimeError && @event.RealtimeError is { } error)
+                {
+                    throw new InvalidOperationException($"Soniox WebSocket error {error.ErrorCode}: {error.ErrorMessage}");
+                }
+
+                if (@event.IsRealtimeResult && @event.RealtimeResult is { } result)
+                {
+                    var update = ParseServerFrame(result, responseId, out bool isFinished);
+                    if (update is not null)
+                    {
+                        yield return update;
+                    }
+
+                    if (isFinished)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            yield return new SpeechToTextResponseUpdate
+            {
+                Kind = SpeechToTextResponseUpdateKind.SessionClose,
+                ResponseId = responseId,
+            };
+
+            try
+            {
+                await sendTask.ConfigureAwait(false);
             }
             catch (OperationCanceledException)
             {
-            }
-        }, cancellationToken);
-
-        var readBuffer = new byte[64 * 1024];
-        var pending = new StringBuilder();
-        while (ws.State == WebSocketState.Open && !cancellationToken.IsCancellationRequested)
-        {
-            WebSocketReceiveResult rcv;
-            try
-            {
-                rcv = await ws.ReceiveAsync(
-                    new ArraySegment<byte>(readBuffer),
-                    cancellationToken).ConfigureAwait(false);
             }
             catch (WebSocketException)
             {
-                break;
-            }
-            catch (OperationCanceledException)
-            {
-                break;
-            }
-
-            if (rcv.MessageType == WebSocketMessageType.Close)
-            {
-                break;
-            }
-
-            if (rcv.MessageType != WebSocketMessageType.Text)
-            {
-                continue;
-            }
-
-            pending.Append(Encoding.UTF8.GetString(readBuffer, 0, rcv.Count));
-            if (!rcv.EndOfMessage)
-            {
-                continue;
-            }
-
-            var json = pending.ToString();
-            pending.Clear();
-
-            var update = ParseServerFrame(json, responseId, out bool isFinished);
-            if (update is not null)
-            {
-                yield return update;
-            }
-
-            if (isFinished)
-            {
-                break;
-            }
-        }
-
-        yield return new SpeechToTextResponseUpdate
-        {
-            Kind = SpeechToTextResponseUpdateKind.SessionClose,
-            ResponseId = responseId,
-        };
-
-        try
-        {
-            await sendTask.ConfigureAwait(false);
-        }
-        catch (OperationCanceledException)
-        {
-        }
-
-        if (ws.State is WebSocketState.Open or WebSocketState.CloseReceived)
-        {
-            try
-            {
-                await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "done", CancellationToken.None).ConfigureAwait(false);
-            }
-            catch (WebSocketException)
-            {
-                // Ignore close errors — the session is already over.
-            }
-            catch (OperationCanceledException)
-            {
-                // Ignore cancellation during close.
+                // The receive loop can finish before the final empty frame is sent.
             }
         }
     }
@@ -509,7 +419,8 @@ public partial class SonioxClient : ISpeechToTextClient
                 SpeechToTextResponseUpdateKind.TextUpdated,
                 responseId,
                 json,
-                root,
+                TryGetInt(root, SonioxSpeechToTextPropertyNames.FinalAudioProcessedMs),
+                TryGetInt(root, SonioxSpeechToTextPropertyNames.TotalAudioProcessedMs),
                 finalTokens);
         }
 
@@ -520,7 +431,68 @@ public partial class SonioxClient : ISpeechToTextClient
                 SpeechToTextResponseUpdateKind.TextUpdating,
                 responseId,
                 json,
-                root,
+                TryGetInt(root, SonioxSpeechToTextPropertyNames.FinalAudioProcessedMs),
+                TryGetInt(root, SonioxSpeechToTextPropertyNames.TotalAudioProcessedMs),
+                interimTokens);
+        }
+
+        return null;
+    }
+
+    private static SpeechToTextResponseUpdate? ParseServerFrame(
+        Realtime.RealtimeResult frame,
+        string? responseId,
+        out bool finished)
+    {
+        ArgumentNullException.ThrowIfNull(frame);
+
+        finished = frame.Finished == true;
+
+        if (frame.Tokens is not { Count: > 0 } tokens)
+        {
+            return null;
+        }
+
+        var finalText = new StringBuilder();
+        var interimText = new StringBuilder();
+        var finalTokens = new List<SonioxRealtimeToken>();
+        var interimTokens = new List<SonioxRealtimeToken>();
+        foreach (var token in tokens)
+        {
+            var parsedToken = ParseToken(token);
+            if (parsedToken.IsFinal)
+            {
+                finalText.Append(parsedToken.Text);
+                finalTokens.Add(parsedToken);
+            }
+            else
+            {
+                interimText.Append(parsedToken.Text);
+                interimTokens.Add(parsedToken);
+            }
+        }
+
+        if (finalText.Length > 0)
+        {
+            return CreateUpdate(
+                finalText.ToString(),
+                SpeechToTextResponseUpdateKind.TextUpdated,
+                responseId,
+                frame,
+                frame.FinalAudioProcMs,
+                frame.TotalAudioProcMs,
+                finalTokens);
+        }
+
+        if (interimText.Length > 0)
+        {
+            return CreateUpdate(
+                interimText.ToString(),
+                SpeechToTextResponseUpdateKind.TextUpdating,
+                responseId,
+                frame,
+                frame.FinalAudioProcMs,
+                frame.TotalAudioProcMs,
                 interimTokens);
         }
 
@@ -531,15 +503,16 @@ public partial class SonioxClient : ISpeechToTextClient
         string text,
         SpeechToTextResponseUpdateKind kind,
         string? responseId,
-        string rawJson,
-        JsonElement root,
+        object rawRepresentation,
+        int? finalAudioProcessedMs,
+        int? totalAudioProcessedMs,
         IReadOnlyList<SonioxRealtimeToken> tokens)
     {
         var update = new SpeechToTextResponseUpdate(text)
         {
             Kind = kind,
             ResponseId = responseId,
-            RawRepresentation = rawJson,
+            RawRepresentation = rawRepresentation,
             StartTime = tokens.Where(static token => token.StartMs is not null).Select(static token => TimeSpan.FromMilliseconds(token.StartMs!.Value)).DefaultIfEmpty().Min(),
             EndTime = tokens.Where(static token => token.EndMs is not null).Select(static token => TimeSpan.FromMilliseconds(token.EndMs!.Value)).DefaultIfEmpty().Max(),
             AdditionalProperties = new AdditionalPropertiesDictionary
@@ -568,14 +541,14 @@ public partial class SonioxClient : ISpeechToTextClient
             update.AdditionalProperties[SonioxSpeechToTextPropertyNames.Languages] = languages;
         }
 
-        if (TryGetInt(root, SonioxSpeechToTextPropertyNames.FinalAudioProcessedMs) is int finalAudioProcessedMs)
+        if (finalAudioProcessedMs is int finalAudioValue)
         {
-            update.AdditionalProperties[SonioxSpeechToTextPropertyNames.FinalAudioProcessedMs] = finalAudioProcessedMs;
+            update.AdditionalProperties[SonioxSpeechToTextPropertyNames.FinalAudioProcessedMs] = finalAudioValue;
         }
 
-        if (TryGetInt(root, SonioxSpeechToTextPropertyNames.TotalAudioProcessedMs) is int totalAudioProcessedMs)
+        if (totalAudioProcessedMs is int totalAudioValue)
         {
-            update.AdditionalProperties[SonioxSpeechToTextPropertyNames.TotalAudioProcessedMs] = totalAudioProcessedMs;
+            update.AdditionalProperties[SonioxSpeechToTextPropertyNames.TotalAudioProcessedMs] = totalAudioValue;
         }
 
         return update;
@@ -593,6 +566,20 @@ public partial class SonioxClient : ISpeechToTextClient
             IsAudioEvent: TryGetBool(token, "is_audio_event"),
             TranslationStatus: TryGetString(token, "translation_status"),
             IsFinal: TryGetBool(token, "is_final") == true);
+    }
+
+    private static SonioxRealtimeToken ParseToken(Realtime.RealtimeToken token)
+    {
+        return new SonioxRealtimeToken(
+            Text: token.Text ?? string.Empty,
+            StartMs: token.StartMs,
+            EndMs: token.EndMs,
+            Confidence: token.Confidence,
+            Speaker: token.Speaker,
+            Language: token.Language,
+            IsAudioEvent: token.IsAudioEvent,
+            TranslationStatus: token.TranslationStatus,
+            IsFinal: token.IsFinal == true);
     }
 
     private static string? TryGetString(JsonElement element, string propertyName)

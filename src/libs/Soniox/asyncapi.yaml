@@ -1,0 +1,195 @@
+asyncapi: 3.0.0
+info:
+  title: Soniox Realtime API
+  version: 1.0.0
+  description: |
+    Realtime speech-to-text over WebSocket. The client sends a JSON
+    configuration message as the first frame, then streams audio as binary
+    frames. An empty binary frame ends audio input.
+
+servers:
+  production:
+    host: stt-rt.soniox.com
+    protocol: wss
+
+defaultContentType: application/json
+
+channels:
+  SpeechToText:
+    address: /transcribe-websocket
+    description: Soniox realtime speech-to-text and translation stream.
+    servers:
+      - $ref: '#/servers/production'
+    messages:
+      RealtimeConfig:
+        $ref: '#/components/messages/RealtimeConfig'
+      RealtimeResult:
+        $ref: '#/components/messages/RealtimeResult'
+      RealtimeError:
+        $ref: '#/components/messages/RealtimeError'
+
+operations:
+  sendRealtimeConfig:
+    action: send
+    channel:
+      $ref: '#/channels/SpeechToText'
+    messages:
+      - $ref: '#/channels/SpeechToText/messages/RealtimeConfig'
+  receiveRealtimeResult:
+    action: receive
+    channel:
+      $ref: '#/channels/SpeechToText'
+    messages:
+      - $ref: '#/channels/SpeechToText/messages/RealtimeResult'
+  receiveRealtimeError:
+    action: receive
+    channel:
+      $ref: '#/channels/SpeechToText'
+    messages:
+      - $ref: '#/channels/SpeechToText/messages/RealtimeError'
+
+components:
+  schemas:
+    RealtimeConfig:
+      type: object
+      required: [api_key, model, audio_format]
+      properties:
+        api_key:
+          type: string
+          description: Soniox API key. Permanent and temporary API keys are supported.
+        model:
+          type: string
+          description: Realtime STT model id, for example stt-rt-v5.
+        audio_format:
+          type: string
+          description: Audio format; use auto for containerized streams or raw_* values with sample_rate.
+        sample_rate:
+          type: integer
+          format: int32
+          description: Sample rate in Hz for raw audio.
+        num_channels:
+          type: integer
+          format: int32
+          description: Channel count for raw audio.
+        language_hints:
+          type: array
+          description: Expected languages in the audio.
+          items:
+            type: string
+        language_hints_strict:
+          type: boolean
+          description: Bias recognition more strongly toward language_hints.
+        context:
+          description: Text or structured context to improve recognition.
+          oneOf:
+            - type: string
+            - type: object
+              additionalProperties: true
+        enable_speaker_diarization:
+          type: boolean
+          description: Identify speakers in token metadata.
+        enable_language_identification:
+          type: boolean
+          description: Include detected language in token metadata.
+        enable_endpoint_detection:
+          type: boolean
+          description: Enable endpoint detection.
+        max_endpoint_delay_ms:
+          type: integer
+          format: int32
+          description: Maximum endpoint delay in milliseconds.
+        endpoint_sensitivity:
+          type: number
+          format: double
+          description: Endpoint detection sensitivity.
+        endpoint_latency_adjustment_level:
+          type: integer
+          format: int32
+          description: Endpoint latency adjustment level.
+        translation:
+          $ref: '#/components/schemas/TranslationConfig'
+        client_reference_id:
+          type: string
+          description: Optional tracking identifier.
+
+    TranslationConfig:
+      type: object
+      required: [type]
+      properties:
+        type:
+          type: string
+          enum: [one_way, two_way]
+        target_language:
+          type: string
+        language_a:
+          type: string
+        language_b:
+          type: string
+
+    RealtimeToken:
+      type: object
+      properties:
+        text:
+          type: string
+        start_ms:
+          type: integer
+          format: int32
+        end_ms:
+          type: integer
+          format: int32
+        confidence:
+          type: number
+          format: double
+        speaker:
+          type: string
+        language:
+          type: string
+        is_audio_event:
+          type: boolean
+        translation_status:
+          type: string
+        is_final:
+          type: boolean
+
+    RealtimeResult:
+      type: object
+      properties:
+        tokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/RealtimeToken'
+        final_audio_proc_ms:
+          type: integer
+          format: int32
+        total_audio_proc_ms:
+          type: integer
+          format: int32
+        finished:
+          type: boolean
+
+    RealtimeError:
+      type: object
+      required: [error_code, error_message]
+      properties:
+        error_code:
+          type: integer
+          format: int32
+        error_message:
+          type: string
+
+  messages:
+    RealtimeConfig:
+      name: RealtimeConfig
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/RealtimeConfig'
+    RealtimeResult:
+      name: RealtimeResult
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/RealtimeResult'
+    RealtimeError:
+      name: RealtimeError
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/RealtimeError'
