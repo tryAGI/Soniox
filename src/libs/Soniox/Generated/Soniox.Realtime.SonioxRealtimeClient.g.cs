@@ -11,7 +11,7 @@ namespace Soniox.Realtime
         /// <summary>
         /// Default WebSocket base URL.
         /// </summary>
-        public const string DefaultBaseUrl = "wss://stt-rt.soniox.com";
+        public const string DefaultBaseUrl = "wss://stt-rt.soniox.com/transcribe-websocket";
 
         private global::System.Net.WebSockets.ClientWebSocket _clientWebSocket;
         private global::System.Uri? _lastConnectUri;

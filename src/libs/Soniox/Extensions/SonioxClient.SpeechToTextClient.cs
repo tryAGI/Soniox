@@ -242,7 +242,7 @@ public partial class SonioxClient : ISpeechToTextClient
         var realtime = new Realtime.SonioxRealtimeClient();
         await using (realtime.ConfigureAwait(false))
         {
-            await realtime.ConnectSpeechToTextAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
+            await realtime.ConnectAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
 
             var configuredLanguageHints = languageHints is { Count: > 0 }
                 ? languageHints

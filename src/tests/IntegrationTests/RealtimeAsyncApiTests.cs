@@ -10,7 +10,7 @@ public partial class Tests
     [TestMethod]
     public void RealtimeAsyncApiModels_SerializeConfigAndResultFrames()
     {
-        Realtime.SonioxRealtimeClient.SpeechToTextWebSocketUrl
+        Realtime.SonioxRealtimeClient.DefaultBaseUrl
             .Should().Be(SonioxClient.RealtimeWebSocketUrl);
 
         var configJson = JsonSerializer.Serialize(
