@@ -27,18 +27,6 @@ namespace Soniox;
 public partial class SonioxClient : ISpeechToTextClient
 {
     /// <summary>
-    /// Default model id used for async (pre-recorded) transcription when the
-    /// caller does not supply <see cref="SpeechToTextOptions.ModelId"/>.
-    /// </summary>
-    public const string DefaultAsyncModel = "stt-async-preview";
-
-    /// <summary>
-    /// Default model id used for real-time (streaming) transcription when the
-    /// caller does not supply <see cref="SpeechToTextOptions.ModelId"/>.
-    /// </summary>
-    public const string DefaultRealtimeModel = "stt-rt-preview";
-
-    /// <summary>
     /// WebSocket endpoint for Soniox real-time transcription.
     /// </summary>
     public const string RealtimeWebSocketUrl = "wss://stt-rt.soniox.com/transcribe-websocket";
@@ -179,33 +167,73 @@ public partial class SonioxClient : ISpeechToTextClient
 
         string model = options?.ModelId is { Length: > 0 } m ? m : DefaultRealtimeModel;
         string? language = options?.SpeechLanguage;
+        List<string>? languageHints = null;
         string? audioFormat = null;
         int? sampleRate = null;
         int? numChannels = null;
+        bool? languageHintsStrict = null;
         bool? enableSpeakerDiarization = null;
         bool? enableLanguageIdentification = null;
+        bool? enableEndpointDetection = null;
+        int? maxEndpointDelayMs = null;
+        double? endpointSensitivity = null;
+        int? endpointLatencyAdjustmentLevel = null;
+        string? clientReferenceId = null;
 
         if (options?.AdditionalProperties is { } props)
         {
-            if (props.TryGetValue("audio_format", out var afObj) && afObj is string afs)
+            if (props.TryGetValue(SonioxSpeechToTextPropertyNames.AudioFormat, out var afObj) && afObj is string afs)
             {
                 audioFormat = afs;
             }
-            if (props.TryGetValue("sample_rate", out var srObj) && srObj is int sr)
+            if (props.TryGetValue(SonioxSpeechToTextPropertyNames.SampleRate, out var srObj) && srObj is int sr)
             {
                 sampleRate = sr;
             }
-            if (props.TryGetValue("num_channels", out var ncObj) && ncObj is int nc)
+            if (props.TryGetValue(SonioxSpeechToTextPropertyNames.NumChannels, out var ncObj) && ncObj is int nc)
             {
                 numChannels = nc;
             }
-            if (props.TryGetValue("enable_speaker_diarization", out var dObj) && dObj is bool d)
+            if (props.TryGetValue(SonioxSpeechToTextPropertyNames.LanguageHints, out var lhObj))
+            {
+                languageHints = lhObj switch
+                {
+                    string singleHint when !string.IsNullOrWhiteSpace(singleHint) => new List<string> { singleHint },
+                    IEnumerable<string> hints => hints.Where(static hint => !string.IsNullOrWhiteSpace(hint)).ToList(),
+                    _ => null,
+                };
+            }
+            if (props.TryGetValue(SonioxSpeechToTextPropertyNames.LanguageHintsStrict, out var lhsObj) && lhsObj is bool lhs)
+            {
+                languageHintsStrict = lhs;
+            }
+            if (props.TryGetValue(SonioxSpeechToTextPropertyNames.EnableSpeakerDiarization, out var dObj) && dObj is bool d)
             {
                 enableSpeakerDiarization = d;
             }
-            if (props.TryGetValue("enable_language_identification", out var lidObj) && lidObj is bool lid)
+            if (props.TryGetValue(SonioxSpeechToTextPropertyNames.EnableLanguageIdentification, out var lidObj) && lidObj is bool lid)
             {
                 enableLanguageIdentification = lid;
+            }
+            if (props.TryGetValue(SonioxSpeechToTextPropertyNames.EnableEndpointDetection, out var eedObj) && eedObj is bool eed)
+            {
+                enableEndpointDetection = eed;
+            }
+            if (props.TryGetValue(SonioxSpeechToTextPropertyNames.MaxEndpointDelayMs, out var medObj) && medObj is int med)
+            {
+                maxEndpointDelayMs = med;
+            }
+            if (props.TryGetValue(SonioxSpeechToTextPropertyNames.EndpointSensitivity, out var esObj) && esObj is double es)
+            {
+                endpointSensitivity = es;
+            }
+            if (props.TryGetValue(SonioxSpeechToTextPropertyNames.EndpointLatencyAdjustmentLevel, out var elaObj) && elaObj is int ela)
+            {
+                endpointLatencyAdjustmentLevel = ela;
+            }
+            if (props.TryGetValue(SonioxSpeechToTextPropertyNames.ClientReferenceId, out var crObj) && crObj is string cr)
+            {
+                clientReferenceId = cr;
             }
         }
 
@@ -226,26 +254,60 @@ public partial class SonioxClient : ISpeechToTextClient
                 writer.WriteString("audio_format", audioFormat ?? "auto");
                 if (sampleRate is int srv)
                 {
-                    writer.WriteNumber("sample_rate", srv);
+                    writer.WriteNumber(SonioxSpeechToTextPropertyNames.SampleRate, srv);
                 }
                 if (numChannels is int ncv)
                 {
-                    writer.WriteNumber("num_channels", ncv);
+                    writer.WriteNumber(SonioxSpeechToTextPropertyNames.NumChannels, ncv);
                 }
-                if (!string.IsNullOrEmpty(language))
+                if (languageHints is { Count: > 0 })
                 {
-                    writer.WritePropertyName("language_hints");
+                    writer.WritePropertyName(SonioxSpeechToTextPropertyNames.LanguageHints);
+                    writer.WriteStartArray();
+                    foreach (var hint in languageHints)
+                    {
+                        writer.WriteStringValue(hint);
+                    }
+                    writer.WriteEndArray();
+                }
+                else if (!string.IsNullOrEmpty(language))
+                {
+                    writer.WritePropertyName(SonioxSpeechToTextPropertyNames.LanguageHints);
                     writer.WriteStartArray();
                     writer.WriteStringValue(language);
                     writer.WriteEndArray();
                 }
+                if (languageHintsStrict is bool lhs)
+                {
+                    writer.WriteBoolean(SonioxSpeechToTextPropertyNames.LanguageHintsStrict, lhs);
+                }
                 if (enableSpeakerDiarization is bool ed)
                 {
-                    writer.WriteBoolean("enable_speaker_diarization", ed);
+                    writer.WriteBoolean(SonioxSpeechToTextPropertyNames.EnableSpeakerDiarization, ed);
                 }
                 if (enableLanguageIdentification is bool el)
                 {
-                    writer.WriteBoolean("enable_language_identification", el);
+                    writer.WriteBoolean(SonioxSpeechToTextPropertyNames.EnableLanguageIdentification, el);
+                }
+                if (enableEndpointDetection is bool eed)
+                {
+                    writer.WriteBoolean(SonioxSpeechToTextPropertyNames.EnableEndpointDetection, eed);
+                }
+                if (maxEndpointDelayMs is int med)
+                {
+                    writer.WriteNumber(SonioxSpeechToTextPropertyNames.MaxEndpointDelayMs, med);
+                }
+                if (endpointSensitivity is double es)
+                {
+                    writer.WriteNumber(SonioxSpeechToTextPropertyNames.EndpointSensitivity, es);
+                }
+                if (endpointLatencyAdjustmentLevel is int ela)
+                {
+                    writer.WriteNumber(SonioxSpeechToTextPropertyNames.EndpointLatencyAdjustmentLevel, ela);
+                }
+                if (!string.IsNullOrEmpty(clientReferenceId))
+                {
+                    writer.WriteString(SonioxSpeechToTextPropertyNames.ClientReferenceId, clientReferenceId);
                 }
                 writer.WriteEndObject();
             }

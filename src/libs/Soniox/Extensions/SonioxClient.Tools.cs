@@ -24,7 +24,7 @@ public static class SonioxClientTools
         return AIFunctionFactory.Create(
             async (
                 [Description("Publicly reachable HTTPS URL of the audio file to transcribe.")] string audioUrl,
-                [Description("Model id. Defaults to 'stt-async-preview'.")] string? model,
+                [Description("Model id. Defaults to 'stt-async-v5'.")] string? model,
                 [Description("Optional ISO language hints (e.g. 'en', 'es'). Auto-detects if omitted.")] IList<string>? languageHints,
                 [Description("Enable speaker diarization. Defaults to false.")] bool? enableSpeakerDiarization,
                 [Description("Enable per-token language identification. Defaults to false.")] bool? enableLanguageIdentification,

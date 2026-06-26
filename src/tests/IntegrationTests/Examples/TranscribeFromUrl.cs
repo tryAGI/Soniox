@@ -4,7 +4,7 @@ title: Transcribe from URL (async)
 slug: transcribe-from-url
 
 Submits a Soniox async transcription job for a public audio URL and polls
-until it completes. Uses the `stt-async-preview` model.
+until it completes. Uses the current default async model.
 */
 
 namespace Soniox.IntegrationTests;
