@@ -6,6 +6,14 @@ namespace Soniox
     public partial class TtsClient
     {
 
+        private static readonly global::Soniox.AutoSDKServer[] s_GenerateTtsServers = new global::Soniox.AutoSDKServer[]
+        {            new global::Soniox.AutoSDKServer(
+                id: "https-tts-rt-soniox-com",
+                name: "Soniox TTS API",
+                url: "https://tts-rt.soniox.com/",
+                description: "Soniox TTS API"),
+        };
+
 
         private static readonly global::Soniox.EndPointSecurityRequirement s_GenerateTtsSecurityRequirement0 =
             new global::Soniox.EndPointSecurityRequirement
@@ -119,7 +127,9 @@ namespace Soniox
 
                             var __pathBuilder = new global::Soniox.PathBuilder(
                                 path: "/tts",
-                                baseUri: HttpClient.BaseAddress ?? new global::System.Uri("https://tts-rt.soniox.com/", global::System.UriKind.RelativeOrAbsolute));
+                                baseUri: ResolveBaseUri(
+                                servers: s_GenerateTtsServers,
+                                defaultBaseUrl: "https://tts-rt.soniox.com/"));
                             var __path = __pathBuilder.ToString();
                 __path = global::Soniox.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -749,7 +759,9 @@ namespace Soniox
 
                             var __pathBuilder = new global::Soniox.PathBuilder(
                                 path: "/tts",
-                                baseUri: HttpClient.BaseAddress ?? new global::System.Uri("https://tts-rt.soniox.com/", global::System.UriKind.RelativeOrAbsolute));
+                                baseUri: ResolveBaseUri(
+                                servers: s_GenerateTtsServers,
+                                defaultBaseUrl: "https://tts-rt.soniox.com/"));
                             var __path = __pathBuilder.ToString();
                 __path = global::Soniox.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
