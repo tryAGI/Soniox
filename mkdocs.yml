@@ -10,6 +10,15 @@ nav:
   - Microsoft.Extensions.AI: guides/meai.md
   - Voice Cloning and Realtime TTS: guides/voice-cloning.md
 # EXAMPLES:START
+- Examples:
+  - MeaiSpeechToTextParsing: examples/meaispeechtotextparsing.md
+  - Construct a SonioxClient: examples/generate.md
+  - List models: examples/list-models.md
+  - Transcribe from URL (async): examples/transcribe-from-url.md
+  - Voice cloning with Text-to-Speech: examples/voice-cloning.md
+  - Realtime Text-to-Speech: examples/realtime-text-to-speech.md
+  - MEAI ISpeechToTextClient: examples/meai-speech-to-text.md
+  - MEAI AIFunction tools: examples/meai-tools.md
 # EXAMPLES:END
         
 theme:
