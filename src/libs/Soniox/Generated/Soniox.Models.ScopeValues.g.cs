@@ -9,7 +9,7 @@ namespace Soniox
     public sealed partial class ScopeValues
     {
         /// <summary>
-        /// Live counts read from Redis
+        /// Live counts.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("current")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -32,7 +32,7 @@ namespace Soniox
         /// Initializes a new instance of the <see cref="ScopeValues" /> class.
         /// </summary>
         /// <param name="current">
-        /// Live counts read from Redis
+        /// Live counts.
         /// </param>
         /// <param name="limits">
         /// Configured limits

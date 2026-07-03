@@ -9,11 +9,11 @@ namespace Soniox
     public sealed partial class GetFilesCountResponse
     {
         /// <summary>
-        /// Total number of files across all sources.
+        /// Number of files uploaded via the Playground.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("total")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("playground")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Total { get; set; }
+        public required int Playground { get; set; }
 
         /// <summary>
         /// Number of files uploaded via Public API.
@@ -23,11 +23,11 @@ namespace Soniox
         public required int PublicApi { get; set; }
 
         /// <summary>
-        /// Number of files uploaded via the Playground.
+        /// Total number of files across all sources.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("playground")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("total")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Playground { get; set; }
+        public required int Total { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,26 +38,26 @@ namespace Soniox
         /// <summary>
         /// Initializes a new instance of the <see cref="GetFilesCountResponse" /> class.
         /// </summary>
-        /// <param name="total">
-        /// Total number of files across all sources.
+        /// <param name="playground">
+        /// Number of files uploaded via the Playground.
         /// </param>
         /// <param name="publicApi">
         /// Number of files uploaded via Public API.
         /// </param>
-        /// <param name="playground">
-        /// Number of files uploaded via the Playground.
+        /// <param name="total">
+        /// Total number of files across all sources.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetFilesCountResponse(
-            int total,
+            int playground,
             int publicApi,
-            int playground)
+            int total)
         {
-            this.Total = total;
-            this.PublicApi = publicApi;
             this.Playground = playground;
+            this.PublicApi = publicApi;
+            this.Total = total;
         }
 
         /// <summary>

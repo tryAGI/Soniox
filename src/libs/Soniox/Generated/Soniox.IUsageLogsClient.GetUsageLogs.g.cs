@@ -9,10 +9,10 @@ namespace Soniox
         /// Returns per-request usage log entries for the project. The project is implied by the API key used for authentication. Filters by request end time. The window between start_time and end_time must not exceed 31 days. start_time must not be earlier than 91 days ago.
         /// </summary>
         /// <param name="startTime">
-        /// Start of the time window (inclusive). Filters by request end time.
+        /// Start of the time window (inclusive). Filters by request end time. Must be an ISO 8601 timestamp in UTC (e.g. `2026-04-28T09:00:00Z`).
         /// </param>
         /// <param name="endTime">
-        /// End of the time window (exclusive). Filters by request end time.
+        /// End of the time window (exclusive). Filters by request end time. Must be an ISO 8601 timestamp in UTC (e.g. `2026-04-28T09:00:00Z`).
         /// </param>
         /// <param name="limit">
         /// Maximum number of usage log entries to return.<br/>
@@ -41,10 +41,10 @@ namespace Soniox
         /// Returns per-request usage log entries for the project. The project is implied by the API key used for authentication. Filters by request end time. The window between start_time and end_time must not exceed 31 days. start_time must not be earlier than 91 days ago.
         /// </summary>
         /// <param name="startTime">
-        /// Start of the time window (inclusive). Filters by request end time.
+        /// Start of the time window (inclusive). Filters by request end time. Must be an ISO 8601 timestamp in UTC (e.g. `2026-04-28T09:00:00Z`).
         /// </param>
         /// <param name="endTime">
-        /// End of the time window (exclusive). Filters by request end time.
+        /// End of the time window (exclusive). Filters by request end time. Must be an ISO 8601 timestamp in UTC (e.g. `2026-04-28T09:00:00Z`).
         /// </param>
         /// <param name="limit">
         /// Maximum number of usage log entries to return.<br/>

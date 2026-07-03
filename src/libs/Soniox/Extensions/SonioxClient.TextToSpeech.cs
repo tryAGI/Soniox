@@ -145,6 +145,11 @@ public partial class SonioxClient
     public const string TextToSpeechRestUrl = "https://tts-rt.soniox.com/tts";
 
     /// <summary>
+    /// WebSocket endpoint for Soniox real-time Text-to-Speech generation.
+    /// </summary>
+    public const string TextToSpeechRealtimeWebSocketUrl = "wss://tts-rt.soniox.com/tts-websocket";
+
+    /// <summary>
     /// Default language used by convenience Text-to-Speech overloads.
     /// </summary>
     public const string DefaultTtsLanguage = "en";

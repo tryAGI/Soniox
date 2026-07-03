@@ -78,6 +78,41 @@ public partial class Tests
     }
 
     [TestMethod]
+    public async Task GeneratedTextToSpeechClient_UsesTtsHostFromAggregateClient()
+    {
+        var handler = new RecordingHandler(_ => new HttpResponseMessage(HttpStatusCode.OK)
+        {
+            Content = new ByteArrayContent(new byte[] { 5, 6, 7 }),
+        });
+
+        using var httpClient = new HttpClient(handler);
+        using var client = new SonioxClient("test-api-key", httpClient);
+
+        var audio = await client.Tts.GenerateTtsAsync(
+            language: "en",
+            voice: "Adrian",
+            audioFormat: "wav",
+            text: "Hello from the generated TTS client.",
+            xRequestId: "generated-request-123",
+            sampleRate: 24000);
+
+        audio.Should().Equal(new byte[] { 5, 6, 7 });
+        handler.RequestUri.Should().Be(new Uri(SonioxClient.TextToSpeechRestUrl));
+        handler.AuthorizationScheme.Should().Be("Bearer");
+        handler.AuthorizationValue.Should().Be("test-api-key");
+        handler.RequestId.Should().Be("generated-request-123");
+
+        using var json = JsonDocument.Parse(handler.RequestBody!);
+        var root = json.RootElement;
+        root.GetProperty("model").GetString().Should().Be(SonioxClient.DefaultTtsModel);
+        root.GetProperty("language").GetString().Should().Be("en");
+        root.GetProperty("voice").GetString().Should().Be("Adrian");
+        root.GetProperty("audio_format").GetString().Should().Be("wav");
+        root.GetProperty("text").GetString().Should().Be("Hello from the generated TTS client.");
+        root.GetProperty("sample_rate").GetInt32().Should().Be(24000);
+    }
+
+    [TestMethod]
     public async Task VoiceCloning_UsesGeneratedVoiceManagementEndpoints()
     {
         var voiceId = Guid.NewGuid();

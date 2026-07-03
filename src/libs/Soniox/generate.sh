@@ -14,19 +14,20 @@ fetch_spec() {
 }
 
 # Soniox Public API — official OpenAPI 3.1.0 spec.
-#   Source: https://api.soniox.com/v1/openapi.json
+#   Source: https://soniox.com/docs/openapi.yaml
 #
 # Covers: Auth (temporary API keys), Files (upload/list/get/delete),
 # Models (list), Transcriptions (async create/get/list/delete, fetch
-# transcript), TTS models, and voice cloning management. Real-time
-# WebSocket streaming is generated from the handcrafted AsyncAPI spec in
-# asyncapi.yaml because it is not part of the REST OpenAPI surface.
+# transcript), TTS models, REST Text-to-Speech generation, and voice
+# cloning management. Real-time WebSocket streaming is generated from the
+# handcrafted AsyncAPI specs in asyncapi.yaml and tts.asyncapi.yaml because
+# it is not part of the REST OpenAPI surface.
 #
 # Auth: standard HTTP Bearer (Authorization: Bearer <API_KEY>).
 install_autosdk_cli
 
-spec_url="https://api.soniox.com/v1/openapi.json"
-spec_path="openapi.json"
+spec_url="https://soniox.com/docs/openapi.yaml"
+spec_path="openapi.yaml"
 spec_download_path="${spec_path}.tmp"
 
 rm -f "$spec_download_path"
@@ -43,7 +44,7 @@ else
 fi
 
 rm -rf Generated
-autosdk generate openapi.json \
+autosdk generate openapi.yaml \
   --namespace Soniox \
   --clientClassName SonioxClient \
   --targetFramework net10.0 \
@@ -55,5 +56,12 @@ autosdk generate asyncapi.yaml \
   --namespace Soniox.Realtime \
   --websocket-class-name SonioxRealtimeClient \
   --json-serializer-context RealtimeSourceGenerationContext \
+  --targetFramework net10.0 \
+  --output Generated
+
+autosdk generate tts.asyncapi.yaml \
+  --namespace Soniox.Realtime.Tts \
+  --websocket-class-name SonioxTtsRealtimeClient \
+  --json-serializer-context TtsRealtimeSourceGenerationContext \
   --targetFramework net10.0 \
   --output Generated

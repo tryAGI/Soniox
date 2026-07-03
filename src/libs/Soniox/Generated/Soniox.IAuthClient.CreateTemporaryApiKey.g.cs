@@ -6,7 +6,8 @@ namespace Soniox
     {
         /// <summary>
         /// Create temporary API key<br/>
-        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.
+        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.<br/>
+        /// Use `single_use` and `max_session_duration_seconds` to limit how the key can be used by a client. See the [Temporary API keys guide](https://soniox.com/docs/guides/temporary-api-keys) for details.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -19,7 +20,8 @@ namespace Soniox
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create temporary API key<br/>
-        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.
+        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.<br/>
+        /// Use `single_use` and `max_session_duration_seconds` to limit how the key can be used by a client. See the [Temporary API keys guide](https://soniox.com/docs/guides/temporary-api-keys) for details.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -32,7 +34,8 @@ namespace Soniox
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create temporary API key<br/>
-        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.
+        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.<br/>
+        /// Use `single_use` and `max_session_duration_seconds` to limit how the key can be used by a client. See the [Temporary API keys guide](https://soniox.com/docs/guides/temporary-api-keys) for details.
         /// </summary>
         /// <param name="usageType">
         /// Intended usage of the temporary API key.
@@ -47,7 +50,7 @@ namespace Soniox
         /// If true, the temporary API key can be used only once.
         /// </param>
         /// <param name="maxSessionDurationSeconds">
-        /// Maximum WebSocket connection duration in seconds. If exceeded, the connection will be dropped. If not set, no limit is applied.
+        /// Maximum connection duration in seconds for WebSocket and TTS HTTP streaming endpoints. If exceeded, the connection will be dropped. If not set, no limit is applied.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

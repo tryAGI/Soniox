@@ -4,9 +4,9 @@
 namespace Soniox
 {
     /// <summary>
-    /// Pagination cursor for the next page of results.
+    /// Optional speaking rate of the generated speech, from `0.7` to `1.3`. `1.0` is the normal speed; lower values slow speech down and higher values speed it up. Defaults to `1.0`.
     /// </summary>
-    public sealed partial class GetVoicesPayloadCursor
+    public sealed partial class CreateTTSPayloadSpeed
     {
 
         /// <summary>

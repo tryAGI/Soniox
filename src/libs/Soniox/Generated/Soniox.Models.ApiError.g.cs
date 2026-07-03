@@ -16,7 +16,8 @@ namespace Soniox
         public required int StatusCode { get; set; }
 
         /// <summary>
-        /// Machine-readable error category. Stable across releases — safe to use in control flow. Examples: 'invalid_request', 'unauthenticated', 'limit_exceeded', 'model_not_available', 'internal_error'.
+        /// Machine-readable error category.<br/>
+        /// Examples: `invalid_request`, `unauthenticated`, `limit_exceeded`, `model_not_available`, `internal_error`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error_type")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -30,7 +31,7 @@ namespace Soniox
         public required string Message { get; set; }
 
         /// <summary>
-        /// List of per-field validation errors. Populated only when error_type is 'invalid_request' and the failure came from request-body validation.
+        /// List of per-field validation errors. Populated only when `error_type` is `invalid_request` and the failure came from request-body validation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("validation_errors")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -44,7 +45,8 @@ namespace Soniox
         public required string RequestId { get; set; }
 
         /// <summary>
-        /// Optional URL with additional information about this error. Points to the Soniox documentation for errors a developer can resolve via code or configuration.
+        /// Optional URL with additional information about this error. Points to the Soniox documentation<br/>
+        /// for errors a developer can resolve via code or configuration.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("more_info")]
         public string? MoreInfo { get; set; }
@@ -62,19 +64,21 @@ namespace Soniox
         /// HTTP status code of the response.
         /// </param>
         /// <param name="errorType">
-        /// Machine-readable error category. Stable across releases — safe to use in control flow. Examples: 'invalid_request', 'unauthenticated', 'limit_exceeded', 'model_not_available', 'internal_error'.
+        /// Machine-readable error category.<br/>
+        /// Examples: `invalid_request`, `unauthenticated`, `limit_exceeded`, `model_not_available`, `internal_error`.
         /// </param>
         /// <param name="message">
         /// Human-readable error message.
         /// </param>
         /// <param name="validationErrors">
-        /// List of per-field validation errors. Populated only when error_type is 'invalid_request' and the failure came from request-body validation.
+        /// List of per-field validation errors. Populated only when `error_type` is `invalid_request` and the failure came from request-body validation.
         /// </param>
         /// <param name="requestId">
         /// Unique identifier for this request. Include it when contacting support at support@soniox.com so we can look up server-side logs.
         /// </param>
         /// <param name="moreInfo">
-        /// Optional URL with additional information about this error. Points to the Soniox documentation for errors a developer can resolve via code or configuration.
+        /// Optional URL with additional information about this error. Points to the Soniox documentation<br/>
+        /// for errors a developer can resolve via code or configuration.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

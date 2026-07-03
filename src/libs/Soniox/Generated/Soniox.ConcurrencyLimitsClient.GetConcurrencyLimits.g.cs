@@ -40,7 +40,7 @@ namespace Soniox
             ref string content);
 
         /// <summary>
-        /// Get current concurrent sessions and configured limits<br/>
+        /// Get concurrency limits<br/>
         /// Current concurrent counts plus configured concurrency limits for the project and its organization. Region-scoped.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -58,7 +58,7 @@ namespace Soniox
             return __response.Body;
         }
         /// <summary>
-        /// Get current concurrent sessions and configured limits<br/>
+        /// Get concurrency limits<br/>
         /// Current concurrent counts plus configured concurrency limits for the project and its organization. Region-scoped.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -354,7 +354,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Unauthorized
+                            // Authentication error.
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -391,7 +391,44 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Internal Server Error
+                            // Rate or usage limit exceeded.  Error types: - `limit_exceeded`:   - `Requests per minute limit has been exceeded for your organization.`   - `Requests per minute limit has been exceeded for your project.` 
+                            if ((int)__response.StatusCode == 429)
+                            {
+                                string? __content_429 = null;
+                                global::System.Exception? __exception_429 = null;
+                                global::Soniox.ApiError? __value_429 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_429 = global::Soniox.ApiError.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_429 = global::Soniox.ApiError.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_429 = __ex;
+                                }
+
+
+                                throw global::Soniox.ApiException<global::Soniox.ApiError>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_429,
+                                    responseBody: __content_429,
+                                    responseObject: __value_429,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Internal server error.
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;

@@ -16,7 +16,7 @@
 <div class="docs-feature-grid">
   <div class="docs-feature-card">
     <h3>Generated from the source spec</h3>
-    <p>Built from <a href="https://api.soniox.com/v1/openapi.json">Soniox's OpenAPI definition</a> so the SDK stays close to the upstream API surface.</p>
+    <p>Built from <a href="https://soniox.com/docs/openapi.yaml">Soniox's docs OpenAPI definition</a> so the SDK stays close to the upstream API surface.</p>
   </div>
   <div class="docs-feature-card">
     <h3>Auto-updated</h3>

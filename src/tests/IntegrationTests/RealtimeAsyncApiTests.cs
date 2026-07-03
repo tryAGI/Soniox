@@ -57,4 +57,70 @@ public partial class Tests
         update.Text.Should().Be("hello");
         update.AdditionalProperties![SonioxSpeechToTextPropertyNames.FinalAudioProcessedMs].Should().Be(120);
     }
+
+    [TestMethod]
+    public void RealtimeTtsAsyncApiModels_SerializeStreamingFrames()
+    {
+        Realtime.Tts.SonioxTtsRealtimeClient.DefaultBaseUrl
+            .Should().Be(SonioxClient.TextToSpeechRealtimeWebSocketUrl);
+
+        var configJson = JsonSerializer.Serialize(
+            new Realtime.Tts.TtsConfig
+            {
+                ApiKey = "test-key",
+                StreamId = "stream-001",
+                Model = SonioxClient.DefaultTtsModel,
+                Language = SonioxClient.DefaultTtsLanguage,
+                Voice = "Adrian",
+                AudioFormat = SonioxClient.DefaultTtsAudioFormat,
+                SampleRate = 24000,
+                ReturnTimestamps = true,
+            },
+            typeof(Realtime.Tts.TtsConfig),
+            Realtime.Tts.TtsRealtimeSourceGenerationContext.Default);
+
+        configJson.Should().Contain("\"stream_id\":\"stream-001\"");
+        configJson.Should().Contain("\"return_timestamps\":true");
+
+        var textJson = JsonSerializer.Serialize(
+            new Realtime.Tts.TtsText
+            {
+                StreamId = "stream-001",
+                Text = "Hello from realtime TTS.",
+                TextEnd = true,
+            },
+            typeof(Realtime.Tts.TtsText),
+            Realtime.Tts.TtsRealtimeSourceGenerationContext.Default);
+
+        textJson.Should().Contain("\"text_end\":true");
+
+        var audioEvent = Realtime.Tts.ServerEvent.FromTtsAudio(new Realtime.Tts.TtsAudio
+        {
+            StreamId = "stream-001",
+            Audio = Convert.ToBase64String(new byte[] { 1, 2, 3 }),
+            AudioEnd = true,
+            Timestamps = new Realtime.Tts.TtsTimestamps
+            {
+                Characters = ["H"],
+                CharacterStartTimesSeconds = [0],
+                CharacterEndTimesSeconds = [0.1],
+            },
+        });
+
+        var parsedAudio = Realtime.Tts.ServerEvent.FromJson(
+            audioEvent.ToJson(Realtime.Tts.TtsRealtimeSourceGenerationContext.Default),
+            Realtime.Tts.TtsRealtimeSourceGenerationContext.Default);
+
+        parsedAudio.Should().NotBeNull();
+        parsedAudio!.Value.IsTtsAudio.Should().BeTrue();
+        parsedAudio.Value.PickTtsAudio().AudioEnd.Should().BeTrue();
+
+        var parsedTerminated = Realtime.Tts.ServerEvent.FromJson(
+            """{"terminated":true,"stream_id":"stream-001"}""",
+            Realtime.Tts.TtsRealtimeSourceGenerationContext.Default);
+
+        parsedTerminated.Should().NotBeNull();
+        parsedTerminated!.Value.IsTtsTerminated.Should().BeTrue();
+        parsedTerminated.Value.PickTtsTerminated().StreamId.Should().Be("stream-001");
+    }
 }

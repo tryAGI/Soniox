@@ -4,7 +4,7 @@
 namespace Soniox
 {
     /// <summary>
-    /// Live counts read from Redis
+    /// Live counts.
     /// </summary>
     public sealed partial class CurrentValues
     {

@@ -54,10 +54,10 @@ namespace Soniox
         /// Returns per-request usage log entries for the project. The project is implied by the API key used for authentication. Filters by request end time. The window between start_time and end_time must not exceed 31 days. start_time must not be earlier than 91 days ago.
         /// </summary>
         /// <param name="startTime">
-        /// Start of the time window (inclusive). Filters by request end time.
+        /// Start of the time window (inclusive). Filters by request end time. Must be an ISO 8601 timestamp in UTC (e.g. `2026-04-28T09:00:00Z`).
         /// </param>
         /// <param name="endTime">
-        /// End of the time window (exclusive). Filters by request end time.
+        /// End of the time window (exclusive). Filters by request end time. Must be an ISO 8601 timestamp in UTC (e.g. `2026-04-28T09:00:00Z`).
         /// </param>
         /// <param name="limit">
         /// Maximum number of usage log entries to return.<br/>
@@ -99,10 +99,10 @@ namespace Soniox
         /// Returns per-request usage log entries for the project. The project is implied by the API key used for authentication. Filters by request end time. The window between start_time and end_time must not exceed 31 days. start_time must not be earlier than 91 days ago.
         /// </summary>
         /// <param name="startTime">
-        /// Start of the time window (inclusive). Filters by request end time.
+        /// Start of the time window (inclusive). Filters by request end time. Must be an ISO 8601 timestamp in UTC (e.g. `2026-04-28T09:00:00Z`).
         /// </param>
         /// <param name="endTime">
-        /// End of the time window (exclusive). Filters by request end time.
+        /// End of the time window (exclusive). Filters by request end time. Must be an ISO 8601 timestamp in UTC (e.g. `2026-04-28T09:00:00Z`).
         /// </param>
         /// <param name="limit">
         /// Maximum number of usage log entries to return.<br/>
@@ -393,7 +393,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Bad Request
+                            // Invalid request.  Error types: - `invalid_request`: A query parameter is missing or invalid. Common causes: `start_time` / `end_time` not parseable as ISO 8601, `end_time` not strictly after `start_time`, the window between them exceeds 31 days, or `cursor` does not match the supplied `start_time` / `end_time` / `sort`. - `invalid_cursor`: The `cursor` parameter is invalid. Omit `cursor` to start pagination from the beginning. 
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -430,7 +430,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Unauthorized
+                            // Authentication error.
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -467,7 +467,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Too Many Requests
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate or other capacity limit. The `message` describes which limit was hit. 
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
@@ -504,7 +504,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Internal Server Error
+                            // Internal server error.
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;

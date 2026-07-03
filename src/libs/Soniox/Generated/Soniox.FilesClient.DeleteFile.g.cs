@@ -319,7 +319,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Unauthorized
+                            // Authentication error.
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -356,7 +356,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Not Found
+                            // File not found.  Error types: - `file_not_found`: No file with this ID exists in the project the API key is scoped to (it may have been deleted, the ID may be wrong, or it may belong to a different project). 
                             if ((int)__response.StatusCode == 404)
                             {
                                 string? __content_404 = null;
@@ -393,7 +393,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Too Many Requests
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate or other capacity limit. The `message` describes which limit was hit. 
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
@@ -430,7 +430,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Internal Server Error
+                            // Internal server error.
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;

@@ -4,9 +4,9 @@
 namespace Soniox
 {
     /// <summary>
-    /// Minimum supported speech speed. Null when the model does not support speed adjustment.
+    /// Optional tracking identifier string. Does not need to be unique. Ignored if the request authenticates with a temporary API key.
     /// </summary>
-    public sealed partial class TTSModelSpeedMin
+    public sealed partial class CreateTTSPayloadClientReferenceId
     {
 
         /// <summary>

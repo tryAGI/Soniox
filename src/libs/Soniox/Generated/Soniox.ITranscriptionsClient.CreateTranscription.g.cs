@@ -6,7 +6,7 @@ namespace Soniox
     {
         /// <summary>
         /// Create transcription<br/>
-        /// Creates a new transcription. Transcriptions are automatically deleted 30 days after being submitted.
+        /// Creates a new transcription.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -19,7 +19,7 @@ namespace Soniox
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create transcription<br/>
-        /// Creates a new transcription. Transcriptions are automatically deleted 30 days after being submitted.
+        /// Creates a new transcription.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -32,7 +32,7 @@ namespace Soniox
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create transcription<br/>
-        /// Creates a new transcription. Transcriptions are automatically deleted 30 days after being submitted.
+        /// Creates a new transcription.
         /// </summary>
         /// <param name="model">
         /// Speech-to-text model to use for the transcription.

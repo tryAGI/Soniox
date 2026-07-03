@@ -9,14 +9,14 @@ namespace Soniox
     public sealed partial class GetUsageLogsPayload
     {
         /// <summary>
-        /// Start of the time window (inclusive). Filters by request end time.
+        /// Start of the time window (inclusive). Filters by request end time. Must be an ISO 8601 timestamp in UTC (e.g. `2026-04-28T09:00:00Z`).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("start_time")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string StartTime { get; set; }
 
         /// <summary>
-        /// End of the time window (exclusive). Filters by request end time.
+        /// End of the time window (exclusive). Filters by request end time. Must be an ISO 8601 timestamp in UTC (e.g. `2026-04-28T09:00:00Z`).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("end_time")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -53,10 +53,10 @@ namespace Soniox
         /// Initializes a new instance of the <see cref="GetUsageLogsPayload" /> class.
         /// </summary>
         /// <param name="startTime">
-        /// Start of the time window (inclusive). Filters by request end time.
+        /// Start of the time window (inclusive). Filters by request end time. Must be an ISO 8601 timestamp in UTC (e.g. `2026-04-28T09:00:00Z`).
         /// </param>
         /// <param name="endTime">
-        /// End of the time window (exclusive). Filters by request end time.
+        /// End of the time window (exclusive). Filters by request end time. Must be an ISO 8601 timestamp in UTC (e.g. `2026-04-28T09:00:00Z`).
         /// </param>
         /// <param name="limit">
         /// Maximum number of usage log entries to return.<br/>

@@ -1,8 +1,8 @@
 #nullable enable
 
-namespace Soniox
+namespace Soniox.Realtime.Tts
 {
-    public sealed partial class GetVoicesPayload
+    public sealed partial class TtsTerminated
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -21,7 +21,7 @@ namespace Soniox
         /// </summary>
         public string ToJson()
         {
-            return ToJson(global::Soniox.SourceGenerationContext.Default);
+            return ToJson(global::Soniox.Realtime.Tts.TtsRealtimeSourceGenerationContext.Default);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Soniox
         {
             if (jsonSerializerOptions is null)
             {
-                return ToJson(global::Soniox.SourceGenerationContext.Default);
+                return ToJson(global::Soniox.Realtime.Tts.TtsRealtimeSourceGenerationContext.Default);
             }
 
             return global::System.Text.Json.JsonSerializer.Serialize(
@@ -47,25 +47,25 @@ namespace Soniox
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Soniox.GetVoicesPayload? FromJson(
+        public static global::Soniox.Realtime.Tts.TtsTerminated? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Soniox.GetVoicesPayload),
-                jsonSerializerContext) as global::Soniox.GetVoicesPayload;
+                typeof(global::Soniox.Realtime.Tts.TtsTerminated),
+                jsonSerializerContext) as global::Soniox.Realtime.Tts.TtsTerminated;
         }
 
         /// <summary>
         /// Deserializes a JSON string using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::Soniox.GetVoicesPayload? FromJson(
+        public static global::Soniox.Realtime.Tts.TtsTerminated? FromJson(
             string json)
         {
             return FromJson(
                 json,
-                global::Soniox.SourceGenerationContext.Default);
+                global::Soniox.Realtime.Tts.TtsRealtimeSourceGenerationContext.Default);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Soniox
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Soniox.GetVoicesPayload? FromJson(
+        public static global::Soniox.Realtime.Tts.TtsTerminated? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -83,10 +83,10 @@ namespace Soniox
             {
                 return FromJson(
                     json,
-                    global::Soniox.SourceGenerationContext.Default);
+                    global::Soniox.Realtime.Tts.TtsRealtimeSourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Soniox.GetVoicesPayload>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Soniox.Realtime.Tts.TtsTerminated>(
                 json,
                 jsonSerializerOptions);
         }
@@ -94,25 +94,25 @@ namespace Soniox
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Soniox.GetVoicesPayload?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::Soniox.Realtime.Tts.TtsTerminated?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::Soniox.GetVoicesPayload),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Soniox.GetVoicesPayload;
+                typeof(global::Soniox.Realtime.Tts.TtsTerminated),
+                jsonSerializerContext).ConfigureAwait(false)) as global::Soniox.Realtime.Tts.TtsTerminated;
         }
 
         /// <summary>
         /// Deserializes a JSON stream using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::System.Threading.Tasks.ValueTask<global::Soniox.GetVoicesPayload?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Soniox.Realtime.Tts.TtsTerminated?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream)
         {
             return FromJsonStreamAsync(
                 jsonStream,
-                global::Soniox.SourceGenerationContext.Default);
+                global::Soniox.Realtime.Tts.TtsRealtimeSourceGenerationContext.Default);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Soniox
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::Soniox.GetVoicesPayload?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Soniox.Realtime.Tts.TtsTerminated?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -130,10 +130,10 @@ namespace Soniox
             {
                 return FromJsonStreamAsync(
                     jsonStream,
-                    global::Soniox.SourceGenerationContext.Default);
+                    global::Soniox.Realtime.Tts.TtsRealtimeSourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Soniox.GetVoicesPayload?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Soniox.Realtime.Tts.TtsTerminated?>(
                 jsonStream,
                 jsonSerializerOptions);
         }

@@ -36,7 +36,7 @@ namespace Soniox
         public bool? SingleUse { get; set; }
 
         /// <summary>
-        /// Maximum WebSocket connection duration in seconds. If exceeded, the connection will be dropped. If not set, no limit is applied.
+        /// Maximum connection duration in seconds for WebSocket and TTS HTTP streaming endpoints. If exceeded, the connection will be dropped. If not set, no limit is applied.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("max_session_duration_seconds")]
         public int? MaxSessionDurationSeconds { get; set; }
@@ -63,7 +63,7 @@ namespace Soniox
         /// If true, the temporary API key can be used only once.
         /// </param>
         /// <param name="maxSessionDurationSeconds">
-        /// Maximum WebSocket connection duration in seconds. If exceeded, the connection will be dropped. If not set, no limit is applied.
+        /// Maximum connection duration in seconds for WebSocket and TTS HTTP streaming endpoints. If exceeded, the connection will be dropped. If not set, no limit is applied.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

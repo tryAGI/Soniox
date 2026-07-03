@@ -43,7 +43,7 @@ namespace Soniox
 
         /// <summary>
         /// Upload file<br/>
-        /// Uploads a new file. Files are automatically deleted 30 days after upload. However, we strongly recommend that you manually delete files as soon as you have obtained your transcription results, rather than waiting for automatic deletion.
+        /// Uploads a new file.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -66,7 +66,7 @@ namespace Soniox
         }
         /// <summary>
         /// Upload file<br/>
-        /// Uploads a new file. Files are automatically deleted 30 days after upload. However, we strongly recommend that you manually delete files as soon as you have obtained your transcription results, rather than waiting for automatic deletion.
+        /// Uploads a new file.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -381,7 +381,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Bad Request
+                            // Invalid request.  Error types: - `invalid_request`: One or more parts of the multipart body are missing or invalid (missing `file`, filename or `client_reference_id` too long, malformed multipart body), or the uploaded file exceeds the per-file upload limit. 
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -418,7 +418,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Unauthorized
+                            // Authentication error.
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -455,7 +455,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Too Many Requests
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate, the total file count or total file size cap (organization or project), or this upload would exceed those caps. The `message` describes which limit was hit. Delete unused files via `DELETE /v1/files/{id}` or request a higher limit in the Soniox Console. 
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
@@ -492,7 +492,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Internal Server Error
+                            // Internal server error.
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
@@ -627,7 +627,7 @@ namespace Soniox
         }
         /// <summary>
         /// Upload file<br/>
-        /// Uploads a new file. Files are automatically deleted 30 days after upload. However, we strongly recommend that you manually delete files as soon as you have obtained your transcription results, rather than waiting for automatic deletion.
+        /// Uploads a new file.
         /// </summary>
         /// <param name="clientReferenceId">
         /// Optional tracking identifier string. Does not need to be unique.
@@ -663,7 +663,7 @@ namespace Soniox
 
         /// <summary>
         /// Upload file<br/>
-        /// Uploads a new file. Files are automatically deleted 30 days after upload. However, we strongly recommend that you manually delete files as soon as you have obtained your transcription results, rather than waiting for automatic deletion.
+        /// Uploads a new file.
         /// </summary>
         /// <param name="clientReferenceId">
         /// Optional tracking identifier string. Does not need to be unique.
@@ -993,7 +993,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Bad Request
+                            // Invalid request.  Error types: - `invalid_request`: One or more parts of the multipart body are missing or invalid (missing `file`, filename or `client_reference_id` too long, malformed multipart body), or the uploaded file exceeds the per-file upload limit. 
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -1030,7 +1030,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Unauthorized
+                            // Authentication error.
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -1067,7 +1067,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Too Many Requests
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate, the total file count or total file size cap (organization or project), or this upload would exceed those caps. The `message` describes which limit was hit. Delete unused files via `DELETE /v1/files/{id}` or request a higher limit in the Soniox Console. 
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
@@ -1104,7 +1104,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Internal Server Error
+                            // Internal server error.
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
@@ -1231,7 +1231,7 @@ namespace Soniox
         }
         /// <summary>
         /// Upload file<br/>
-        /// Uploads a new file. Files are automatically deleted 30 days after upload. However, we strongly recommend that you manually delete files as soon as you have obtained your transcription results, rather than waiting for automatic deletion.
+        /// Uploads a new file.
         /// </summary>
         /// <param name="clientReferenceId">
         /// Optional tracking identifier string. Does not need to be unique.
@@ -1561,7 +1561,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Bad Request
+                            // Invalid request.  Error types: - `invalid_request`: One or more parts of the multipart body are missing or invalid (missing `file`, filename or `client_reference_id` too long, malformed multipart body), or the uploaded file exceeds the per-file upload limit. 
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -1598,7 +1598,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Unauthorized
+                            // Authentication error.
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -1635,7 +1635,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Too Many Requests
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate, the total file count or total file size cap (organization or project), or this upload would exceed those caps. The `message` describes which limit was hit. Delete unused files via `DELETE /v1/files/{id}` or request a higher limit in the Soniox Console. 
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
@@ -1672,7 +1672,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Internal Server Error
+                            // Internal server error.
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;

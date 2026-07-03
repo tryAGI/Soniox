@@ -5,7 +5,7 @@ namespace Soniox
 {
     /// <summary>
     /// A transcription.<br/>
-    /// Example: {"audio_duration_ms":0,"audio_url":"https://soniox.com/media/examples/coffee_shop.mp3","client_reference_id":"some_internal_id","created_at":"2024-11-26T00:00:00Z","error_message":null,"error_type":null,"file_id":null,"filename":"coffee_shop.mp3","id":"73d4357d-cad2-4338-a60d-ec6f2044f721","language_hints":["en","fr"],"model":"stt-async-preview","status":"queued","webhook_auth_header_name":"Authorization","webhook_auth_header_value":"******************","webhook_status_code":null,"webhook_url":"https://example.com/webhook"}
+    /// Example: {"audio_duration_ms":0,"audio_url":"https://soniox.com/media/examples/coffee_shop.mp3","client_reference_id":"some_internal_id","created_at":"2024-11-26T00:00:00Z","error_message":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","error_type":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","file_id":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","filename":"coffee_shop.mp3","id":"73d4357d-cad2-4338-a60d-ec6f2044f721","language_hints":["en","fr"],"model":"stt-async-preview","status":"queued","webhook_auth_header_name":"Authorization","webhook_auth_header_value":"******************","webhook_status_code":"openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464","webhook_url":"https://example.com/webhook"}
     /// </summary>
     public sealed partial class Transcription
     {

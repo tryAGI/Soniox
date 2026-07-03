@@ -43,7 +43,8 @@ namespace Soniox
 
         /// <summary>
         /// Create temporary API key<br/>
-        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.
+        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.<br/>
+        /// Use `single_use` and `max_session_duration_seconds` to limit how the key can be used by a client. See the [Temporary API keys guide](https://soniox.com/docs/guides/temporary-api-keys) for details.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -66,7 +67,8 @@ namespace Soniox
         }
         /// <summary>
         /// Create temporary API key<br/>
-        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.
+        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.<br/>
+        /// Use `single_use` and `max_session_duration_seconds` to limit how the key can be used by a client. See the [Temporary API keys guide](https://soniox.com/docs/guides/temporary-api-keys) for details.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -337,7 +339,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Bad Request
+                            // Invalid request.  Error types: - `invalid_request`: One or more body fields are missing or invalid (`usage_type`, `expires_in_seconds` out of range, `client_reference_id` too long, `max_session_duration_seconds` out of range, etc.). Inspect `validation_errors`. 
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -374,7 +376,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Unauthorized
+                            // Authentication error.
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -411,7 +413,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Too Many Requests
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate or other capacity limit. The `message` describes which limit was hit. 
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
@@ -448,7 +450,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Internal Server Error
+                            // Internal server error.
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
@@ -583,7 +585,8 @@ namespace Soniox
         }
         /// <summary>
         /// Create temporary API key<br/>
-        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.
+        /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.<br/>
+        /// Use `single_use` and `max_session_duration_seconds` to limit how the key can be used by a client. See the [Temporary API keys guide](https://soniox.com/docs/guides/temporary-api-keys) for details.
         /// </summary>
         /// <param name="usageType">
         /// Intended usage of the temporary API key.
@@ -598,7 +601,7 @@ namespace Soniox
         /// If true, the temporary API key can be used only once.
         /// </param>
         /// <param name="maxSessionDurationSeconds">
-        /// Maximum WebSocket connection duration in seconds. If exceeded, the connection will be dropped. If not set, no limit is applied.
+        /// Maximum connection duration in seconds for WebSocket and TTS HTTP streaming endpoints. If exceeded, the connection will be dropped. If not set, no limit is applied.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

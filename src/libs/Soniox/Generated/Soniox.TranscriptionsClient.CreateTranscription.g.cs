@@ -43,7 +43,7 @@ namespace Soniox
 
         /// <summary>
         /// Create transcription<br/>
-        /// Creates a new transcription. Transcriptions are automatically deleted 30 days after being submitted.
+        /// Creates a new transcription.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -66,7 +66,7 @@ namespace Soniox
         }
         /// <summary>
         /// Create transcription<br/>
-        /// Creates a new transcription. Transcriptions are automatically deleted 30 days after being submitted.
+        /// Creates a new transcription.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -337,7 +337,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Bad Request
+                            // Invalid request.  Error types: - `invalid_request`: One or more request body fields are missing or invalid (model, audio source, language hints, translation config, webhook config, etc.). Inspect `validation_errors`. 
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -374,7 +374,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Unauthorized
+                            // Authentication error.
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -411,7 +411,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Payment Required
+                            // Balance or budget exhausted.  Error types: - `organization_balance_exhausted`: The organization's prepaid balance has dropped to zero. Top up at https://console.soniox.com/org/billing/overview or enable autopay. - `organization_monthly_budget_exhausted`: The organization has hit its configured monthly budget cap. Raise the cap at https://console.soniox.com/org/limits, or wait for the month to roll over. - `project_monthly_budget_exhausted`: The project has hit its configured monthly budget cap. Raise the cap at https://console.soniox.com/org/projects/limits, or wait for the month to roll over. 
                             if ((int)__response.StatusCode == 402)
                             {
                                 string? __content_402 = null;
@@ -448,7 +448,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Too Many Requests
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate, total transcription count, or pending transcription count limit (organization or project). The `message` describes which limit was hit. Delete completed transcriptions via `DELETE /v1/transcriptions/{id}` or request a higher limit in the Soniox Console. 
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
@@ -485,7 +485,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Internal Server Error
+                            // Internal server error.
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
@@ -620,7 +620,7 @@ namespace Soniox
         }
         /// <summary>
         /// Create transcription<br/>
-        /// Creates a new transcription. Transcriptions are automatically deleted 30 days after being submitted.
+        /// Creates a new transcription.
         /// </summary>
         /// <param name="model">
         /// Speech-to-text model to use for the transcription.

@@ -4,7 +4,8 @@
 namespace Soniox
 {
     /// <summary>
-    /// Optional URL with additional information about this error. Points to the Soniox documentation for errors a developer can resolve via code or configuration.
+    /// Optional URL with additional information about this error. Points to the Soniox documentation<br/>
+    /// for errors a developer can resolve via code or configuration.
     /// </summary>
     public sealed partial class ApiErrorMoreInfo
     {

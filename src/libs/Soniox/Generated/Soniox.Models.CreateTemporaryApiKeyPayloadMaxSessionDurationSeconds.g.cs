@@ -4,7 +4,7 @@
 namespace Soniox
 {
     /// <summary>
-    /// Maximum WebSocket connection duration in seconds. If exceeded, the connection will be dropped. If not set, no limit is applied.
+    /// Maximum connection duration in seconds for WebSocket and TTS HTTP streaming endpoints. If exceeded, the connection will be dropped. If not set, no limit is applied.
     /// </summary>
     public sealed partial class CreateTemporaryApiKeyPayloadMaxSessionDurationSeconds
     {

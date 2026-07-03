@@ -33,6 +33,9 @@ namespace Soniox
 
         /// <inheritdoc/>
         public global::Soniox.AutoSDKClientOptions Options { get; }
+
+
+        internal global::Soniox.AutoSDKServerConfiguration AutoSDKServerConfiguration { get; set; } = new global::Soniox.AutoSDKServerConfiguration();
         /// <summary>
         /// 
         /// </summary>
@@ -101,10 +104,15 @@ namespace Soniox
         {
 
             HttpClient = httpClient ?? new global::System.Net.Http.HttpClient();
-            HttpClient.BaseAddress ??= baseUri ?? new global::System.Uri(DefaultBaseUrl);
+            if (baseUri is not null)
+            {
+                HttpClient.BaseAddress ??= baseUri;
+            }
             Authorizations = authorizations ?? new global::System.Collections.Generic.List<global::Soniox.EndPointAuthorization>();
             Options = options ?? new global::Soniox.AutoSDKClientOptions();
             _disposeHttpClient = disposeHttpClient;
+
+            AutoSDKServerConfiguration.ExplicitBaseUri = baseUri ?? httpClient?.BaseAddress;
 
             Initialized(HttpClient);
         }

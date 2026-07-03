@@ -9,11 +9,11 @@ namespace Soniox
     public sealed partial class GetTranscriptionsCountResponse
     {
         /// <summary>
-        /// Total number of transcriptions across all scopes.
+        /// Number of transcriptions created via the Playground.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("total")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("playground")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Total { get; set; }
+        public required int Playground { get; set; }
 
         /// <summary>
         /// Number of transcriptions created via Public API.
@@ -23,11 +23,11 @@ namespace Soniox
         public required int PublicApi { get; set; }
 
         /// <summary>
-        /// Number of transcriptions created via the Playground.
+        /// Total number of transcriptions across all scopes.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("playground")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("total")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int Playground { get; set; }
+        public required int Total { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,26 +38,26 @@ namespace Soniox
         /// <summary>
         /// Initializes a new instance of the <see cref="GetTranscriptionsCountResponse" /> class.
         /// </summary>
-        /// <param name="total">
-        /// Total number of transcriptions across all scopes.
+        /// <param name="playground">
+        /// Number of transcriptions created via the Playground.
         /// </param>
         /// <param name="publicApi">
         /// Number of transcriptions created via Public API.
         /// </param>
-        /// <param name="playground">
-        /// Number of transcriptions created via the Playground.
+        /// <param name="total">
+        /// Total number of transcriptions across all scopes.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetTranscriptionsCountResponse(
-            int total,
+            int playground,
             int publicApi,
-            int playground)
+            int total)
         {
-            this.Total = total;
-            this.PublicApi = publicApi;
             this.Playground = playground;
+            this.PublicApi = publicApi;
+            this.Total = total;
         }
 
         /// <summary>

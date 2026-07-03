@@ -1,0 +1,266 @@
+asyncapi: 3.0.0
+info:
+  title: Soniox Realtime Text-to-Speech API
+  version: 1.0.0
+  description: |
+    Realtime text-to-speech over WebSocket. The client sends a JSON
+    configuration message per stream_id, streams text chunks, and receives
+    base64-encoded audio chunks plus terminal or error events.
+
+servers:
+  production:
+    host: tts-rt.soniox.com
+    protocol: wss
+
+defaultContentType: application/json
+
+channels:
+  TextToSpeech:
+    address: /tts-websocket
+    description: Soniox realtime text-to-speech stream.
+    servers:
+      - $ref: '#/servers/production'
+    messages:
+      TtsConfig:
+        $ref: '#/components/messages/TtsConfig'
+      TtsText:
+        $ref: '#/components/messages/TtsText'
+      TtsCancel:
+        $ref: '#/components/messages/TtsCancel'
+      TtsKeepAlive:
+        $ref: '#/components/messages/TtsKeepAlive'
+      TtsAudio:
+        $ref: '#/components/messages/TtsAudio'
+      TtsTerminated:
+        $ref: '#/components/messages/TtsTerminated'
+      TtsError:
+        $ref: '#/components/messages/TtsError'
+
+operations:
+  sendTtsConfig:
+    action: send
+    channel:
+      $ref: '#/channels/TextToSpeech'
+    messages:
+      - $ref: '#/channels/TextToSpeech/messages/TtsConfig'
+  sendTtsText:
+    action: send
+    channel:
+      $ref: '#/channels/TextToSpeech'
+    messages:
+      - $ref: '#/channels/TextToSpeech/messages/TtsText'
+  sendTtsCancel:
+    action: send
+    channel:
+      $ref: '#/channels/TextToSpeech'
+    messages:
+      - $ref: '#/channels/TextToSpeech/messages/TtsCancel'
+  sendTtsKeepAlive:
+    action: send
+    channel:
+      $ref: '#/channels/TextToSpeech'
+    messages:
+      - $ref: '#/channels/TextToSpeech/messages/TtsKeepAlive'
+  receiveTtsAudio:
+    action: receive
+    channel:
+      $ref: '#/channels/TextToSpeech'
+    messages:
+      - $ref: '#/channels/TextToSpeech/messages/TtsAudio'
+  receiveTtsTerminated:
+    action: receive
+    channel:
+      $ref: '#/channels/TextToSpeech'
+    messages:
+      - $ref: '#/channels/TextToSpeech/messages/TtsTerminated'
+  receiveTtsError:
+    action: receive
+    channel:
+      $ref: '#/channels/TextToSpeech'
+    messages:
+      - $ref: '#/channels/TextToSpeech/messages/TtsError'
+
+components:
+  schemas:
+    TtsConfig:
+      type: object
+      required: [api_key, stream_id, model, language, voice, audio_format]
+      properties:
+        api_key:
+          type: string
+          description: Soniox API key. Permanent and temporary API keys are supported.
+        stream_id:
+          type: string
+          description: Client-generated stream identifier unique among active streams on the connection.
+        model:
+          type: string
+          description: Text-to-Speech model id, for example tts-rt-v1.
+        language:
+          type: string
+          description: Input language code.
+        voice:
+          type: string
+          description: Built-in voice name or cloned voice id.
+        audio_format:
+          type: string
+          description: Output audio format, for example wav, mp3, opus, flac, or raw PCM formats.
+        sample_rate:
+          type: integer
+          format: int32
+          description: Optional output sample rate in Hz.
+        bitrate:
+          type: integer
+          format: int32
+          description: Optional codec bitrate in bits per second.
+        client_reference_id:
+          type: string
+          description: Optional tracking identifier recorded in usage logs.
+        return_timestamps:
+          type: boolean
+          description: Request character-level timestamps in audio responses.
+        speed:
+          type: number
+          format: double
+          description: Optional speaking rate from 0.7 to 1.3.
+
+    TtsText:
+      type: object
+      required: [stream_id, text, text_end]
+      properties:
+        stream_id:
+          type: string
+          description: Stream identifier to append text to.
+        text:
+          type: string
+          description: Text chunk to synthesize.
+        text_end:
+          type: boolean
+          description: True when this is the final text chunk for the stream.
+
+    TtsCancel:
+      type: object
+      required: [stream_id, cancel]
+      properties:
+        stream_id:
+          type: string
+          description: Stream identifier to cancel.
+        cancel:
+          type: boolean
+          description: True to cancel the active stream.
+
+    TtsKeepAlive:
+      type: object
+      required: [keep_alive]
+      properties:
+        keep_alive:
+          type: boolean
+          description: True to keep an already-authenticated WebSocket connection alive.
+
+    TtsAudio:
+      type: object
+      required: [stream_id]
+      properties:
+        stream_id:
+          type: string
+          description: Stream identifier this audio belongs to.
+        audio:
+          type: string
+          description: Base64-encoded audio bytes.
+        audio_end:
+          type: boolean
+          description: True when this is the final audio chunk for the stream.
+        timestamps:
+          $ref: '#/components/schemas/TtsTimestamps'
+
+    TtsTimestamps:
+      type: object
+      properties:
+        characters:
+          type: array
+          description: Characters covered by this audio frame.
+          items:
+            type: string
+        character_start_times_seconds:
+          type: array
+          description: Per-character start times in seconds.
+          items:
+            type: number
+            format: double
+        character_end_times_seconds:
+          type: array
+          description: Per-character end times in seconds.
+          items:
+            type: number
+            format: double
+
+    TtsTerminated:
+      type: object
+      required: [stream_id, terminated]
+      properties:
+        stream_id:
+          type: string
+          description: Stream identifier whose lifecycle has completed.
+        terminated:
+          type: boolean
+          description: True when the server has released stream resources.
+
+    TtsError:
+      type: object
+      required: [error_code, error_type, error_message]
+      properties:
+        stream_id:
+          type: string
+          description: Stream identifier for stream-scoped errors.
+        error_code:
+          type: integer
+          format: int32
+          description: HTTP-style status code.
+        error_type:
+          type: string
+          description: Stable machine-readable error category.
+        error_message:
+          type: string
+          description: Human-readable error message.
+        more_info:
+          type: string
+          description: Optional documentation URL with additional information.
+        request_id:
+          type: string
+          description: Request id to provide to Soniox support.
+
+  messages:
+    TtsConfig:
+      name: TtsConfig
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/TtsConfig'
+    TtsText:
+      name: TtsText
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/TtsText'
+    TtsCancel:
+      name: TtsCancel
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/TtsCancel'
+    TtsKeepAlive:
+      name: TtsKeepAlive
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/TtsKeepAlive'
+    TtsAudio:
+      name: TtsAudio
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/TtsAudio'
+    TtsTerminated:
+      name: TtsTerminated
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/TtsTerminated'
+    TtsError:
+      name: TtsError
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/TtsError'

@@ -326,7 +326,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Unauthorized
+                            // Authentication error.
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -363,7 +363,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Not Found
+                            // Transcription not found.  Error types: - `transcription_not_found`: No transcription with this ID exists in the project the API key is scoped to (it may have been deleted, the ID may be wrong, or it may belong to a different project). 
                             if ((int)__response.StatusCode == 404)
                             {
                                 string? __content_404 = null;
@@ -400,7 +400,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Conflict
+                            // Invalid transcription state.  The transcription exists but the transcript cannot be returned in its current state.  Error types: - `transcription_invalid_state`. The `message` indicates which sub-case applies:   - **Not completed yet** — transcription is still queued, downloading, or transcribing. Poll `GET /transcriptions/{id}` until `status` is `completed`, or configure a webhook on the transcription.   - **Failed** — transcription ended in `failed` state. Inspect `error_type` / `error_message` on `GET /transcriptions/{id}` for the failure reason. 
                             if ((int)__response.StatusCode == 409)
                             {
                                 string? __content_409 = null;
@@ -437,7 +437,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Too Many Requests
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate or other capacity limit. The `message` describes which limit was hit. 
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
@@ -474,7 +474,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Internal Server Error
+                            // Internal server error.
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
