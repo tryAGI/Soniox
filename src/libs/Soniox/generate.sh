@@ -18,9 +18,9 @@ fetch_spec() {
 #
 # Covers: Auth (temporary API keys), Files (upload/list/get/delete),
 # Models (list), Transcriptions (async create/get/list/delete, fetch
-# transcript). Real-time WebSocket streaming is generated from the
-# handcrafted AsyncAPI spec in asyncapi.yaml because it is not part of
-# the REST OpenAPI surface.
+# transcript), TTS models, and voice cloning management. Real-time
+# WebSocket streaming is generated from the handcrafted AsyncAPI spec in
+# asyncapi.yaml because it is not part of the REST OpenAPI surface.
 #
 # Auth: standard HTTP Bearer (Authorization: Bearer <API_KEY>).
 install_autosdk_cli

@@ -68,4 +68,14 @@ public partial class SonioxClient
     /// Soniox real-time text-to-speech preview alias.
     /// </summary>
     public const string TtsRealtimeV1PreviewAliasModelId = "tts-rt-v1-preview";
+
+    /// <summary>
+    /// Default model id used for text-to-speech generation.
+    /// </summary>
+    public const string DefaultTtsModel = TtsRealtimeV1ModelId;
+
+    /// <summary>
+    /// Alias for <see cref="DefaultTtsModel"/>.
+    /// </summary>
+    public const string DefaultTtsModelId = DefaultTtsModel;
 }

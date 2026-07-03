@@ -18,5 +18,9 @@ public partial class Tests
         SonioxClient.DefaultRealtimeModelId.Should().Be(SonioxClient.DefaultRealtimeModel);
         SonioxClient.DefaultAsyncModel.Should().Be(SonioxClient.SttAsyncV5ModelId);
         SonioxClient.DefaultAsyncModelId.Should().Be(SonioxClient.DefaultAsyncModel);
+        SonioxClient.DefaultTtsModel.Should().Be(SonioxClient.TtsRealtimeV1ModelId);
+        SonioxClient.DefaultTtsModelId.Should().Be(SonioxClient.DefaultTtsModel);
+        SonioxClient.DefaultTtsLanguage.Should().Be("en");
+        SonioxClient.DefaultTtsAudioFormat.Should().Be("wav");
     }
 }
