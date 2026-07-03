@@ -9,15 +9,25 @@ Text-to-Speech request.
 
 Set `SONIOX_VOICE_CLONE_AUDIO_PATH` to a clear speech sample you have the
 rights and consent to clone. Soniox accepts reference clips up to 20 seconds.
+Set `SONIOX_RUN_VOICE_CLONING_EXAMPLE=1` before running this paid example.
 */
 
 namespace Soniox.IntegrationTests;
 
 public partial class Tests
 {
+    private const string RunVoiceCloningExampleFlag = "SONIOX_RUN_VOICE_CLONING_EXAMPLE";
+
     [TestMethod]
     public async Task Example_VoiceCloning()
     {
+        if (!IsEnvironmentFlagEnabled(RunVoiceCloningExampleFlag) &&
+            !IsEnvironmentFlagEnabled(RunPaidTestsFlag))
+        {
+            throw new AssertInconclusiveException(
+                $"Set {RunVoiceCloningExampleFlag}=1 to run this paid voice-cloning example.");
+        }
+
         var audioPath =
             Environment.GetEnvironmentVariable("SONIOX_VOICE_CLONE_AUDIO_PATH") is { Length: > 0 } path ? path :
             throw new AssertInconclusiveException("SONIOX_VOICE_CLONE_AUDIO_PATH environment variable is not found.");

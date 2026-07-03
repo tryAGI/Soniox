@@ -8,6 +8,7 @@ nav:
 - Overview: index.md
 - Guides:
   - Microsoft.Extensions.AI: guides/meai.md
+  - Voice Cloning and Realtime TTS: guides/voice-cloning.md
 # EXAMPLES:START
 # EXAMPLES:END
         
