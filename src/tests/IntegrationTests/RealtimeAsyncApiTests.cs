@@ -75,12 +75,14 @@ public partial class Tests
                 AudioFormat = SonioxClient.DefaultTtsAudioFormat,
                 SampleRate = 24000,
                 ReturnTimestamps = true,
+                Speed = 1.2,
             },
             typeof(Realtime.Tts.TtsConfig),
             Realtime.Tts.TtsRealtimeSourceGenerationContext.Default);
 
         configJson.Should().Contain("\"stream_id\":\"stream-001\"");
         configJson.Should().Contain("\"return_timestamps\":true");
+        configJson.Should().Contain("\"speed\":1.2");
 
         var textJson = JsonSerializer.Serialize(
             new Realtime.Tts.TtsText
@@ -113,7 +115,12 @@ public partial class Tests
 
         parsedAudio.Should().NotBeNull();
         parsedAudio!.Value.IsTtsAudio.Should().BeTrue();
-        parsedAudio.Value.PickTtsAudio().AudioEnd.Should().BeTrue();
+        var parsedTtsAudio = parsedAudio.Value.PickTtsAudio();
+        parsedTtsAudio.AudioEnd.Should().BeTrue();
+        parsedTtsAudio.Timestamps.Should().NotBeNull();
+        parsedTtsAudio.Timestamps!.Characters.Should().Equal("H");
+        parsedTtsAudio.Timestamps.CharacterStartTimesSeconds.Should().Equal(0);
+        parsedTtsAudio.Timestamps.CharacterEndTimesSeconds.Should().Equal(0.1);
 
         var parsedTerminated = Realtime.Tts.ServerEvent.FromJson(
             """{"terminated":true,"stream_id":"stream-001"}""",

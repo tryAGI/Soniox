@@ -25,6 +25,7 @@ public partial class Tests
             audioFormat: "wav",
             sampleRate: 24000,
             clientReferenceId: "voice-clone-test",
+            speed: 1.2,
             requestId: "request-123");
 
         audio.Should().Equal(new byte[] { 1, 2, 3, 4 });
@@ -43,6 +44,7 @@ public partial class Tests
         root.GetProperty("text").GetString().Should().Be("Hello from a cloned voice.");
         root.GetProperty("sample_rate").GetInt32().Should().Be(24000);
         root.GetProperty("client_reference_id").GetString().Should().Be("voice-clone-test");
+        root.GetProperty("speed").GetDouble().Should().Be(1.2);
     }
 
     [TestMethod]
@@ -94,7 +96,8 @@ public partial class Tests
             audioFormat: "wav",
             text: "Hello from the generated TTS client.",
             xRequestId: "generated-request-123",
-            sampleRate: 24000);
+            sampleRate: 24000,
+            speed: 0.8);
 
         audio.Should().Equal(new byte[] { 5, 6, 7 });
         handler.RequestUri.Should().Be(new Uri(SonioxClient.TextToSpeechRestUrl));
@@ -110,6 +113,7 @@ public partial class Tests
         root.GetProperty("audio_format").GetString().Should().Be("wav");
         root.GetProperty("text").GetString().Should().Be("Hello from the generated TTS client.");
         root.GetProperty("sample_rate").GetInt32().Should().Be(24000);
+        root.GetProperty("speed").GetDouble().Should().Be(0.8);
     }
 
     [TestMethod]

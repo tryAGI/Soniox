@@ -30,6 +30,8 @@ public partial class Tests
             Voice = "Adrian",
             AudioFormat = SonioxClient.DefaultTtsAudioFormat,
             SampleRate = 24000,
+            ReturnTimestamps = true,
+            Speed = 1.1,
         };
         var textChunks = new[]
         {
@@ -69,6 +71,8 @@ public partial class Tests
                 TtsRealtime.TtsRealtimeSourceGenerationContext.Default);
 
             configJson.Should().Contain("\"stream_id\"");
+            configJson.Should().Contain("\"return_timestamps\":true");
+            configJson.Should().Contain("\"speed\":1.1");
             firstTextJson.Should().Contain("\"text_end\":false");
             keepAliveJson.Should().Contain("\"keep_alive\":true");
             cancelJson.Should().Contain("\"cancel\":true");
@@ -96,6 +100,7 @@ public partial class Tests
 
         result.AudioBytes.Should().BeGreaterThan(0);
         result.AudioEnded.Should().BeTrue();
+        result.CharacterTimestampCount.Should().BeGreaterThan(0);
         result.Terminated.Should().BeTrue();
     }
 }

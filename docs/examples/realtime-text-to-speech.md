@@ -17,6 +17,8 @@ var config = new TtsRealtime.TtsConfig
     Voice = "Adrian",
     AudioFormat = SonioxClient.DefaultTtsAudioFormat,
     SampleRate = 24000,
+    ReturnTimestamps = true,
+    Speed = 1.1,
 };
 var textChunks = new[]
 {
@@ -55,6 +57,8 @@ if (!IsEnvironmentFlagEnabled(RunRealtimeTtsExampleFlag))
         typeof(TtsRealtime.TtsCancel),
         TtsRealtime.TtsRealtimeSourceGenerationContext.Default);
 
+    configJson.Should().Contain("\"return_timestamps\":true");
+    configJson.Should().Contain("\"speed\":1.1");
     return;
 }
 
@@ -76,4 +80,6 @@ var result = await CollectRealtimeTtsResultAsync(
     client: client,
     streamId: streamId,
     cancellationToken: cancellationTokenSource.Token);
+
+result.CharacterTimestampCount.Should().BeGreaterThan(0);
 ```

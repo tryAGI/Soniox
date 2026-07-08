@@ -24,6 +24,7 @@ public partial class Tests
 
         result.AudioBytes.Should().BeGreaterThan(0);
         result.AudioEnded.Should().BeTrue();
+        result.CharacterTimestampCount.Should().BeGreaterThan(0);
         result.Terminated.Should().BeTrue();
     }
 
@@ -54,6 +55,8 @@ public partial class Tests
                     AudioFormat = SonioxClient.DefaultTtsAudioFormat,
                     SampleRate = 24000,
                     ClientReferenceId = "dotnet-sdk-smoke-test",
+                    ReturnTimestamps = true,
+                    Speed = 1.1,
                 },
                 cancellationTokenSource.Token);
 
@@ -94,6 +97,7 @@ public partial class Tests
     {
         var audioBytes = 0;
         var audioEnded = false;
+        var characterTimestampCount = 0;
 
         await foreach (var serverEvent in client.ReceiveUpdatesAsync(cancellationToken))
         {
@@ -116,6 +120,7 @@ public partial class Tests
                 }
 
                 audioEnded |= audio.AudioEnd == true;
+                characterTimestampCount += audio.Timestamps?.Characters?.Count ?? 0;
                 continue;
             }
 
@@ -127,6 +132,7 @@ public partial class Tests
                     return new RealtimeTtsSessionResult(
                         AudioBytes: audioBytes,
                         AudioEnded: audioEnded,
+                        CharacterTimestampCount: characterTimestampCount,
                         Terminated: terminated.Terminated == true);
                 }
             }
@@ -135,6 +141,7 @@ public partial class Tests
         return new RealtimeTtsSessionResult(
             AudioBytes: audioBytes,
             AudioEnded: audioEnded,
+            CharacterTimestampCount: characterTimestampCount,
             Terminated: false);
     }
 
@@ -170,5 +177,6 @@ public partial class Tests
     private readonly record struct RealtimeTtsSessionResult(
         int AudioBytes,
         bool AudioEnded,
+        int CharacterTimestampCount,
         bool Terminated);
 }
