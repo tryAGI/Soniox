@@ -45,25 +45,19 @@ namespace Soniox
 
             typeof(global::Soniox.JsonConverters.GetUsageLogsPayloadSortNullableJsonConverter),
 
+            typeof(global::Soniox.JsonConverters.ConcurrentStreamKindJsonConverter),
+
+            typeof(global::Soniox.JsonConverters.ConcurrentStreamKindNullableJsonConverter),
+
             typeof(global::Soniox.JsonConverters.GetUsageLogsSort2JsonConverter),
 
             typeof(global::Soniox.JsonConverters.GetUsageLogsSort2NullableJsonConverter),
 
+            typeof(global::Soniox.JsonConverters.GetConcurrentStreamsHistoryKind2JsonConverter),
+
+            typeof(global::Soniox.JsonConverters.GetConcurrentStreamsHistoryKind2NullableJsonConverter),
+
             typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<global::Soniox.StructuredContext, string, object>),
-
-            typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<double?, string>),
-
-            typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<double?, string>),
-
-            typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<double?, string>),
-
-            typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<double?, string>),
-
-            typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<double?, string>),
-
-            typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<double?, string>),
-
-            typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<double?, string>),
 
             typeof(global::Soniox.JsonConverters.UnixTimestampJsonConverter),
         })]
@@ -137,15 +131,24 @@ namespace Soniox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetUsageLogsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.UsageLogEntry>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.UsageLogEntry))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.AnyOf<double?, string>), TypeInfoPropertyName = "AnyOfDoubleString2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetUsageSummaryResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.UsageSummaryEntry))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.UsageSummaryEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.DateTime>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<int>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetConcurrencyLimitsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.ScopeValues))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CurrentValues))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.LimitValues))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetConcurrentStreamsHistoryResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.ConcurrentStreamKind), TypeInfoPropertyName = "ConcurrentStreamKind2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.ConcurrentStreamsHistoryEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.ConcurrentStreamsHistoryEntry))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.UploadFileRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CreateVoiceRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetUsageLogsSort2), TypeInfoPropertyName = "GetUsageLogsSort22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetConcurrentStreamsHistoryKind2), TypeInfoPropertyName = "GetConcurrentStreamsHistoryKind22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.VoiceModel>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.Voice>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.File>))]
@@ -161,6 +164,10 @@ namespace Soniox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.TTSModel>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.TTSVoice>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.UsageLogEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.UsageSummaryEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.DateTime>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<int>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.ConcurrentStreamsHistoryEntry>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
