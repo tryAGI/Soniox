@@ -94,7 +94,8 @@ components:
           description: Client-generated stream identifier unique among active streams on the connection.
         model:
           type: string
-          description: Text-to-Speech model id, for example tts-rt-v1.
+          description: Text-to-Speech model id, for example tts-rt-v2.
+          default: tts-rt-v2
         language:
           type: string
           description: Input language code.

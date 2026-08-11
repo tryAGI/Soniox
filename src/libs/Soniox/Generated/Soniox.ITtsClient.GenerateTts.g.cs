@@ -56,7 +56,7 @@ namespace Soniox
         /// <param name="xRequestId"></param>
         /// <param name="model">
         /// TTS model to use.<br/>
-        /// Default Value: tts-rt-v1
+        /// Default Value: tts-rt-v2
         /// </param>
         /// <param name="language">
         /// Language code of the input text.
@@ -82,6 +82,9 @@ namespace Soniox
         /// <param name="speed">
         /// Optional speaking rate of the generated speech, from `0.7` to `1.3`. `1.0` is the normal speed; lower values slow speech down and higher values speed it up. Defaults to `1.0`.
         /// </param>
+        /// <param name="reduceSilence">
+        /// Optional. When `true`, shortens the pauses between words so the generated speech flows more naturally. Defaults to `false`. Only supported on models with `supports_silence_reduction` set to `true`; enabling it on any other model returns an `invalid_request` error.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -91,11 +94,12 @@ namespace Soniox
             string audioFormat,
             string text,
             string? xRequestId = default,
-            string model = "tts-rt-v1",
+            string model = "tts-rt-v2",
             int? sampleRate = default,
             int? bitrate = default,
             string? clientReferenceId = default,
             double? speed = default,
+            bool? reduceSilence = default,
             global::Soniox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

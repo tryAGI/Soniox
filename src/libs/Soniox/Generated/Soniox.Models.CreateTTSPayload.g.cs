@@ -4,18 +4,18 @@
 namespace Soniox
 {
     /// <summary>
-    /// Example: {"model":"tts-rt-v1","language":"en","voice":"Adrian","audio_format":"wav","text":"Hello from Soniox Text-to-Speech.","sample_rate":24000,"bitrate":128000,"client_reference_id":"some_internal_id","speed":1.2}
+    /// Example: {"model":"tts-rt-v2","language":"en","voice":"Adrian","audio_format":"wav","text":"Hello from Soniox Text-to-Speech.","sample_rate":24000,"bitrate":128000,"client_reference_id":"some_internal_id","speed":1.2,"reduce_silence":true}
     /// </summary>
     public sealed partial class CreateTTSPayload
     {
         /// <summary>
         /// TTS model to use.<br/>
-        /// Default Value: tts-rt-v1
+        /// Default Value: tts-rt-v2
         /// </summary>
-        /// <default>"tts-rt-v1"</default>
+        /// <default>"tts-rt-v2"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Model { get; set; } = "tts-rt-v1";
+        public required string Model { get; set; } = "tts-rt-v2";
 
         /// <summary>
         /// Language code of the input text.
@@ -70,6 +70,12 @@ namespace Soniox
         public double? Speed { get; set; }
 
         /// <summary>
+        /// Optional. When `true`, shortens the pauses between words so the generated speech flows more naturally. Defaults to `false`. Only supported on models with `supports_silence_reduction` set to `true`; enabling it on any other model returns an `invalid_request` error.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reduce_silence")]
+        public bool? ReduceSilence { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -80,7 +86,7 @@ namespace Soniox
         /// </summary>
         /// <param name="model">
         /// TTS model to use.<br/>
-        /// Default Value: tts-rt-v1
+        /// Default Value: tts-rt-v2
         /// </param>
         /// <param name="language">
         /// Language code of the input text.
@@ -106,6 +112,9 @@ namespace Soniox
         /// <param name="speed">
         /// Optional speaking rate of the generated speech, from `0.7` to `1.3`. `1.0` is the normal speed; lower values slow speech down and higher values speed it up. Defaults to `1.0`.
         /// </param>
+        /// <param name="reduceSilence">
+        /// Optional. When `true`, shortens the pauses between words so the generated speech flows more naturally. Defaults to `false`. Only supported on models with `supports_silence_reduction` set to `true`; enabling it on any other model returns an `invalid_request` error.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -118,7 +127,8 @@ namespace Soniox
             int? sampleRate,
             int? bitrate,
             string? clientReferenceId,
-            double? speed)
+            double? speed,
+            bool? reduceSilence)
         {
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Language = language ?? throw new global::System.ArgumentNullException(nameof(language));
@@ -129,6 +139,7 @@ namespace Soniox
             this.Bitrate = bitrate;
             this.ClientReferenceId = clientReferenceId;
             this.Speed = speed;
+            this.ReduceSilence = reduceSilence;
         }
 
         /// <summary>

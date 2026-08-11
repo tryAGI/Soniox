@@ -21,7 +21,8 @@ namespace Soniox.Realtime.Tts
         public string? StreamId { get; set; }
 
         /// <summary>
-        /// Text-to-Speech model id, for example tts-rt-v1.
+        /// Text-to-Speech model id, for example tts-rt-v2.<br/>
+        /// Default Value: tts-rt-v2
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         public string? Model { get; set; }
@@ -90,7 +91,8 @@ namespace Soniox.Realtime.Tts
         /// Client-generated stream identifier unique among active streams on the connection.
         /// </param>
         /// <param name="model">
-        /// Text-to-Speech model id, for example tts-rt-v1.
+        /// Text-to-Speech model id, for example tts-rt-v2.<br/>
+        /// Default Value: tts-rt-v2
         /// </param>
         /// <param name="language">
         /// Input language code.

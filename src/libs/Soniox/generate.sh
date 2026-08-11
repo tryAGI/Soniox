@@ -43,6 +43,23 @@ else
   fi
 fi
 
+# Soniox TTS v2 launched before the published OpenAPI document changed its
+# CreateTTSPayload default and examples. Keep generated convenience overloads
+# on the current model while retaining v1 entries returned by model-list and
+# usage examples for backward compatibility. This is a no-op once upstream
+# publishes v2 in these locations.
+perl -pi -e '
+  if (/^  \/tts:$/) { $in_tts_operation = 1 }
+  elsif ($in_tts_operation && /^  \//) { $in_tts_operation = 0 }
+
+  if (/^    CreateTTSPayload:$/) { $in_tts_schema = 1 }
+  elsif ($in_tts_schema && /^    \S/) { $in_tts_schema = 0 }
+
+  if ($in_tts_operation || $in_tts_schema) {
+    s/tts-rt-v1/tts-rt-v2/g;
+  }
+' "$spec_path"
+
 rm -rf Generated
 autosdk generate openapi.yaml \
   --namespace Soniox \

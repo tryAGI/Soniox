@@ -125,6 +125,10 @@ Creates a Soniox voice clone from a short reference clip, waits until it is
 ready for the current TTS model, then uses the cloned voice ID in a REST
 Text-to-Speech request.
 
+`SonioxClient.DefaultTtsModel` targets Soniox TTS v2 (`tts-rt-v2`) for both
+REST and realtime generation. Use `SonioxClient.TtsRealtimeV1ModelId` only
+when you explicitly need the backward-compatible v1 model.
+
 Set `SONIOX_VOICE_CLONE_AUDIO_PATH` to a clear speech sample you have the
 rights and consent to clone. Soniox accepts reference clips up to 20 seconds.
 Set `SONIOX_RUN_VOICE_CLONING_EXAMPLE=1` before running this paid example.

@@ -70,6 +70,13 @@ namespace Soniox
         public required double SpeedMax { get; set; }
 
         /// <summary>
+        /// Whether the model supports shortening the pauses between words via the `reduce_silence` parameter.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("supports_silence_reduction")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool SupportsSilenceReduction { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -99,6 +106,9 @@ namespace Soniox
         /// <param name="speedMax">
         /// Maximum supported speaking rate.
         /// </param>
+        /// <param name="supportsSilenceReduction">
+        /// Whether the model supports shortening the pauses between words via the `reduce_silence` parameter.
+        /// </param>
         /// <param name="aliasedModelId">
         /// If this is an alias, the id of the aliased model.
         /// </param>
@@ -114,6 +124,7 @@ namespace Soniox
             bool supportsSpeedAdjustment,
             double speedMin,
             double speedMax,
+            bool supportsSilenceReduction,
             string? aliasedModelId,
             bool? supportsTimestamps)
         {
@@ -126,6 +137,7 @@ namespace Soniox
             this.SupportsSpeedAdjustment = supportsSpeedAdjustment;
             this.SpeedMin = speedMin;
             this.SpeedMax = speedMax;
+            this.SupportsSilenceReduction = supportsSilenceReduction;
         }
 
         /// <summary>

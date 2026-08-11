@@ -11,6 +11,7 @@ public partial class Tests
         SonioxClient.SttAsyncV4ModelId.Should().Be("stt-async-v4");
         SonioxClient.SttRealtimeV3AliasModelId.Should().Be("stt-rt-v3");
         SonioxClient.SttAsyncV3AliasModelId.Should().Be("stt-async-v3");
+        SonioxClient.TtsRealtimeV2ModelId.Should().Be("tts-rt-v2");
         SonioxClient.TtsRealtimeV1ModelId.Should().Be("tts-rt-v1");
         SonioxClient.TtsRealtimeV1PreviewAliasModelId.Should().Be("tts-rt-v1-preview");
 
@@ -18,7 +19,7 @@ public partial class Tests
         SonioxClient.DefaultRealtimeModelId.Should().Be(SonioxClient.DefaultRealtimeModel);
         SonioxClient.DefaultAsyncModel.Should().Be(SonioxClient.SttAsyncV5ModelId);
         SonioxClient.DefaultAsyncModelId.Should().Be(SonioxClient.DefaultAsyncModel);
-        SonioxClient.DefaultTtsModel.Should().Be(SonioxClient.TtsRealtimeV1ModelId);
+        SonioxClient.DefaultTtsModel.Should().Be(SonioxClient.TtsRealtimeV2ModelId);
         SonioxClient.DefaultTtsModelId.Should().Be(SonioxClient.DefaultTtsModel);
         SonioxClient.DefaultTtsLanguage.Should().Be("en");
         SonioxClient.DefaultTtsAudioFormat.Should().Be("wav");

@@ -2,6 +2,8 @@
 
 Use the Soniox SDK to create a cloned voice from a short reference clip, wait until the clone is ready for the TTS model, then pass that cloned voice ID to either REST Text-to-Speech or realtime Text-to-Speech.
 
+`SonioxClient.DefaultTtsModel` targets Soniox TTS v2 (`tts-rt-v2`) for both REST and realtime generation. Existing applications can continue to select `SonioxClient.TtsRealtimeV1ModelId` explicitly.
+
 !!! warning "Paid API calls"
     Voice creation and live TTS calls can spend Soniox credits. Keep live examples behind explicit environment flags and use short text prompts when testing with a low balance.
 

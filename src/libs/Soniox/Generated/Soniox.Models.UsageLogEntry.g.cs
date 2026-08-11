@@ -96,57 +96,50 @@ namespace Soniox
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost_usd")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<double?, string>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Soniox.AnyOf<double?, string> CostUsd { get; set; }
+        public required string CostUsd { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_cost_usd")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<double?, string>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Soniox.AnyOf<double?, string> InputCostUsd { get; set; }
+        public required string InputCostUsd { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_text_cost_usd")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<double?, string>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Soniox.AnyOf<double?, string> InputTextCostUsd { get; set; }
+        public required string InputTextCostUsd { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_audio_cost_usd")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<double?, string>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Soniox.AnyOf<double?, string> InputAudioCostUsd { get; set; }
+        public required string InputAudioCostUsd { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_cost_usd")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<double?, string>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Soniox.AnyOf<double?, string> OutputCostUsd { get; set; }
+        public required string OutputCostUsd { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_text_cost_usd")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<double?, string>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Soniox.AnyOf<double?, string> OutputTextCostUsd { get; set; }
+        public required string OutputTextCostUsd { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_audio_cost_usd")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<double?, string>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Soniox.AnyOf<double?, string> OutputAudioCostUsd { get; set; }
+        public required string OutputAudioCostUsd { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -204,13 +197,13 @@ namespace Soniox
             int outputTextTokens,
             int outputAudioTokens,
             int outputAudioDurationMs,
-            global::Soniox.AnyOf<double?, string> costUsd,
-            global::Soniox.AnyOf<double?, string> inputCostUsd,
-            global::Soniox.AnyOf<double?, string> inputTextCostUsd,
-            global::Soniox.AnyOf<double?, string> inputAudioCostUsd,
-            global::Soniox.AnyOf<double?, string> outputCostUsd,
-            global::Soniox.AnyOf<double?, string> outputTextCostUsd,
-            global::Soniox.AnyOf<double?, string> outputAudioCostUsd)
+            string costUsd,
+            string inputCostUsd,
+            string inputTextCostUsd,
+            string inputAudioCostUsd,
+            string outputCostUsd,
+            string outputTextCostUsd,
+            string outputAudioCostUsd)
         {
             this.Uuid = uuid;
             this.RequestScope = requestScope ?? throw new global::System.ArgumentNullException(nameof(requestScope));
@@ -224,13 +217,13 @@ namespace Soniox
             this.OutputTextTokens = outputTextTokens;
             this.OutputAudioTokens = outputAudioTokens;
             this.OutputAudioDurationMs = outputAudioDurationMs;
-            this.CostUsd = costUsd;
-            this.InputCostUsd = inputCostUsd;
-            this.InputTextCostUsd = inputTextCostUsd;
-            this.InputAudioCostUsd = inputAudioCostUsd;
-            this.OutputCostUsd = outputCostUsd;
-            this.OutputTextCostUsd = outputTextCostUsd;
-            this.OutputAudioCostUsd = outputAudioCostUsd;
+            this.CostUsd = costUsd ?? throw new global::System.ArgumentNullException(nameof(costUsd));
+            this.InputCostUsd = inputCostUsd ?? throw new global::System.ArgumentNullException(nameof(inputCostUsd));
+            this.InputTextCostUsd = inputTextCostUsd ?? throw new global::System.ArgumentNullException(nameof(inputTextCostUsd));
+            this.InputAudioCostUsd = inputAudioCostUsd ?? throw new global::System.ArgumentNullException(nameof(inputAudioCostUsd));
+            this.OutputCostUsd = outputCostUsd ?? throw new global::System.ArgumentNullException(nameof(outputCostUsd));
+            this.OutputTextCostUsd = outputTextCostUsd ?? throw new global::System.ArgumentNullException(nameof(outputTextCostUsd));
+            this.OutputAudioCostUsd = outputAudioCostUsd ?? throw new global::System.ArgumentNullException(nameof(outputAudioCostUsd));
         }
 
         /// <summary>

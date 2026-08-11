@@ -62,6 +62,11 @@ public partial class SonioxClient
     /// <summary>
     /// Current Soniox real-time text-to-speech model.
     /// </summary>
+    public const string TtsRealtimeV2ModelId = "tts-rt-v2";
+
+    /// <summary>
+    /// Soniox real-time text-to-speech v1 model.
+    /// </summary>
     public const string TtsRealtimeV1ModelId = "tts-rt-v1";
 
     /// <summary>
@@ -72,7 +77,7 @@ public partial class SonioxClient
     /// <summary>
     /// Default model id used for text-to-speech generation.
     /// </summary>
-    public const string DefaultTtsModel = TtsRealtimeV1ModelId;
+    public const string DefaultTtsModel = TtsRealtimeV2ModelId;
 
     /// <summary>
     /// Alias for <see cref="DefaultTtsModel"/>.
