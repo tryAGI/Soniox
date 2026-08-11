@@ -304,39 +304,75 @@ namespace Soniox
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.AnyOf<double?, string>? Type69 { get; set; }
+        public global::Soniox.GetUsageSummaryResponse? Type69 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.GetConcurrencyLimitsResponse? Type70 { get; set; }
+        public global::Soniox.UsageSummaryEntry? Type70 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.ScopeValues? Type71 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.UsageSummaryEntry>? Type71 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.CurrentValues? Type72 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.DateTime>? Type72 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.LimitValues? Type73 { get; set; }
+        public global::System.Collections.Generic.IList<int>? Type73 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.UploadFileRequest? Type74 { get; set; }
+        public global::Soniox.GetConcurrencyLimitsResponse? Type74 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type75 { get; set; }
+        public global::Soniox.ScopeValues? Type75 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.CreateVoiceRequest? Type76 { get; set; }
+        public global::Soniox.CurrentValues? Type76 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.GetUsageLogsSort2? Type77 { get; set; }
+        public global::Soniox.LimitValues? Type77 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.GetConcurrentStreamsHistoryResponse? Type78 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.ConcurrentStreamKind? Type79 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Soniox.ConcurrentStreamsHistoryEntry>? Type80 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.ConcurrentStreamsHistoryEntry? Type81 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.UploadFileRequest? Type82 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte[]? Type83 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.CreateVoiceRequest? Type84 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.GetUsageLogsSort2? Type85 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.GetConcurrentStreamsHistoryKind2? Type86 { get; set; }
 
         /// <summary>
         /// 
@@ -398,5 +434,21 @@ namespace Soniox
         /// 
         /// </summary>
         public global::System.Collections.Generic.List<global::Soniox.UsageLogEntry>? ListType14 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Soniox.UsageSummaryEntry>? ListType15 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::System.DateTime>? ListType16 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<int>? ListType17 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Soniox.ConcurrentStreamsHistoryEntry>? ListType18 { get; set; }
     }
 }

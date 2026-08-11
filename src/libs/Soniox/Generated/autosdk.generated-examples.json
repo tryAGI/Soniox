@@ -24,6 +24,17 @@
     },
     {
       "Order": 3,
+      "Title": "Get concurrent streams history",
+      "Slug": "get-concurrent-streams-history",
+      "Description": "Returns historical concurrent stream counts for the project, aggregated per period. The project is implied by the API key used for authentication. Region-scoped.\n\nEvery aggregation period in the requested window is returned, with no gaps. Periods with no recorded activity have every field set to \u00600\u0060.",
+      "Language": "http",
+      "Code": "### Get concurrent streams history\n# @name get_concurrent_streams_history\nGET {{host}}/v1/concurrent-streams-history?start_time={{start_time}}\u0026end_time={{end_time}}\u0026period_sec=60\u0026kind={{kind}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: Per-period concurrent stream aggregates.\n# Content-Type: application/json\n# 400\n# Description: Invalid request.\n\nError types:\n- \u0060invalid_request\u0060: A query parameter is missing or invalid. Common causes: \u0060period_sec\u0060 is not one of \u006060\u0060, \u00603600\u0060, \u006086400\u0060, \u0060start_time\u0060 / \u0060end_time\u0060 not parseable as ISO 8601, \u0060end_time\u0060 not strictly after \u0060start_time\u0060, the window between them exceeds the maximum for the requested \u0060period_sec\u0060, or the window would return more than 20000 entries.\n\n# Content-Type: application/json\n# 401\n# Description: Authentication error.\n# Content-Type: application/json\n# 429\n# Description: Rate / capacity limit exceeded.\n\nError types:\n- \u0060limit_exceeded\u0060: The caller hit a per-minute request rate or other capacity limit. The \u0060message\u0060 describes which limit was hit.\n\n# Content-Type: application/json\n# 500\n# Description: Internal server error.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "get_concurrent_streams_history",
+      "Setup": null
+    },
+    {
+      "Order": 4,
       "Title": "Delete file",
       "Slug": "delete-file",
       "Description": "Permanently deletes specified file.",
@@ -34,7 +45,7 @@
       "Setup": null
     },
     {
-      "Order": 4,
+      "Order": 5,
       "Title": "Get file",
       "Slug": "get-file",
       "Description": "Retrieve metadata for an uploaded file.",
@@ -45,7 +56,7 @@
       "Setup": null
     },
     {
-      "Order": 5,
+      "Order": 6,
       "Title": "Get files",
       "Slug": "get-files",
       "Description": "Retrieves list of uploaded files.",
@@ -56,7 +67,7 @@
       "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 6,
+      "Order": 7,
       "Title": "Get files count",
       "Slug": "get-files-count",
       "Description": "Returns the total number of files, split by source.",
@@ -67,7 +78,7 @@
       "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 7,
+      "Order": 8,
       "Title": "Upload file",
       "Slug": "upload-file",
       "Description": "Uploads a new file.",
@@ -78,7 +89,7 @@
       "Setup": null
     },
     {
-      "Order": 8,
+      "Order": 9,
       "Title": "Get models",
       "Slug": "get-models",
       "Description": "Retrieves list of available models and their attributes.",
@@ -89,7 +100,7 @@
       "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 9,
+      "Order": 10,
       "Title": "Create transcription",
       "Slug": "create-transcription",
       "Description": "Creates a new transcription.",
@@ -100,7 +111,7 @@
       "Setup": null
     },
     {
-      "Order": 10,
+      "Order": 11,
       "Title": "Delete transcription",
       "Slug": "delete-transcription",
       "Description": "Permanently deletes a transcription and its associated files. Cannot delete transcriptions that are currently processing.",
@@ -111,7 +122,7 @@
       "Setup": null
     },
     {
-      "Order": 11,
+      "Order": 12,
       "Title": "Get transcription",
       "Slug": "get-transcription",
       "Description": "Retrieves detailed information about a specific transcription.",
@@ -122,7 +133,7 @@
       "Setup": null
     },
     {
-      "Order": 12,
+      "Order": 13,
       "Title": "Get transcription transcript",
       "Slug": "get-transcription-transcript",
       "Description": "Retrieves the full transcript text and detailed tokens for a completed transcription. Only available for successfully completed transcriptions.",
@@ -133,7 +144,7 @@
       "Setup": null
     },
     {
-      "Order": 13,
+      "Order": 14,
       "Title": "Get transcriptions",
       "Slug": "get-transcriptions",
       "Description": "Retrieves list of transcriptions.",
@@ -144,7 +155,7 @@
       "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 14,
+      "Order": 15,
       "Title": "Get transcriptions count",
       "Slug": "get-transcriptions-count",
       "Description": "Returns the total number of transcriptions, split by request scope.",
@@ -155,7 +166,7 @@
       "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 15,
+      "Order": 16,
       "Title": "Generate speech",
       "Slug": "generate-tts",
       "Description": "Generates audio from text using the TTS REST endpoint.",
@@ -166,7 +177,7 @@
       "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 16,
+      "Order": 17,
       "Title": "Get TTS models",
       "Slug": "get-tts-models",
       "Description": "Retrieves list of available TTS models and their attributes.",
@@ -177,7 +188,7 @@
       "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 17,
+      "Order": 18,
       "Title": "Get usage logs",
       "Slug": "get-usage-logs",
       "Description": "Returns per-request usage log entries for the project. The project is implied by the API key used for authentication. Filters by request end time. The window between start_time and end_time must not exceed 31 days. start_time must not be earlier than 91 days ago.",
@@ -185,6 +196,17 @@
       "Code": "### Get usage logs\n# @name get_usage_logs\nGET {{host}}/v1/usage-logs?start_time={{start_time}}\u0026end_time={{end_time}}\u0026limit=1000\u0026sort=end_time_asc\u0026cursor={{cursor}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: Per-request usage log entries.\n# Content-Type: application/json\n# 400\n# Description: Invalid request.\n\nError types:\n- \u0060invalid_request\u0060: A query parameter is missing or invalid. Common causes: \u0060start_time\u0060 / \u0060end_time\u0060 not parseable as ISO 8601, \u0060end_time\u0060 not strictly after \u0060start_time\u0060, the window between them exceeds 31 days, or \u0060cursor\u0060 does not match the supplied \u0060start_time\u0060 / \u0060end_time\u0060 / \u0060sort\u0060.\n- \u0060invalid_cursor\u0060: The \u0060cursor\u0060 parameter is invalid. Omit \u0060cursor\u0060 to start pagination from the beginning.\n\n# Content-Type: application/json\n# 401\n# Description: Authentication error.\n# Content-Type: application/json\n# 429\n# Description: Rate / capacity limit exceeded.\n\nError types:\n- \u0060limit_exceeded\u0060: The caller hit a per-minute request rate or other capacity limit. The \u0060message\u0060 describes which limit was hit.\n\n# Content-Type: application/json\n# 500\n# Description: Internal server error.\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "get_usage_logs",
+      "Setup": null
+    },
+    {
+      "Order": 19,
+      "Title": "Get usage summary",
+      "Slug": "get-usage-summary",
+      "Description": "Returns daily cost and activity for the project, broken down per model and summed across all models. The project is implied by the API key used for authentication.\n\nUsage is aggregated by whole UTC day. The window is half-open, \u0060[start_time, end_time)\u0060, and a day is included when the window covers any part of it, so an \u0060end_time\u0060 exactly at midnight excludes that day. The window must not cover more than 366 UTC days.",
+      "Language": "http",
+      "Code": "### Get usage summary\n# @name get_usage_summary\nGET {{host}}/v1/usage/summary?start_time={{start_time}}\u0026end_time={{end_time}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: Daily cost and activity aggregates.\n# Content-Type: application/json\n# 400\n# Description: Invalid request.\n\nError types:\n- \u0060invalid_request\u0060: A query parameter is missing or invalid. Common causes: \u0060start_time\u0060 / \u0060end_time\u0060 not parseable as ISO 8601, \u0060end_time\u0060 not strictly after \u0060start_time\u0060, or the window covers more than 366 UTC days.\n\n# Content-Type: application/json\n# 401\n# Description: Authentication error.\n# Content-Type: application/json\n# 404\n# Description: Not found.\n\nError types:\n- \u0060not_found\u0060: The project could not be resolved while collecting its usage. Retry, and contact support if it persists.\n\n# Content-Type: application/json\n# 429\n# Description: Rate / capacity limit exceeded.\n\nError types:\n- \u0060limit_exceeded\u0060: The caller hit a per-minute request rate or other capacity limit. The \u0060message\u0060 describes which limit was hit.\n\n# Content-Type: application/json\n# 500\n# Description: Internal server error.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "get_usage_summary",
       "Setup": null
     }
   ]

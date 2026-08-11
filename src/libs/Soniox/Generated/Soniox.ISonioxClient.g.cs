@@ -78,6 +78,11 @@ namespace Soniox
         /// <summary>
         /// 
         /// </summary>
+        public ConcurrentStreamsHistoryClient ConcurrentStreamsHistory { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public FilesClient Files { get; }
 
         /// <summary>
@@ -104,6 +109,11 @@ namespace Soniox
         /// 
         /// </summary>
         public UsageLogsClient UsageLogs { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public UsageSummaryClient UsageSummary { get; }
 
         /// <summary>
         /// 
