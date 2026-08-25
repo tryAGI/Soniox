@@ -12,19 +12,22 @@ namespace Soniox.Realtime.Tts
         /// Stream identifier to append text to.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stream_id")]
-        public string? StreamId { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string StreamId { get; set; }
 
         /// <summary>
         /// Text chunk to synthesize.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
-        public string? Text { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Text { get; set; }
 
         /// <summary>
         /// True when this is the final text chunk for the stream.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text_end")]
-        public bool? TextEnd { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool TextEnd { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -48,12 +51,12 @@ namespace Soniox.Realtime.Tts
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TtsText(
-            string? streamId,
-            string? text,
-            bool? textEnd)
+            string streamId,
+            string text,
+            bool textEnd)
         {
-            this.StreamId = streamId;
-            this.Text = text;
+            this.StreamId = streamId ?? throw new global::System.ArgumentNullException(nameof(streamId));
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.TextEnd = textEnd;
         }
 

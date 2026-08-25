@@ -12,7 +12,8 @@ namespace Soniox.Realtime.Tts
         /// Stream identifier this audio belongs to.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stream_id")]
-        public string? StreamId { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string StreamId { get; set; }
 
         /// <summary>
         /// Base64-encoded audio bytes.
@@ -55,12 +56,12 @@ namespace Soniox.Realtime.Tts
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TtsAudio(
-            string? streamId,
+            string streamId,
             string? audio,
             bool? audioEnd,
             global::Soniox.Realtime.Tts.TtsTimestamps? timestamps)
         {
-            this.StreamId = streamId;
+            this.StreamId = streamId ?? throw new global::System.ArgumentNullException(nameof(streamId));
             this.Audio = audio;
             this.AudioEnd = audioEnd;
             this.Timestamps = timestamps;

@@ -64,23 +64,27 @@ namespace Soniox.Realtime
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.Realtime.RealtimeToken? Type9 { get; set; }
+        public global::Soniox.Realtime.TranslationConfigType? Type9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.Realtime.RealtimeResult? Type10 { get; set; }
+        public global::Soniox.Realtime.RealtimeToken? Type10 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Soniox.Realtime.RealtimeToken>? Type11 { get; set; }
+        public global::Soniox.Realtime.RealtimeResult? Type11 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.Realtime.RealtimeError? Type12 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.Realtime.RealtimeToken>? Type12 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Soniox.Realtime.ServerEvent? Type13 { get; set; }
+        public global::Soniox.Realtime.RealtimeError? Type13 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Soniox.Realtime.ServerEvent? Type14 { get; set; }
 
         /// <summary>
         /// 

@@ -12,7 +12,9 @@ namespace Soniox.Realtime
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Soniox.Realtime.JsonConverters.TranslationConfigTypeJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Soniox.Realtime.TranslationConfigType Type { get; set; }
 
         /// <summary>
         /// 
@@ -49,7 +51,7 @@ namespace Soniox.Realtime
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TranslationConfig(
-            string? type,
+            global::Soniox.Realtime.TranslationConfigType type,
             string? targetLanguage,
             string? languageA,
             string? languageB)

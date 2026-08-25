@@ -12,19 +12,22 @@ namespace Soniox.Realtime
         /// Soniox API key. Permanent and temporary API keys are supported.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("api_key")]
-        public string? ApiKey { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string ApiKey { get; set; }
 
         /// <summary>
         /// Realtime STT model id, for example stt-rt-v5.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string? Model { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Model { get; set; }
 
         /// <summary>
         /// Audio format; use auto for containerized streams or raw_* values with sample_rate.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio_format")]
-        public string? AudioFormat { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string AudioFormat { get; set; }
 
         /// <summary>
         /// Sample rate in Hz for raw audio.
@@ -164,9 +167,9 @@ namespace Soniox.Realtime
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RealtimeConfig(
-            string? apiKey,
-            string? model,
-            string? audioFormat,
+            string apiKey,
+            string model,
+            string audioFormat,
             int? sampleRate,
             int? numChannels,
             global::System.Collections.Generic.IList<string>? languageHints,
@@ -181,9 +184,9 @@ namespace Soniox.Realtime
             global::Soniox.Realtime.TranslationConfig? translation,
             string? clientReferenceId)
         {
-            this.ApiKey = apiKey;
-            this.Model = model;
-            this.AudioFormat = audioFormat;
+            this.ApiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
+            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
+            this.AudioFormat = audioFormat ?? throw new global::System.ArgumentNullException(nameof(audioFormat));
             this.SampleRate = sampleRate;
             this.NumChannels = numChannels;
             this.LanguageHints = languageHints;
