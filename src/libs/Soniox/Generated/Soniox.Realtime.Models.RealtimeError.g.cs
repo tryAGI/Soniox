@@ -12,13 +12,15 @@ namespace Soniox.Realtime
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error_code")]
-        public int? ErrorCode { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int ErrorCode { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error_message")]
-        public string? ErrorMessage { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string ErrorMessage { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -35,11 +37,11 @@ namespace Soniox.Realtime
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RealtimeError(
-            int? errorCode,
-            string? errorMessage)
+            int errorCode,
+            string errorMessage)
         {
             this.ErrorCode = errorCode;
-            this.ErrorMessage = errorMessage;
+            this.ErrorMessage = errorMessage ?? throw new global::System.ArgumentNullException(nameof(errorMessage));
         }
 
         /// <summary>

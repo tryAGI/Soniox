@@ -12,7 +12,8 @@ namespace Soniox.Realtime.Tts
         /// True to keep an already-authenticated WebSocket connection alive.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("keep_alive")]
-        public bool? KeepAlive { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool KeepAlive { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -30,7 +31,7 @@ namespace Soniox.Realtime.Tts
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TtsKeepAlive(
-            bool? keepAlive)
+            bool keepAlive)
         {
             this.KeepAlive = keepAlive;
         }

@@ -13,6 +13,10 @@ namespace Soniox.Realtime
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[]
         {
+            typeof(global::Soniox.Realtime.JsonConverters.TranslationConfigTypeJsonConverter),
+
+            typeof(global::Soniox.Realtime.JsonConverters.TranslationConfigTypeNullableJsonConverter),
+
             typeof(global::Soniox.Realtime.JsonConverters.ServerEventJsonConverter),
 
             typeof(global::Soniox.Realtime.JsonConverters.OneOfJsonConverter<string, object>),
@@ -27,6 +31,7 @@ namespace Soniox.Realtime
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.Realtime.TranslationConfig))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.Realtime.TranslationConfigType), TypeInfoPropertyName = "TranslationConfigType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.Realtime.RealtimeToken))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.Realtime.RealtimeResult))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.Realtime.RealtimeToken>))]

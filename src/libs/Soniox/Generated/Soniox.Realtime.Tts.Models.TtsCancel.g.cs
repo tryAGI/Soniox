@@ -12,13 +12,15 @@ namespace Soniox.Realtime.Tts
         /// Stream identifier to cancel.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stream_id")]
-        public string? StreamId { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string StreamId { get; set; }
 
         /// <summary>
         /// True to cancel the active stream.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cancel")]
-        public bool? Cancel { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool Cancel { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -39,10 +41,10 @@ namespace Soniox.Realtime.Tts
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TtsCancel(
-            string? streamId,
-            bool? cancel)
+            string streamId,
+            bool cancel)
         {
-            this.StreamId = streamId;
+            this.StreamId = streamId ?? throw new global::System.ArgumentNullException(nameof(streamId));
             this.Cancel = cancel;
         }
 

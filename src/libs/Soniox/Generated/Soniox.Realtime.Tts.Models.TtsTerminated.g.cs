@@ -12,13 +12,15 @@ namespace Soniox.Realtime.Tts
         /// Stream identifier whose lifecycle has completed.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stream_id")]
-        public string? StreamId { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string StreamId { get; set; }
 
         /// <summary>
         /// True when the server has released stream resources.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("terminated")]
-        public bool? Terminated { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool Terminated { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -39,10 +41,10 @@ namespace Soniox.Realtime.Tts
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TtsTerminated(
-            string? streamId,
-            bool? terminated)
+            string streamId,
+            bool terminated)
         {
-            this.StreamId = streamId;
+            this.StreamId = streamId ?? throw new global::System.ArgumentNullException(nameof(streamId));
             this.Terminated = terminated;
         }
 

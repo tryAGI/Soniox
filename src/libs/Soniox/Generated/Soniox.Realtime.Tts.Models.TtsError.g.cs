@@ -18,19 +18,22 @@ namespace Soniox.Realtime.Tts
         /// HTTP-style status code.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error_code")]
-        public int? ErrorCode { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int ErrorCode { get; set; }
 
         /// <summary>
         /// Stable machine-readable error category.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error_type")]
-        public string? ErrorType { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string ErrorType { get; set; }
 
         /// <summary>
         /// Human-readable error message.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error_message")]
-        public string? ErrorMessage { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string ErrorMessage { get; set; }
 
         /// <summary>
         /// Optional documentation URL with additional information.
@@ -53,9 +56,6 @@ namespace Soniox.Realtime.Tts
         /// <summary>
         /// Initializes a new instance of the <see cref="TtsError" /> class.
         /// </summary>
-        /// <param name="streamId">
-        /// Stream identifier for stream-scoped errors.
-        /// </param>
         /// <param name="errorCode">
         /// HTTP-style status code.
         /// </param>
@@ -64,6 +64,9 @@ namespace Soniox.Realtime.Tts
         /// </param>
         /// <param name="errorMessage">
         /// Human-readable error message.
+        /// </param>
+        /// <param name="streamId">
+        /// Stream identifier for stream-scoped errors.
         /// </param>
         /// <param name="moreInfo">
         /// Optional documentation URL with additional information.
@@ -75,17 +78,17 @@ namespace Soniox.Realtime.Tts
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TtsError(
+            int errorCode,
+            string errorType,
+            string errorMessage,
             string? streamId,
-            int? errorCode,
-            string? errorType,
-            string? errorMessage,
             string? moreInfo,
             string? requestId)
         {
             this.StreamId = streamId;
             this.ErrorCode = errorCode;
-            this.ErrorType = errorType;
-            this.ErrorMessage = errorMessage;
+            this.ErrorType = errorType ?? throw new global::System.ArgumentNullException(nameof(errorType));
+            this.ErrorMessage = errorMessage ?? throw new global::System.ArgumentNullException(nameof(errorMessage));
             this.MoreInfo = moreInfo;
             this.RequestId = requestId;
         }

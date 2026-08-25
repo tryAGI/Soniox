@@ -12,38 +12,45 @@ namespace Soniox.Realtime.Tts
         /// Soniox API key. Permanent and temporary API keys are supported.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("api_key")]
-        public string? ApiKey { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string ApiKey { get; set; }
 
         /// <summary>
         /// Client-generated stream identifier unique among active streams on the connection.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stream_id")]
-        public string? StreamId { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string StreamId { get; set; }
 
         /// <summary>
         /// Text-to-Speech model id, for example tts-rt-v2.<br/>
         /// Default Value: tts-rt-v2
         /// </summary>
+        /// <default>"tts-rt-v2"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string? Model { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Model { get; set; } = "tts-rt-v2";
 
         /// <summary>
         /// Input language code.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
-        public string? Language { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Language { get; set; }
 
         /// <summary>
         /// Built-in voice name or cloned voice id.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
-        public string? Voice { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Voice { get; set; }
 
         /// <summary>
         /// Output audio format, for example wav, mp3, opus, flac, or raw PCM formats.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audio_format")]
-        public string? AudioFormat { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string AudioFormat { get; set; }
 
         /// <summary>
         /// Optional output sample rate in Hz.
@@ -122,24 +129,24 @@ namespace Soniox.Realtime.Tts
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TtsConfig(
-            string? apiKey,
-            string? streamId,
-            string? model,
-            string? language,
-            string? voice,
-            string? audioFormat,
+            string apiKey,
+            string streamId,
+            string model,
+            string language,
+            string voice,
+            string audioFormat,
             int? sampleRate,
             int? bitrate,
             string? clientReferenceId,
             bool? returnTimestamps,
             double? speed)
         {
-            this.ApiKey = apiKey;
-            this.StreamId = streamId;
-            this.Model = model;
-            this.Language = language;
-            this.Voice = voice;
-            this.AudioFormat = audioFormat;
+            this.ApiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
+            this.StreamId = streamId ?? throw new global::System.ArgumentNullException(nameof(streamId));
+            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
+            this.Language = language ?? throw new global::System.ArgumentNullException(nameof(language));
+            this.Voice = voice ?? throw new global::System.ArgumentNullException(nameof(voice));
+            this.AudioFormat = audioFormat ?? throw new global::System.ArgumentNullException(nameof(audioFormat));
             this.SampleRate = sampleRate;
             this.Bitrate = bitrate;
             this.ClientReferenceId = clientReferenceId;
