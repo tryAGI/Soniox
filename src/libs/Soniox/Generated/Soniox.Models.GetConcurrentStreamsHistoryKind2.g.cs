@@ -4,16 +4,16 @@
 namespace Soniox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum GetConcurrentStreamsHistoryKind2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Stt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Tts,
     }

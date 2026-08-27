@@ -4,7 +4,7 @@
 namespace Soniox.Realtime
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class RealtimeConfigContext
     {

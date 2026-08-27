@@ -20,7 +20,7 @@ namespace Soniox.JsonConverters
                     {
                         return global::Soniox.TranscriptionModeExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

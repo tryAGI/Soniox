@@ -4,16 +4,16 @@
 namespace Soniox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TemporaryApiKeyUsageType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TranscribeWebsocket,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TtsRt,
     }

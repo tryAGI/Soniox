@@ -5,12 +5,12 @@
 namespace Soniox.Realtime
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ServerEvent : global::System.IEquatable<ServerEvent>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Soniox.Realtime.RealtimeResult? RealtimeResult { get; init; }
@@ -19,7 +19,7 @@ namespace Soniox.Realtime
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RealtimeResult))]
@@ -27,7 +27,7 @@ namespace Soniox.Realtime
         public bool IsRealtimeResult => RealtimeResult != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRealtimeResult(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Soniox.Realtime
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Soniox.Realtime.RealtimeResult PickRealtimeResult() => IsRealtimeResult
             ? RealtimeResult!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RealtimeResult' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Soniox.Realtime.RealtimeError? RealtimeError { get; init; }
@@ -56,7 +56,7 @@ namespace Soniox.Realtime
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RealtimeError))]
@@ -64,7 +64,7 @@ namespace Soniox.Realtime
         public bool IsRealtimeError => RealtimeError != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRealtimeError(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Soniox.Realtime
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Soniox.Realtime.RealtimeError PickRealtimeError() => IsRealtimeError
             ? RealtimeError!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RealtimeError' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ServerEvent(global::Soniox.Realtime.RealtimeResult value) => new ServerEvent((global::Soniox.Realtime.RealtimeResult?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Soniox.Realtime.RealtimeResult?(ServerEvent @this) => @this.RealtimeResult;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ServerEvent(global::Soniox.Realtime.RealtimeResult? value)
         {
@@ -101,22 +101,22 @@ namespace Soniox.Realtime
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ServerEvent FromRealtimeResult(global::Soniox.Realtime.RealtimeResult? value) => new ServerEvent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ServerEvent(global::Soniox.Realtime.RealtimeError value) => new ServerEvent((global::Soniox.Realtime.RealtimeError?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Soniox.Realtime.RealtimeError?(ServerEvent @this) => @this.RealtimeError;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ServerEvent(global::Soniox.Realtime.RealtimeError? value)
         {
@@ -124,12 +124,12 @@ namespace Soniox.Realtime
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ServerEvent FromRealtimeError(global::Soniox.Realtime.RealtimeError? value) => new ServerEvent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ServerEvent(
             global::Soniox.Realtime.RealtimeResult? realtimeResult,
@@ -141,23 +141,23 @@ namespace Soniox.Realtime
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             RealtimeError as object ??
-            RealtimeResult as object 
+            RealtimeResult as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             RealtimeResult?.ToString() ??
-            RealtimeError?.ToString() 
+            RealtimeError?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Soniox.Realtime
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Soniox.Realtime.RealtimeResult, TResult>? realtimeResult = null,
@@ -190,7 +190,7 @@ namespace Soniox.Realtime
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Soniox.Realtime.RealtimeResult>? realtimeResult = null,
@@ -214,7 +214,7 @@ namespace Soniox.Realtime
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Soniox.Realtime.RealtimeResult>? realtimeResult = null,
@@ -237,7 +237,7 @@ namespace Soniox.Realtime
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Soniox.Realtime
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ServerEvent other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Soniox.Realtime.RealtimeResult?>.Default.Equals(RealtimeResult, other.RealtimeResult) &&
-                global::System.Collections.Generic.EqualityComparer<global::Soniox.Realtime.RealtimeError?>.Default.Equals(RealtimeError, other.RealtimeError) 
+                global::System.Collections.Generic.EqualityComparer<global::Soniox.Realtime.RealtimeError?>.Default.Equals(RealtimeError, other.RealtimeError)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ServerEvent obj1, ServerEvent obj2)
         {
@@ -277,7 +277,7 @@ namespace Soniox.Realtime
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ServerEvent obj1, ServerEvent obj2)
         {
@@ -285,7 +285,7 @@ namespace Soniox.Realtime
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

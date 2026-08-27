@@ -9,13 +9,13 @@ namespace Soniox
     public sealed partial class LimitValues
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transcribe_concurrent")]
         public int? TranscribeConcurrent { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tts_concurrent")]
         public int? TtsConcurrent { get; set; }

@@ -4,7 +4,7 @@
 namespace Soniox.Realtime.Tts
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TtsTimestamps
     {

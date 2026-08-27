@@ -139,7 +139,7 @@ namespace Soniox
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
@@ -337,7 +337,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Invalid request.  Error types: - `invalid_request`: One or more request body fields are missing or invalid (model, audio source, language hints, translation config, webhook config, etc.). Inspect `validation_errors`. 
+                            // Invalid request.  Error types: - `invalid_request`: One or more request body fields are missing or invalid (model, audio source, language hints, translation config, webhook config, etc.). Inspect `validation_errors`.
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -411,7 +411,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Balance or budget exhausted.  Error types: - `organization_balance_exhausted`: The organization's prepaid balance has dropped to zero. Top up at https://console.soniox.com/org/billing/overview or enable autopay. - `organization_monthly_budget_exhausted`: The organization has hit its configured monthly budget cap. Raise the cap at https://console.soniox.com/org/limits, or wait for the month to roll over. - `project_monthly_budget_exhausted`: The project has hit its configured monthly budget cap. Raise the cap at https://console.soniox.com/org/projects/limits, or wait for the month to roll over. 
+                            // Balance or budget exhausted.  Error types: - `organization_balance_exhausted`: The organization's prepaid balance has dropped to zero. Top up at https://console.soniox.com/org/billing/overview or enable autopay. - `organization_monthly_budget_exhausted`: The organization has hit its configured monthly budget cap. Raise the cap at https://console.soniox.com/org/limits, or wait for the month to roll over. - `project_monthly_budget_exhausted`: The project has hit its configured monthly budget cap. Raise the cap at https://console.soniox.com/org/projects/limits, or wait for the month to roll over.
                             if ((int)__response.StatusCode == 402)
                             {
                                 string? __content_402 = null;
@@ -448,7 +448,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate, total transcription count, or pending transcription count limit (organization or project). The `message` describes which limit was hit. Delete completed transcriptions via `DELETE /v1/transcriptions/{id}` or request a higher limit in the Soniox Console. 
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate, total transcription count, or pending transcription count limit (organization or project). The `message` describes which limit was hit. Delete completed transcriptions via `DELETE /v1/transcriptions/{id}` or request a higher limit in the Soniox Console.
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;

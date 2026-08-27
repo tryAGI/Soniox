@@ -4,7 +4,7 @@
 namespace Soniox.Realtime.Tts
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TtsAudio
     {
@@ -28,7 +28,7 @@ namespace Soniox.Realtime.Tts
         public bool? AudioEnd { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timestamps")]
         public global::Soniox.Realtime.Tts.TtsTimestamps? Timestamps { get; set; }

@@ -4,16 +4,16 @@
 namespace Soniox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ConcurrentStreamKind
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Stt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Tts,
     }

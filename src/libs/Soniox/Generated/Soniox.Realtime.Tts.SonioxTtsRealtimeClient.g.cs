@@ -278,7 +278,7 @@ namespace Soniox.Realtime.Tts
         public event global::System.EventHandler<AutoSDKWebSocketMessageEventArgs<global::Soniox.Realtime.Tts.TtsError>>? TtsErrorReceived;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; } = global::Soniox.Realtime.Tts.TtsRealtimeSourceGenerationContext.Default;

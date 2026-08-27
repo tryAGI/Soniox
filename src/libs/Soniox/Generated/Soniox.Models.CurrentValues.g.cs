@@ -9,14 +9,14 @@ namespace Soniox
     public sealed partial class CurrentValues
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transcribe_concurrent")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int TranscribeConcurrent { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tts_concurrent")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -6,7 +6,7 @@ namespace Soniox.Realtime.Tts
     public sealed partial class SonioxTtsRealtimeClient
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message">The message to send.</param>
         /// <param name="cancellationToken">A cancellation token.</param>

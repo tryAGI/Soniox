@@ -156,7 +156,7 @@ namespace Soniox
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::Soniox.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
@@ -349,7 +349,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Invalid request.  Error types: - `invalid_cursor`: The `cursor` parameter is invalid. Omit `cursor` to start pagination from the beginning. 
+                            // Invalid request.  Error types: - `invalid_cursor`: The `cursor` parameter is invalid. Omit `cursor` to start pagination from the beginning.
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -423,7 +423,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate or other capacity limit. The `message` describes which limit was hit. 
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate or other capacity limit. The `message` describes which limit was hit.
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;

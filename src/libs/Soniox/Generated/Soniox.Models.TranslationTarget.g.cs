@@ -4,26 +4,26 @@
 namespace Soniox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TranslationTarget
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("target_language")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string TargetLanguage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("source_languages")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<string> SourceLanguages { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("exclude_source_languages")]
         [global::System.Text.Json.Serialization.JsonRequired]

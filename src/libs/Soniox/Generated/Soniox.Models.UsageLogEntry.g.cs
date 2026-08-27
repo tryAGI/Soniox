@@ -4,7 +4,7 @@
 namespace Soniox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class UsageLogEntry
     {
@@ -51,91 +51,91 @@ namespace Soniox
         public required global::System.DateTime EndTime { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_text_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int InputTextTokens { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_audio_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int InputAudioTokens { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_audio_duration_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int InputAudioDurationMs { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_text_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int OutputTextTokens { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_audio_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int OutputAudioTokens { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_audio_duration_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int OutputAudioDurationMs { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost_usd")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string CostUsd { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_cost_usd")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string InputCostUsd { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_text_cost_usd")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string InputTextCostUsd { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_audio_cost_usd")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string InputAudioCostUsd { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_cost_usd")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string OutputCostUsd { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_text_cost_usd")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string OutputTextCostUsd { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_audio_cost_usd")]
         [global::System.Text.Json.Serialization.JsonRequired]

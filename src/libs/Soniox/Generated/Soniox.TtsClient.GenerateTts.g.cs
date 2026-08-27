@@ -157,7 +157,7 @@ namespace Soniox
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
 
             if (xRequestId != default)
@@ -362,7 +362,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Bad request. The request is malformed or contains invalid parameters.  `error_type` is one of [`invalid_request`](https://soniox.com/docs/api-reference/errors#invalid-request) or [`model_not_available`](https://soniox.com/docs/api-reference/errors#model-not-available).  Possible messages: - `Invalid JSON body` - `Missing required field: model` - `Model name is too long (max length 50).` - `Missing required field: language` - `Language is too long (max length 50).` - `Missing required field: voice` - `Voice is too long (max length 50).` - `Missing required field: audio_format` - `Audio format is too long (max length 50).` - `Missing required field: text` - `Text is too long (max length 5000).` - `API key is too long (max length 250).` - `Client reference ID is too long (max length 256).` - `Invalid voice '<voice>' for model '<model>'.` - `Invalid language '<language>' for model '<model>'.` - `The requested model is not available. See https://soniox.com/docs/tts/models for the list of supported TTS models.` (`error_type: model_not_available`) 
+                            // Bad request. The request is malformed or contains invalid parameters.  `error_type` is one of [`invalid_request`](https://soniox.com/docs/api-reference/errors#invalid-request) or [`model_not_available`](https://soniox.com/docs/api-reference/errors#model-not-available).  Possible messages: - `Invalid JSON body` - `Missing required field: model` - `Model name is too long (max length 50).` - `Missing required field: language` - `Language is too long (max length 50).` - `Missing required field: voice` - `Voice is too long (max length 50).` - `Missing required field: audio_format` - `Audio format is too long (max length 50).` - `Missing required field: text` - `Text is too long (max length 5000).` - `API key is too long (max length 250).` - `Client reference ID is too long (max length 256).` - `Invalid voice '<voice>' for model '<model>'.` - `Invalid language '<language>' for model '<model>'.` - `The requested model is not available. See https://soniox.com/docs/tts/models for the list of supported TTS models.` (`error_type: model_not_available`)
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -399,7 +399,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Authentication is missing or incorrect. Ensure a valid API key is provided before retrying.  `error_type`: [`unauthenticated`](https://soniox.com/docs/api-reference/errors#unauthenticated).  Possible messages: - `Missing API key. Provide it as an Authorization header (e.g. 'Authorization: Bearer <SONIOX_API_KEY>'). You can get an API key at https://console.soniox.com.` - `Authorization header must use the Bearer scheme (e.g. 'Authorization: Bearer <SONIOX_API_KEY>'). You can get an API key at https://console.soniox.com.` - `Incorrect API key provided. You can get an API key at https://console.soniox.com` - `Invalid or expired temporary API key. Create a new temporary API key and retry. See https://soniox.com/docs/guides/temporary-api-keys for details.` - The temporary API key cannot be used for this action. Each temporary API key is scoped to a specific `usage_type`; create a new key with the correct usage type. 
+                            // Authentication is missing or incorrect. Ensure a valid API key is provided before retrying.  `error_type`: [`unauthenticated`](https://soniox.com/docs/api-reference/errors#unauthenticated).  Possible messages: - `Missing API key. Provide it as an Authorization header (e.g. 'Authorization: Bearer <SONIOX_API_KEY>'). You can get an API key at https://console.soniox.com.` - `Authorization header must use the Bearer scheme (e.g. 'Authorization: Bearer <SONIOX_API_KEY>'). You can get an API key at https://console.soniox.com.` - `Incorrect API key provided. You can get an API key at https://console.soniox.com` - `Invalid or expired temporary API key. Create a new temporary API key and retry. See https://soniox.com/docs/guides/temporary-api-keys for details.` - The temporary API key cannot be used for this action. Each temporary API key is scoped to a specific `usage_type`; create a new key with the correct usage type.
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -436,7 +436,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // The organization's balance or monthly budget has been reached. Additional credits or a higher cap are required before making further requests.  `error_type` is one of [`organization_balance_exhausted`](https://soniox.com/docs/api-reference/errors#organization-balance-exhausted), [`organization_monthly_budget_exhausted`](https://soniox.com/docs/api-reference/errors#organization-monthly-budget-exhausted), or [`project_monthly_budget_exhausted`](https://soniox.com/docs/api-reference/errors#project-monthly-budget-exhausted).  Possible messages: - `Organization balance exhausted. Please either add funds manually or enable autopay.` - `Organization monthly budget exhausted. Please increase it.` - `Project monthly budget exhausted. Please increase it.` 
+                            // The organization's balance or monthly budget has been reached. Additional credits or a higher cap are required before making further requests.  `error_type` is one of [`organization_balance_exhausted`](https://soniox.com/docs/api-reference/errors#organization-balance-exhausted), [`organization_monthly_budget_exhausted`](https://soniox.com/docs/api-reference/errors#organization-monthly-budget-exhausted), or [`project_monthly_budget_exhausted`](https://soniox.com/docs/api-reference/errors#project-monthly-budget-exhausted).  Possible messages: - `Organization balance exhausted. Please either add funds manually or enable autopay.` - `Organization monthly budget exhausted. Please increase it.` - `Project monthly budget exhausted. Please increase it.`
                             if ((int)__response.StatusCode == 402)
                             {
                                 string? __content_402 = null;
@@ -473,7 +473,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // The temporary API key in use was created with a `max_session_duration_seconds` cap, and that duration has elapsed for the current session. Create a new temporary API key to start a new session.  `error_type`: [`temp_api_key_session_expired`](https://soniox.com/docs/api-reference/errors#temp-api-key-session-expired).  Possible messages: - `Temporary API key session duration limit exceeded. Create a new temporary API key to start a new session.` 
+                            // The temporary API key in use was created with a `max_session_duration_seconds` cap, and that duration has elapsed for the current session. Create a new temporary API key to start a new session.  `error_type`: [`temp_api_key_session_expired`](https://soniox.com/docs/api-reference/errors#temp-api-key-session-expired).  Possible messages: - `Temporary API key session duration limit exceeded. Create a new temporary API key to start a new session.`
                             if ((int)__response.StatusCode == 403)
                             {
                                 string? __content_403 = null;
@@ -510,7 +510,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // A backend call exceeded its deadline before completing. Retry the request.  `error_type`: [`request_timeout`](https://soniox.com/docs/api-reference/errors#request-timeout). 
+                            // A backend call exceeded its deadline before completing. Retry the request.  `error_type`: [`request_timeout`](https://soniox.com/docs/api-reference/errors#request-timeout).
                             if ((int)__response.StatusCode == 408)
                             {
                                 string? __content_408 = null;
@@ -547,7 +547,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // A usage or rate limit has been exceeded. You may retry after a delay or request an increase in limits via the Soniox Console.  `error_type`: [`limit_exceeded`](https://soniox.com/docs/api-reference/errors#limit-exceeded).  Possible messages: - `Requests per minute limit for text-to-speech has been exceeded for your organization.` - `Requests per minute limit for text-to-speech has been exceeded for your project.` - `Concurrent requests limit for text-to-speech has been exceeded for your organization.` - `Concurrent requests limit for text-to-speech has been exceeded for your project.` 
+                            // A usage or rate limit has been exceeded. You may retry after a delay or request an increase in limits via the Soniox Console.  `error_type`: [`limit_exceeded`](https://soniox.com/docs/api-reference/errors#limit-exceeded).  Possible messages: - `Requests per minute limit for text-to-speech has been exceeded for your organization.` - `Requests per minute limit for text-to-speech has been exceeded for your project.` - `Concurrent requests limit for text-to-speech has been exceeded for your organization.` - `Concurrent requests limit for text-to-speech has been exceeded for your project.`
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
@@ -584,7 +584,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // An unexpected server-side error occurred. The request may be retried.  `error_type`: [`internal_error`](https://soniox.com/docs/api-reference/errors#internal-error).  Possible messages: - `The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our support email support@soniox.com if you keep seeing this error.` 
+                            // An unexpected server-side error occurred. The request may be retried.  `error_type`: [`internal_error`](https://soniox.com/docs/api-reference/errors#internal-error).  Possible messages: - `The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our support email support@soniox.com if you keep seeing this error.`
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
@@ -621,7 +621,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // The service cannot accept the request right now (upstream overload, cache exhausted, shutdown). Retry with backoff. The numeric `(code N)` in the message identifies the sub-cause for support triage.  `error_type`: [`service_unavailable`](https://soniox.com/docs/api-reference/errors#service-unavailable).  Possible messages: - `Cannot continue request (code N). Please restart the request. Refer to: https://soniox.com/url/cannot-continue-request` 
+                            // The service cannot accept the request right now (upstream overload, cache exhausted, shutdown). Retry with backoff. The numeric `(code N)` in the message identifies the sub-cause for support triage.  `error_type`: [`service_unavailable`](https://soniox.com/docs/api-reference/errors#service-unavailable).  Possible messages: - `Cannot continue request (code N). Please restart the request. Refer to: https://soniox.com/url/cannot-continue-request`
                             if ((int)__response.StatusCode == 503)
                             {
                                 string? __content_503 = null;
@@ -789,7 +789,7 @@ namespace Soniox
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
 
             if (xRequestId != default)
@@ -994,7 +994,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Bad request. The request is malformed or contains invalid parameters.  `error_type` is one of [`invalid_request`](https://soniox.com/docs/api-reference/errors#invalid-request) or [`model_not_available`](https://soniox.com/docs/api-reference/errors#model-not-available).  Possible messages: - `Invalid JSON body` - `Missing required field: model` - `Model name is too long (max length 50).` - `Missing required field: language` - `Language is too long (max length 50).` - `Missing required field: voice` - `Voice is too long (max length 50).` - `Missing required field: audio_format` - `Audio format is too long (max length 50).` - `Missing required field: text` - `Text is too long (max length 5000).` - `API key is too long (max length 250).` - `Client reference ID is too long (max length 256).` - `Invalid voice '<voice>' for model '<model>'.` - `Invalid language '<language>' for model '<model>'.` - `The requested model is not available. See https://soniox.com/docs/tts/models for the list of supported TTS models.` (`error_type: model_not_available`) 
+                            // Bad request. The request is malformed or contains invalid parameters.  `error_type` is one of [`invalid_request`](https://soniox.com/docs/api-reference/errors#invalid-request) or [`model_not_available`](https://soniox.com/docs/api-reference/errors#model-not-available).  Possible messages: - `Invalid JSON body` - `Missing required field: model` - `Model name is too long (max length 50).` - `Missing required field: language` - `Language is too long (max length 50).` - `Missing required field: voice` - `Voice is too long (max length 50).` - `Missing required field: audio_format` - `Audio format is too long (max length 50).` - `Missing required field: text` - `Text is too long (max length 5000).` - `API key is too long (max length 250).` - `Client reference ID is too long (max length 256).` - `Invalid voice '<voice>' for model '<model>'.` - `Invalid language '<language>' for model '<model>'.` - `The requested model is not available. See https://soniox.com/docs/tts/models for the list of supported TTS models.` (`error_type: model_not_available`)
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -1031,7 +1031,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Authentication is missing or incorrect. Ensure a valid API key is provided before retrying.  `error_type`: [`unauthenticated`](https://soniox.com/docs/api-reference/errors#unauthenticated).  Possible messages: - `Missing API key. Provide it as an Authorization header (e.g. 'Authorization: Bearer <SONIOX_API_KEY>'). You can get an API key at https://console.soniox.com.` - `Authorization header must use the Bearer scheme (e.g. 'Authorization: Bearer <SONIOX_API_KEY>'). You can get an API key at https://console.soniox.com.` - `Incorrect API key provided. You can get an API key at https://console.soniox.com` - `Invalid or expired temporary API key. Create a new temporary API key and retry. See https://soniox.com/docs/guides/temporary-api-keys for details.` - The temporary API key cannot be used for this action. Each temporary API key is scoped to a specific `usage_type`; create a new key with the correct usage type. 
+                            // Authentication is missing or incorrect. Ensure a valid API key is provided before retrying.  `error_type`: [`unauthenticated`](https://soniox.com/docs/api-reference/errors#unauthenticated).  Possible messages: - `Missing API key. Provide it as an Authorization header (e.g. 'Authorization: Bearer <SONIOX_API_KEY>'). You can get an API key at https://console.soniox.com.` - `Authorization header must use the Bearer scheme (e.g. 'Authorization: Bearer <SONIOX_API_KEY>'). You can get an API key at https://console.soniox.com.` - `Incorrect API key provided. You can get an API key at https://console.soniox.com` - `Invalid or expired temporary API key. Create a new temporary API key and retry. See https://soniox.com/docs/guides/temporary-api-keys for details.` - The temporary API key cannot be used for this action. Each temporary API key is scoped to a specific `usage_type`; create a new key with the correct usage type.
                             if ((int)__response.StatusCode == 401)
                             {
                                 string? __content_401 = null;
@@ -1068,7 +1068,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // The organization's balance or monthly budget has been reached. Additional credits or a higher cap are required before making further requests.  `error_type` is one of [`organization_balance_exhausted`](https://soniox.com/docs/api-reference/errors#organization-balance-exhausted), [`organization_monthly_budget_exhausted`](https://soniox.com/docs/api-reference/errors#organization-monthly-budget-exhausted), or [`project_monthly_budget_exhausted`](https://soniox.com/docs/api-reference/errors#project-monthly-budget-exhausted).  Possible messages: - `Organization balance exhausted. Please either add funds manually or enable autopay.` - `Organization monthly budget exhausted. Please increase it.` - `Project monthly budget exhausted. Please increase it.` 
+                            // The organization's balance or monthly budget has been reached. Additional credits or a higher cap are required before making further requests.  `error_type` is one of [`organization_balance_exhausted`](https://soniox.com/docs/api-reference/errors#organization-balance-exhausted), [`organization_monthly_budget_exhausted`](https://soniox.com/docs/api-reference/errors#organization-monthly-budget-exhausted), or [`project_monthly_budget_exhausted`](https://soniox.com/docs/api-reference/errors#project-monthly-budget-exhausted).  Possible messages: - `Organization balance exhausted. Please either add funds manually or enable autopay.` - `Organization monthly budget exhausted. Please increase it.` - `Project monthly budget exhausted. Please increase it.`
                             if ((int)__response.StatusCode == 402)
                             {
                                 string? __content_402 = null;
@@ -1105,7 +1105,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // The temporary API key in use was created with a `max_session_duration_seconds` cap, and that duration has elapsed for the current session. Create a new temporary API key to start a new session.  `error_type`: [`temp_api_key_session_expired`](https://soniox.com/docs/api-reference/errors#temp-api-key-session-expired).  Possible messages: - `Temporary API key session duration limit exceeded. Create a new temporary API key to start a new session.` 
+                            // The temporary API key in use was created with a `max_session_duration_seconds` cap, and that duration has elapsed for the current session. Create a new temporary API key to start a new session.  `error_type`: [`temp_api_key_session_expired`](https://soniox.com/docs/api-reference/errors#temp-api-key-session-expired).  Possible messages: - `Temporary API key session duration limit exceeded. Create a new temporary API key to start a new session.`
                             if ((int)__response.StatusCode == 403)
                             {
                                 string? __content_403 = null;
@@ -1142,7 +1142,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // A backend call exceeded its deadline before completing. Retry the request.  `error_type`: [`request_timeout`](https://soniox.com/docs/api-reference/errors#request-timeout). 
+                            // A backend call exceeded its deadline before completing. Retry the request.  `error_type`: [`request_timeout`](https://soniox.com/docs/api-reference/errors#request-timeout).
                             if ((int)__response.StatusCode == 408)
                             {
                                 string? __content_408 = null;
@@ -1179,7 +1179,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // A usage or rate limit has been exceeded. You may retry after a delay or request an increase in limits via the Soniox Console.  `error_type`: [`limit_exceeded`](https://soniox.com/docs/api-reference/errors#limit-exceeded).  Possible messages: - `Requests per minute limit for text-to-speech has been exceeded for your organization.` - `Requests per minute limit for text-to-speech has been exceeded for your project.` - `Concurrent requests limit for text-to-speech has been exceeded for your organization.` - `Concurrent requests limit for text-to-speech has been exceeded for your project.` 
+                            // A usage or rate limit has been exceeded. You may retry after a delay or request an increase in limits via the Soniox Console.  `error_type`: [`limit_exceeded`](https://soniox.com/docs/api-reference/errors#limit-exceeded).  Possible messages: - `Requests per minute limit for text-to-speech has been exceeded for your organization.` - `Requests per minute limit for text-to-speech has been exceeded for your project.` - `Concurrent requests limit for text-to-speech has been exceeded for your organization.` - `Concurrent requests limit for text-to-speech has been exceeded for your project.`
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
@@ -1216,7 +1216,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // An unexpected server-side error occurred. The request may be retried.  `error_type`: [`internal_error`](https://soniox.com/docs/api-reference/errors#internal-error).  Possible messages: - `The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our support email support@soniox.com if you keep seeing this error.` 
+                            // An unexpected server-side error occurred. The request may be retried.  `error_type`: [`internal_error`](https://soniox.com/docs/api-reference/errors#internal-error).  Possible messages: - `The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our support email support@soniox.com if you keep seeing this error.`
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
@@ -1253,7 +1253,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // The service cannot accept the request right now (upstream overload, cache exhausted, shutdown). Retry with backoff. The numeric `(code N)` in the message identifies the sub-cause for support triage.  `error_type`: [`service_unavailable`](https://soniox.com/docs/api-reference/errors#service-unavailable).  Possible messages: - `Cannot continue request (code N). Please restart the request. Refer to: https://soniox.com/url/cannot-continue-request` 
+                            // The service cannot accept the request right now (upstream overload, cache exhausted, shutdown). Retry with backoff. The numeric `(code N)` in the message identifies the sub-cause for support triage.  `error_type`: [`service_unavailable`](https://soniox.com/docs/api-reference/errors#service-unavailable).  Possible messages: - `Cannot continue request (code N). Please restart the request. Refer to: https://soniox.com/url/cannot-continue-request`
                             if ((int)__response.StatusCode == 503)
                             {
                                 string? __content_503 = null;

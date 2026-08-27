@@ -4,16 +4,16 @@
 namespace Soniox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum GetUsageLogsSort2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EndTimeAsc,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EndTimeDesc,
     }

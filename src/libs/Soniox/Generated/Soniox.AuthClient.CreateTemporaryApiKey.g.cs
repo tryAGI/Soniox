@@ -141,7 +141,7 @@ namespace Soniox
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
@@ -339,7 +339,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Invalid request.  Error types: - `invalid_request`: One or more body fields are missing or invalid (`usage_type`, `expires_in_seconds` out of range, `client_reference_id` too long, `max_session_duration_seconds` out of range, etc.). Inspect `validation_errors`. 
+                            // Invalid request.  Error types: - `invalid_request`: One or more body fields are missing or invalid (`usage_type`, `expires_in_seconds` out of range, `client_reference_id` too long, `max_session_duration_seconds` out of range, etc.). Inspect `validation_errors`.
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -413,7 +413,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate or other capacity limit. The `message` describes which limit was hit. 
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate or other capacity limit. The `message` describes which limit was hit.
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
