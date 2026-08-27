@@ -127,7 +127,7 @@ namespace Soniox
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::Soniox.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
@@ -356,7 +356,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Transcription not found.  Error types: - `transcription_not_found`: No transcription with this ID exists in the project the API key is scoped to (it may have been deleted, the ID may be wrong, or it may belong to a different project). 
+                            // Transcription not found.  Error types: - `transcription_not_found`: No transcription with this ID exists in the project the API key is scoped to (it may have been deleted, the ID may be wrong, or it may belong to a different project).
                             if ((int)__response.StatusCode == 404)
                             {
                                 string? __content_404 = null;
@@ -393,7 +393,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Invalid transcription state.  Error types: - `transcription_invalid_state`: The transcription cannot be deleted in its current state — it is still processing. Wait until `status` reaches `completed` or `error` and retry. 
+                            // Invalid transcription state.  Error types: - `transcription_invalid_state`: The transcription cannot be deleted in its current state — it is still processing. Wait until `status` reaches `completed` or `error` and retry.
                             if ((int)__response.StatusCode == 409)
                             {
                                 string? __content_409 = null;
@@ -430,7 +430,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate or other capacity limit. The `message` describes which limit was hit. 
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate or other capacity limit. The `message` describes which limit was hit.
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;

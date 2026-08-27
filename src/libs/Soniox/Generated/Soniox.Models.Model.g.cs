@@ -4,7 +4,7 @@
 namespace Soniox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class Model
     {
@@ -50,28 +50,28 @@ namespace Soniox
         public required global::System.Collections.Generic.IList<global::Soniox.Language> Languages { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("supports_language_hints_strict")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required bool SupportsLanguageHintsStrict { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("supports_max_endpoint_delay")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required bool SupportsMaxEndpointDelay { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("supports_endpoint_sensitivity")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required bool SupportsEndpointSensitivity { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("supports_endpoint_latency_adjustment")]
         [global::System.Text.Json.Serialization.JsonRequired]

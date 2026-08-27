@@ -139,7 +139,7 @@ namespace Soniox
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
@@ -381,7 +381,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Invalid request.  Error types: - `invalid_request`: One or more parts of the multipart body are missing or invalid (missing `file`, filename or `client_reference_id` too long, malformed multipart body), or the uploaded file exceeds the per-file upload limit. 
+                            // Invalid request.  Error types: - `invalid_request`: One or more parts of the multipart body are missing or invalid (missing `file`, filename or `client_reference_id` too long, malformed multipart body), or the uploaded file exceeds the per-file upload limit.
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -455,7 +455,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate, the total file count or total file size cap (organization or project), or this upload would exceed those caps. The `message` describes which limit was hit. Delete unused files via `DELETE /v1/files/{id}` or request a higher limit in the Soniox Console. 
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate, the total file count or total file size cap (organization or project), or this upload would exceed those caps. The `message` describes which limit was hit. Delete unused files via `DELETE /v1/files/{id}` or request a higher limit in the Soniox Console.
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
@@ -751,7 +751,7 @@ namespace Soniox
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
@@ -993,7 +993,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Invalid request.  Error types: - `invalid_request`: One or more parts of the multipart body are missing or invalid (missing `file`, filename or `client_reference_id` too long, malformed multipart body), or the uploaded file exceeds the per-file upload limit. 
+                            // Invalid request.  Error types: - `invalid_request`: One or more parts of the multipart body are missing or invalid (missing `file`, filename or `client_reference_id` too long, malformed multipart body), or the uploaded file exceeds the per-file upload limit.
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -1067,7 +1067,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate, the total file count or total file size cap (organization or project), or this upload would exceed those caps. The `message` describes which limit was hit. Delete unused files via `DELETE /v1/files/{id}` or request a higher limit in the Soniox Console. 
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate, the total file count or total file size cap (organization or project), or this upload would exceed those caps. The `message` describes which limit was hit. Delete unused files via `DELETE /v1/files/{id}` or request a higher limit in the Soniox Console.
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
@@ -1319,7 +1319,7 @@ namespace Soniox
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
@@ -1561,7 +1561,7 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Invalid request.  Error types: - `invalid_request`: One or more parts of the multipart body are missing or invalid (missing `file`, filename or `client_reference_id` too long, malformed multipart body), or the uploaded file exceeds the per-file upload limit. 
+                            // Invalid request.  Error types: - `invalid_request`: One or more parts of the multipart body are missing or invalid (missing `file`, filename or `client_reference_id` too long, malformed multipart body), or the uploaded file exceeds the per-file upload limit.
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -1635,7 +1635,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate, the total file count or total file size cap (organization or project), or this upload would exceed those caps. The `message` describes which limit was hit. Delete unused files via `DELETE /v1/files/{id}` or request a higher limit in the Soniox Console. 
+                            // Rate / capacity limit exceeded.  Error types: - `limit_exceeded`: The caller hit a per-minute request rate, the total file count or total file size cap (organization or project), or this upload would exceed those caps. The `message` describes which limit was hit. Delete unused files via `DELETE /v1/files/{id}` or request a higher limit in the Soniox Console.
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;

@@ -5,12 +5,12 @@
 namespace Soniox.Realtime.Tts
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ServerEvent : global::System.IEquatable<ServerEvent>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Soniox.Realtime.Tts.TtsAudio? TtsAudio { get; init; }
@@ -19,7 +19,7 @@ namespace Soniox.Realtime.Tts
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TtsAudio))]
@@ -27,7 +27,7 @@ namespace Soniox.Realtime.Tts
         public bool IsTtsAudio => TtsAudio != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTtsAudio(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Soniox.Realtime.Tts
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Soniox.Realtime.Tts.TtsAudio PickTtsAudio() => IsTtsAudio
             ? TtsAudio!
             : throw new global::System.InvalidOperationException($"Expected union variant 'TtsAudio' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Soniox.Realtime.Tts.TtsTerminated? TtsTerminated { get; init; }
@@ -56,7 +56,7 @@ namespace Soniox.Realtime.Tts
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TtsTerminated))]
@@ -64,7 +64,7 @@ namespace Soniox.Realtime.Tts
         public bool IsTtsTerminated => TtsTerminated != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTtsTerminated(
 #if NET6_0_OR_GREATER
@@ -77,14 +77,14 @@ namespace Soniox.Realtime.Tts
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Soniox.Realtime.Tts.TtsTerminated PickTtsTerminated() => IsTtsTerminated
             ? TtsTerminated!
             : throw new global::System.InvalidOperationException($"Expected union variant 'TtsTerminated' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Soniox.Realtime.Tts.TtsError? TtsError { get; init; }
@@ -93,7 +93,7 @@ namespace Soniox.Realtime.Tts
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TtsError))]
@@ -101,7 +101,7 @@ namespace Soniox.Realtime.Tts
         public bool IsTtsError => TtsError != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTtsError(
 #if NET6_0_OR_GREATER
@@ -114,23 +114,23 @@ namespace Soniox.Realtime.Tts
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Soniox.Realtime.Tts.TtsError PickTtsError() => IsTtsError
             ? TtsError!
             : throw new global::System.InvalidOperationException($"Expected union variant 'TtsError' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ServerEvent(global::Soniox.Realtime.Tts.TtsAudio value) => new ServerEvent((global::Soniox.Realtime.Tts.TtsAudio?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Soniox.Realtime.Tts.TtsAudio?(ServerEvent @this) => @this.TtsAudio;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ServerEvent(global::Soniox.Realtime.Tts.TtsAudio? value)
         {
@@ -138,22 +138,22 @@ namespace Soniox.Realtime.Tts
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ServerEvent FromTtsAudio(global::Soniox.Realtime.Tts.TtsAudio? value) => new ServerEvent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ServerEvent(global::Soniox.Realtime.Tts.TtsTerminated value) => new ServerEvent((global::Soniox.Realtime.Tts.TtsTerminated?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Soniox.Realtime.Tts.TtsTerminated?(ServerEvent @this) => @this.TtsTerminated;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ServerEvent(global::Soniox.Realtime.Tts.TtsTerminated? value)
         {
@@ -161,22 +161,22 @@ namespace Soniox.Realtime.Tts
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ServerEvent FromTtsTerminated(global::Soniox.Realtime.Tts.TtsTerminated? value) => new ServerEvent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ServerEvent(global::Soniox.Realtime.Tts.TtsError value) => new ServerEvent((global::Soniox.Realtime.Tts.TtsError?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Soniox.Realtime.Tts.TtsError?(ServerEvent @this) => @this.TtsError;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ServerEvent(global::Soniox.Realtime.Tts.TtsError? value)
         {
@@ -184,12 +184,12 @@ namespace Soniox.Realtime.Tts
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ServerEvent FromTtsError(global::Soniox.Realtime.Tts.TtsError? value) => new ServerEvent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ServerEvent(
             global::Soniox.Realtime.Tts.TtsAudio? ttsAudio,
@@ -203,25 +203,25 @@ namespace Soniox.Realtime.Tts
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             TtsError as object ??
             TtsTerminated as object ??
-            TtsAudio as object 
+            TtsAudio as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             TtsAudio?.ToString() ??
             TtsTerminated?.ToString() ??
-            TtsError?.ToString() 
+            TtsError?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -229,7 +229,7 @@ namespace Soniox.Realtime.Tts
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Soniox.Realtime.Tts.TtsAudio, TResult>? ttsAudio = null,
@@ -259,7 +259,7 @@ namespace Soniox.Realtime.Tts
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Soniox.Realtime.Tts.TtsAudio>? ttsAudio = null,
@@ -289,7 +289,7 @@ namespace Soniox.Realtime.Tts
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Soniox.Realtime.Tts.TtsAudio>? ttsAudio = null,
@@ -317,7 +317,7 @@ namespace Soniox.Realtime.Tts
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -340,19 +340,19 @@ namespace Soniox.Realtime.Tts
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ServerEvent other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Soniox.Realtime.Tts.TtsAudio?>.Default.Equals(TtsAudio, other.TtsAudio) &&
                 global::System.Collections.Generic.EqualityComparer<global::Soniox.Realtime.Tts.TtsTerminated?>.Default.Equals(TtsTerminated, other.TtsTerminated) &&
-                global::System.Collections.Generic.EqualityComparer<global::Soniox.Realtime.Tts.TtsError?>.Default.Equals(TtsError, other.TtsError) 
+                global::System.Collections.Generic.EqualityComparer<global::Soniox.Realtime.Tts.TtsError?>.Default.Equals(TtsError, other.TtsError)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ServerEvent obj1, ServerEvent obj2)
         {
@@ -360,7 +360,7 @@ namespace Soniox.Realtime.Tts
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ServerEvent obj1, ServerEvent obj2)
         {
@@ -368,7 +368,7 @@ namespace Soniox.Realtime.Tts
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

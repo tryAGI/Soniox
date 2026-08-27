@@ -60,63 +60,63 @@ namespace Soniox
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AuthClient Auth { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConcurrencyLimitsClient ConcurrencyLimits { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConcurrentStreamsHistoryClient ConcurrentStreamsHistory { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FilesClient Files { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ModelsClient Models { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TranscriptionsClient Transcriptions { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TtsClient Tts { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TtsModelsClient TtsModels { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UsageLogsClient UsageLogs { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UsageSummaryClient UsageSummary { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoicesClient Voices { get; }
 

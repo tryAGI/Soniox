@@ -4,16 +4,16 @@
 namespace Soniox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TranslationConfigType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OneWay,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TwoWay,
     }

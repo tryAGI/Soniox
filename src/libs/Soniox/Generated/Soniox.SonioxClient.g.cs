@@ -40,7 +40,7 @@ namespace Soniox
         internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Soniox.SourceGenerationContext.Default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
@@ -50,7 +50,7 @@ namespace Soniox
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AuthClient Auth => new AuthClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -60,7 +60,7 @@ namespace Soniox
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConcurrencyLimitsClient ConcurrencyLimits => new ConcurrencyLimitsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -70,7 +70,7 @@ namespace Soniox
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConcurrentStreamsHistoryClient ConcurrentStreamsHistory => new ConcurrentStreamsHistoryClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -80,7 +80,7 @@ namespace Soniox
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FilesClient Files => new FilesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -90,7 +90,7 @@ namespace Soniox
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ModelsClient Models => new ModelsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -100,7 +100,7 @@ namespace Soniox
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TranscriptionsClient Transcriptions => new TranscriptionsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -110,7 +110,7 @@ namespace Soniox
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TtsClient Tts => new TtsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -120,7 +120,7 @@ namespace Soniox
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TtsModelsClient TtsModels => new TtsModelsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -130,7 +130,7 @@ namespace Soniox
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UsageLogsClient UsageLogs => new UsageLogsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -140,7 +140,7 @@ namespace Soniox
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UsageSummaryClient UsageSummary => new UsageSummaryClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -150,7 +150,7 @@ namespace Soniox
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoicesClient Voices => new VoicesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {

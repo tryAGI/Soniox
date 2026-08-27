@@ -274,7 +274,7 @@ namespace Soniox.Realtime
         public event global::System.EventHandler<AutoSDKWebSocketMessageEventArgs<global::Soniox.Realtime.RealtimeError>>? RealtimeErrorReceived;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; } = global::Soniox.Realtime.RealtimeSourceGenerationContext.Default;

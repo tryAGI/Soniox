@@ -4,20 +4,20 @@
 namespace Soniox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TTSVoiceGender
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Female,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Male,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Neutral,
     }

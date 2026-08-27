@@ -126,7 +126,7 @@ namespace Soniox
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::Soniox.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
@@ -391,7 +391,7 @@ namespace Soniox
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Rate or usage limit exceeded.  Error types: - `limit_exceeded`:   - `Requests per minute limit has been exceeded for your organization.`   - `Requests per minute limit has been exceeded for your project.` 
+                            // Rate or usage limit exceeded.  Error types: - `limit_exceeded`:   - `Requests per minute limit has been exceeded for your organization.`   - `Requests per minute limit has been exceeded for your project.`
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;

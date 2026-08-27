@@ -126,7 +126,7 @@ namespace Soniox
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::Soniox.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,

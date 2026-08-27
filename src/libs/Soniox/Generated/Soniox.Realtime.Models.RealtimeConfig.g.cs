@@ -4,7 +4,7 @@
 namespace Soniox.Realtime
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class RealtimeConfig
     {
@@ -97,7 +97,7 @@ namespace Soniox.Realtime
         public int? EndpointLatencyAdjustmentLevel { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("translation")]
         public global::Soniox.Realtime.TranslationConfig? Translation { get; set; }

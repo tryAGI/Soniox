@@ -4,7 +4,7 @@
 namespace Soniox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TTSModel
     {
@@ -43,7 +43,7 @@ namespace Soniox
         public required global::System.Collections.Generic.IList<global::Soniox.TTSVoice> Voices { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("supports_timestamps")]
         public bool? SupportsTimestamps { get; set; }
