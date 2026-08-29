@@ -22,6 +22,7 @@ namespace Soniox.Realtime
             typeof(global::Soniox.Realtime.JsonConverters.OneOfJsonConverter<string, object>),
         })]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.Realtime.JsonSerializerContextTypes))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.Realtime.RealtimeConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
