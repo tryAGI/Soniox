@@ -4,7 +4,7 @@
 namespace Soniox
 {
     /// <summary>
-    /// Example: {"api_key":"temp:WYJ67RBEFUWQXXPKYPD2UGXKWB","expires_at":"2025-02-22T22:47:37.150Z"}
+    /// Example: {"api_key":"snx_temp_AcsDGHvigal7tHRzzzqJI7EdJ5CFwk9C0PtXN_s_cUKJ.Oo1TyosFa7b3rgAcXA2bayqBFO7667gXROEu0mH0U4vgvlNzCqVGgTzitabbXlK7FKH-sSy0F1NKI1OOJzQaAw.YPj4oA","expires_at":"2025-02-22T22:47:37.150Z"}
     /// </summary>
     public sealed partial class CreateTemporaryApiKeyResponse
     {

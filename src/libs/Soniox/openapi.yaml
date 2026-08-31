@@ -1724,7 +1724,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/CreateTemporaryApiKeyResponse'
               example:
-                api_key: temp:WYJ67RBEFUWQXXPKYPD2UGXKWB
+                api_key: snx_temp_AcsDGHvigal7tHRzzzqJI7EdJ5CFwk9C0PtXN_s_cUKJ.Oo1TyosFa7b3rgAcXA2bayqBFO7667gXROEu0mH0U4vgvlNzCqVGgTzitabbXlK7FKH-sSy0F1NKI1OOJzQaAw.YPj4oA
                 expires_at: '2025-02-22T22:47:37.150Z'
         '400':
           description: |
@@ -4306,7 +4306,7 @@ components:
       type: object
     CreateTemporaryApiKeyResponse:
       example:
-        api_key: temp:WYJ67RBEFUWQXXPKYPD2UGXKWB
+        api_key: snx_temp_AcsDGHvigal7tHRzzzqJI7EdJ5CFwk9C0PtXN_s_cUKJ.Oo1TyosFa7b3rgAcXA2bayqBFO7667gXROEu0mH0U4vgvlNzCqVGgTzitabbXlK7FKH-sSy0F1NKI1OOJzQaAw.YPj4oA
         expires_at: '2025-02-22T22:47:37.150Z'
       properties:
         api_key:
