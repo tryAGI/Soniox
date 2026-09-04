@@ -22,7 +22,7 @@ namespace Soniox
         public string? AudioUrl { get; set; }
 
         /// <summary>
-        /// ID of the uploaded file to transcribe. Cannot be specified if `audio_url` is specified.
+        /// ID of the uploaded file to transcribe. Cannot be specified if `audio_url` is specified. Keep the file until the transcription reaches `completed` or `error`; deleting it earlier fails the transcription with `file_not_found`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("file_id")]
         public global::System.Guid? FileId { get; set; }
@@ -104,7 +104,7 @@ namespace Soniox
         /// URL of the audio file to transcribe. Cannot be specified if `file_id` is specified.
         /// </param>
         /// <param name="fileId">
-        /// ID of the uploaded file to transcribe. Cannot be specified if `audio_url` is specified.
+        /// ID of the uploaded file to transcribe. Cannot be specified if `audio_url` is specified. Keep the file until the transcription reaches `completed` or `error`; deleting it earlier fails the transcription with `file_not_found`.
         /// </param>
         /// <param name="languageHints">
         /// Expected languages in the audio. If not specified, languages are automatically detected.

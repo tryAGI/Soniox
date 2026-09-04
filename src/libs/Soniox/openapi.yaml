@@ -444,7 +444,7 @@ paths:
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
                 more_info: https://soniox.com/docs/api-reference/errors#internal-error
-      description: Permanently deletes specified file.
+      description: Permanently deletes specified file. If a transcription that has not started processing yet still references the file, that transcription fails with `file_not_found`, so delete the file only after the transcription reaches `completed` or `error`.
       tags:
         - Files
       security:
@@ -950,7 +950,7 @@ paths:
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
                 more_info: https://soniox.com/docs/api-reference/errors#internal-error
-      description: Permanently deletes a transcription and its associated files. Cannot delete transcriptions that are currently processing.
+      description: Permanently deletes a transcription. Files uploaded through the Files API are not deleted; use the delete file endpoint to remove them. Cannot delete transcriptions that are currently processing.
       tags:
         - Transcriptions
       security:
@@ -2938,7 +2938,7 @@ components:
             - format: uuid
               type: string
             - type: 'null'
-          description: ID of the uploaded file to transcribe. Cannot be specified if `audio_url` is specified.
+          description: ID of the uploaded file to transcribe. Cannot be specified if `audio_url` is specified. Keep the file until the transcription reaches `completed` or `error`; deleting it earlier fails the transcription with `file_not_found`.
           title: File Id
         language_hints:
           anyOf:
