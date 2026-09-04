@@ -38,7 +38,7 @@ namespace Soniox
 
         /// <summary>
         /// Delete transcription<br/>
-        /// Permanently deletes a transcription and its associated files. Cannot delete transcriptions that are currently processing.
+        /// Permanently deletes a transcription. Files uploaded through the Files API are not deleted; use the delete file endpoint to remove them. Cannot delete transcriptions that are currently processing.
         /// </summary>
         /// <param name="transcriptionId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -57,7 +57,7 @@ namespace Soniox
         }
         /// <summary>
         /// Delete transcription<br/>
-        /// Permanently deletes a transcription and its associated files. Cannot delete transcriptions that are currently processing.
+        /// Permanently deletes a transcription. Files uploaded through the Files API are not deleted; use the delete file endpoint to remove them. Cannot delete transcriptions that are currently processing.
         /// </summary>
         /// <param name="transcriptionId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

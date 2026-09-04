@@ -41,7 +41,7 @@ namespace Soniox
         /// URL of the audio file to transcribe. Cannot be specified if `file_id` is specified.
         /// </param>
         /// <param name="fileId">
-        /// ID of the uploaded file to transcribe. Cannot be specified if `audio_url` is specified.
+        /// ID of the uploaded file to transcribe. Cannot be specified if `audio_url` is specified. Keep the file until the transcription reaches `completed` or `error`; deleting it earlier fails the transcription with `file_not_found`.
         /// </param>
         /// <param name="languageHints">
         /// Expected languages in the audio. If not specified, languages are automatically detected.
