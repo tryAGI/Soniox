@@ -46,7 +46,21 @@ namespace Soniox
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("supports_timestamps")]
-        public bool? SupportsTimestamps { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool SupportsTimestamps { get; set; }
+
+        /// <summary>
+        /// Whether the model supports voice cloning, that is voices created with `POST /v1/voices`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("supports_voice_cloning")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool SupportsVoiceCloning { get; set; }
+
+        /// <summary>
+        /// Maximum duration (in milliseconds) of the reference audio accepted for voice cloning. Null when the model does not support voice cloning.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voice_cloning_max_audio_duration_ms")]
+        public int? VoiceCloningMaxAudioDurationMs { get; set; }
 
         /// <summary>
         /// Whether the model supports adjusting the speaking rate via the `speed` parameter.
@@ -56,18 +70,16 @@ namespace Soniox
         public required bool SupportsSpeedAdjustment { get; set; }
 
         /// <summary>
-        /// Minimum supported speaking rate.
+        /// Minimum supported speaking rate. Null when the model does not support speed adjustment.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speed_min")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double SpeedMin { get; set; }
+        public double? SpeedMin { get; set; }
 
         /// <summary>
-        /// Maximum supported speaking rate.
+        /// Maximum supported speaking rate. Null when the model does not support speed adjustment.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speed_max")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double SpeedMax { get; set; }
+        public double? SpeedMax { get; set; }
 
         /// <summary>
         /// Whether the model supports shortening the pauses between words via the `reduce_silence` parameter.
@@ -97,14 +109,12 @@ namespace Soniox
         /// <param name="voices">
         /// List of available voices for this model.
         /// </param>
+        /// <param name="supportsTimestamps"></param>
+        /// <param name="supportsVoiceCloning">
+        /// Whether the model supports voice cloning, that is voices created with `POST /v1/voices`.
+        /// </param>
         /// <param name="supportsSpeedAdjustment">
         /// Whether the model supports adjusting the speaking rate via the `speed` parameter.
-        /// </param>
-        /// <param name="speedMin">
-        /// Minimum supported speaking rate.
-        /// </param>
-        /// <param name="speedMax">
-        /// Maximum supported speaking rate.
         /// </param>
         /// <param name="supportsSilenceReduction">
         /// Whether the model supports shortening the pauses between words via the `reduce_silence` parameter.
@@ -112,7 +122,15 @@ namespace Soniox
         /// <param name="aliasedModelId">
         /// If this is an alias, the id of the aliased model.
         /// </param>
-        /// <param name="supportsTimestamps"></param>
+        /// <param name="voiceCloningMaxAudioDurationMs">
+        /// Maximum duration (in milliseconds) of the reference audio accepted for voice cloning. Null when the model does not support voice cloning.
+        /// </param>
+        /// <param name="speedMin">
+        /// Minimum supported speaking rate. Null when the model does not support speed adjustment.
+        /// </param>
+        /// <param name="speedMax">
+        /// Maximum supported speaking rate. Null when the model does not support speed adjustment.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -121,12 +139,14 @@ namespace Soniox
             string name,
             global::System.Collections.Generic.IList<global::Soniox.Language> languages,
             global::System.Collections.Generic.IList<global::Soniox.TTSVoice> voices,
+            bool supportsTimestamps,
+            bool supportsVoiceCloning,
             bool supportsSpeedAdjustment,
-            double speedMin,
-            double speedMax,
             bool supportsSilenceReduction,
             string? aliasedModelId,
-            bool? supportsTimestamps)
+            int? voiceCloningMaxAudioDurationMs,
+            double? speedMin,
+            double? speedMax)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.AliasedModelId = aliasedModelId;
@@ -134,6 +154,8 @@ namespace Soniox
             this.Languages = languages ?? throw new global::System.ArgumentNullException(nameof(languages));
             this.Voices = voices ?? throw new global::System.ArgumentNullException(nameof(voices));
             this.SupportsTimestamps = supportsTimestamps;
+            this.SupportsVoiceCloning = supportsVoiceCloning;
+            this.VoiceCloningMaxAudioDurationMs = voiceCloningMaxAudioDurationMs;
             this.SupportsSpeedAdjustment = supportsSpeedAdjustment;
             this.SpeedMin = speedMin;
             this.SpeedMax = speedMax;
