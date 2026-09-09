@@ -265,119 +265,135 @@ namespace Soniox
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.CreateTTSPayload? Type58 { get; set; }
+        public global::Soniox.TTSVoiceAge? Type58 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.TTSApiError? Type59 { get; set; }
+        public global::Soniox.TTSVoiceDetails? Type59 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.CreateTemporaryApiKeyResponse? Type60 { get; set; }
+        public global::Soniox.GetSharedVoicesResponse? Type60 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.CreateTemporaryApiKeyPayload? Type61 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.TTSVoiceDetails>? Type61 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.TemporaryApiKeyUsageType? Type62 { get; set; }
+        public global::Soniox.CreateTTSPayload? Type62 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.UsageLogsSort? Type63 { get; set; }
+        public global::Soniox.TTSApiError? Type63 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.GetUsageLogsPayload? Type64 { get; set; }
+        public global::Soniox.CreateTemporaryApiKeyResponse? Type64 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.GetUsageLogsPayloadSort? Type65 { get; set; }
+        public global::Soniox.CreateTemporaryApiKeyPayload? Type65 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.GetUsageLogsResponse? Type66 { get; set; }
+        public global::Soniox.TemporaryApiKeyUsageType? Type66 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Soniox.UsageLogEntry>? Type67 { get; set; }
+        public global::Soniox.UsageLogsSort? Type67 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.UsageLogEntry? Type68 { get; set; }
+        public global::Soniox.GetUsageLogsPayload? Type68 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.GetUsageSummaryResponse? Type69 { get; set; }
+        public global::Soniox.GetUsageLogsPayloadSort? Type69 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.UsageSummaryEntry? Type70 { get; set; }
+        public global::Soniox.GetUsageLogsResponse? Type70 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Soniox.UsageSummaryEntry>? Type71 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.UsageLogEntry>? Type71 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.DateTime>? Type72 { get; set; }
+        public global::Soniox.UsageLogEntry? Type72 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<int>? Type73 { get; set; }
+        public global::Soniox.GetUsageSummaryResponse? Type73 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.GetConcurrencyLimitsResponse? Type74 { get; set; }
+        public global::Soniox.UsageSummaryEntry? Type74 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.ScopeValues? Type75 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.UsageSummaryEntry>? Type75 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.CurrentValues? Type76 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.DateTime>? Type76 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.LimitValues? Type77 { get; set; }
+        public global::System.Collections.Generic.IList<int>? Type77 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.GetConcurrentStreamsHistoryResponse? Type78 { get; set; }
+        public global::Soniox.GetConcurrencyLimitsResponse? Type78 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.ConcurrentStreamKind? Type79 { get; set; }
+        public global::Soniox.ScopeValues? Type79 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Soniox.ConcurrentStreamsHistoryEntry>? Type80 { get; set; }
+        public global::Soniox.CurrentValues? Type80 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.ConcurrentStreamsHistoryEntry? Type81 { get; set; }
+        public global::Soniox.LimitValues? Type81 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.UploadFileRequest? Type82 { get; set; }
+        public global::Soniox.GetConcurrentStreamsHistoryResponse? Type82 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public byte[]? Type83 { get; set; }
+        public global::Soniox.ConcurrentStreamKind? Type83 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.CreateVoiceRequest? Type84 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.ConcurrentStreamsHistoryEntry>? Type84 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.GetUsageLogsSort2? Type85 { get; set; }
+        public global::Soniox.ConcurrentStreamsHistoryEntry? Type85 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.GetConcurrentStreamsHistoryKind2? Type86 { get; set; }
+        public global::Soniox.UploadFileRequest? Type86 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public byte[]? Type87 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.CreateVoiceRequest? Type88 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.GetUsageLogsSort2? Type89 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.GetConcurrentStreamsHistoryKind2? Type90 { get; set; }
 
         /// <summary>
         ///
@@ -438,22 +454,26 @@ namespace Soniox
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Soniox.UsageLogEntry>? ListType14 { get; set; }
+        public global::System.Collections.Generic.List<global::Soniox.TTSVoiceDetails>? ListType14 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Soniox.UsageSummaryEntry>? ListType15 { get; set; }
+        public global::System.Collections.Generic.List<global::Soniox.UsageLogEntry>? ListType15 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::System.DateTime>? ListType16 { get; set; }
+        public global::System.Collections.Generic.List<global::Soniox.UsageSummaryEntry>? ListType16 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<int>? ListType17 { get; set; }
+        public global::System.Collections.Generic.List<global::System.DateTime>? ListType17 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.List<global::Soniox.ConcurrentStreamsHistoryEntry>? ListType18 { get; set; }
+        public global::System.Collections.Generic.List<int>? ListType18 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Soniox.ConcurrentStreamsHistoryEntry>? ListType19 { get; set; }
     }
 }

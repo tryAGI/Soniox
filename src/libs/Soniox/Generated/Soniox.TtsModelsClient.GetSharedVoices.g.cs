@@ -7,7 +7,7 @@ namespace Soniox
     {
 
 
-        private static readonly global::Soniox.EndPointSecurityRequirement s_GetTtsModelsSecurityRequirement0 =
+        private static readonly global::Soniox.EndPointSecurityRequirement s_GetSharedVoicesSecurityRequirement0 =
             new global::Soniox.EndPointSecurityRequirement
             {
                 Authorizations = new global::Soniox.EndPointAuthorizationRequirement[]
@@ -21,36 +21,93 @@ namespace Soniox
                     },
                 },
             };
-        private static readonly global::Soniox.EndPointSecurityRequirement[] s_GetTtsModelsSecurityRequirements =
+        private static readonly global::Soniox.EndPointSecurityRequirement[] s_GetSharedVoicesSecurityRequirements =
             new global::Soniox.EndPointSecurityRequirement[]
-            {                s_GetTtsModelsSecurityRequirement0,
+            {                s_GetSharedVoicesSecurityRequirement0,
             };
-        partial void PrepareGetTtsModelsArguments(
-            global::System.Net.Http.HttpClient httpClient);
-        partial void PrepareGetTtsModelsRequest(
+        partial void PrepareGetSharedVoicesArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::System.Net.Http.HttpRequestMessage httpRequestMessage);
-        partial void ProcessGetTtsModelsResponse(
+            ref string model,
+            ref global::Soniox.TTSVoiceGender? gender,
+            ref global::Soniox.TTSVoiceAge? age,
+            ref string? accent,
+            global::System.Collections.Generic.IList<string>? useCase,
+            global::System.Collections.Generic.IList<string>? style,
+            ref int? limit,
+            ref string? cursor);
+        partial void PrepareGetSharedVoicesRequest(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string model,
+            global::Soniox.TTSVoiceGender? gender,
+            global::Soniox.TTSVoiceAge? age,
+            string? accent,
+            global::System.Collections.Generic.IList<string>? useCase,
+            global::System.Collections.Generic.IList<string>? style,
+            int? limit,
+            string? cursor);
+        partial void ProcessGetSharedVoicesResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessGetTtsModelsResponseContent(
+        partial void ProcessGetSharedVoicesResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get TTS models<br/>
-        /// Retrieves list of available TTS models and their attributes.
+        /// Get shared voices<br/>
+        /// Retrieves the shared voices built into a TTS model, optionally filtered by gender, age, accent, use case and style. All given filters must match. For the voices you have cloned yourself, see `GET /v1/voices` instead.
         /// </summary>
+        /// <param name="model">
+        /// Id of the TTS model whose voices to return.
+        /// </param>
+        /// <param name="gender">
+        /// Only return voices of this gender.
+        /// </param>
+        /// <param name="age">
+        /// Only return voices of this age.
+        /// </param>
+        /// <param name="accent">
+        /// Only return voices with this accent.
+        /// </param>
+        /// <param name="useCase">
+        /// Only return voices tagged with every listed use case. Repeat the parameter to pass several values, or separate them with commas.
+        /// </param>
+        /// <param name="style">
+        /// Only return voices tagged with every listed style. Repeat the parameter to pass several values, or separate them with commas.
+        /// </param>
+        /// <param name="limit">
+        /// Maximum number of voices to return.<br/>
+        /// Default Value: 100
+        /// </param>
+        /// <param name="cursor">
+        /// Pagination cursor for the next page of results. Pass the same filters alongside it; the cursor points into the filtered list, not the whole catalogue.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Soniox.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Soniox.GetTTSModelsResponse> GetTtsModelsAsync(
+        public async global::System.Threading.Tasks.Task<global::Soniox.GetSharedVoicesResponse> GetSharedVoicesAsync(
+            string model,
+            global::Soniox.TTSVoiceGender? gender = default,
+            global::Soniox.TTSVoiceAge? age = default,
+            string? accent = default,
+            global::System.Collections.Generic.IList<string>? useCase = default,
+            global::System.Collections.Generic.IList<string>? style = default,
+            int? limit = default,
+            string? cursor = default,
             global::Soniox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await GetTtsModelsAsResponseAsync(
+            var __response = await GetSharedVoicesAsResponseAsync(
+                model: model,
+                gender: gender,
+                age: age,
+                accent: accent,
+                useCase: useCase,
+                style: style,
+                limit: limit,
+                cursor: cursor,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -58,26 +115,67 @@ namespace Soniox
             return __response.Body;
         }
         /// <summary>
-        /// Get TTS models<br/>
-        /// Retrieves list of available TTS models and their attributes.
+        /// Get shared voices<br/>
+        /// Retrieves the shared voices built into a TTS model, optionally filtered by gender, age, accent, use case and style. All given filters must match. For the voices you have cloned yourself, see `GET /v1/voices` instead.
         /// </summary>
+        /// <param name="model">
+        /// Id of the TTS model whose voices to return.
+        /// </param>
+        /// <param name="gender">
+        /// Only return voices of this gender.
+        /// </param>
+        /// <param name="age">
+        /// Only return voices of this age.
+        /// </param>
+        /// <param name="accent">
+        /// Only return voices with this accent.
+        /// </param>
+        /// <param name="useCase">
+        /// Only return voices tagged with every listed use case. Repeat the parameter to pass several values, or separate them with commas.
+        /// </param>
+        /// <param name="style">
+        /// Only return voices tagged with every listed style. Repeat the parameter to pass several values, or separate them with commas.
+        /// </param>
+        /// <param name="limit">
+        /// Maximum number of voices to return.<br/>
+        /// Default Value: 100
+        /// </param>
+        /// <param name="cursor">
+        /// Pagination cursor for the next page of results. Pass the same filters alongside it; the cursor points into the filtered list, not the whole catalogue.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Soniox.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Soniox.AutoSDKHttpResponse<global::Soniox.GetTTSModelsResponse>> GetTtsModelsAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Soniox.AutoSDKHttpResponse<global::Soniox.GetSharedVoicesResponse>> GetSharedVoicesAsResponseAsync(
+            string model,
+            global::Soniox.TTSVoiceGender? gender = default,
+            global::Soniox.TTSVoiceAge? age = default,
+            string? accent = default,
+            global::System.Collections.Generic.IList<string>? useCase = default,
+            global::System.Collections.Generic.IList<string>? style = default,
+            int? limit = default,
+            string? cursor = default,
             global::Soniox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareGetTtsModelsArguments(
-                httpClient: HttpClient);
+            PrepareGetSharedVoicesArguments(
+                httpClient: HttpClient,
+                model: ref model,
+                gender: ref gender,
+                age: ref age,
+                accent: ref accent,
+                useCase: useCase,
+                style: style,
+                limit: ref limit,
+                cursor: ref cursor);
 
 
             var __authorizations = global::Soniox.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_GetTtsModelsSecurityRequirements,
-                operationName: "GetTtsModelsAsync");
+                securityRequirements: s_GetSharedVoicesSecurityRequirements,
+                operationName: "GetSharedVoicesAsync");
 
             using var __timeoutCancellationTokenSource = global::Soniox.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -97,8 +195,18 @@ namespace Soniox
             {
 
                             var __pathBuilder = new global::Soniox.PathBuilder(
-                                path: "/v1/tts-models",
+                                path: "/v1/shared-voices",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddRequiredParameter("model", model)
+                                .AddOptionalParameter("gender", gender?.ToString())
+                                .AddOptionalParameter("age", age?.ToString())
+                                .AddOptionalParameter("accent", accent)
+                                .AddOptionalParameter("use_case", useCase?.ToString())
+                                .AddOptionalParameter("style", style?.ToString())
+                                .AddOptionalParameter("limit", limit?.ToString())
+                                .AddOptionalParameter("cursor", cursor)
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Soniox.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -136,9 +244,17 @@ namespace Soniox
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareGetTtsModelsRequest(
+                PrepareGetSharedVoicesRequest(
                     httpClient: HttpClient,
-                    httpRequestMessage: __httpRequest);
+                    httpRequestMessage: __httpRequest,
+                    model: model!,
+                    gender: gender,
+                    age: age,
+                    accent: accent,
+                    useCase: useCase,
+                    style: style,
+                    limit: limit,
+                    cursor: cursor);
 
                 return __httpRequest;
             }
@@ -155,9 +271,9 @@ namespace Soniox
                     await global::Soniox.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Soniox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetTtsModels",
-                                methodName: "GetTtsModelsAsync",
-                                pathTemplate: "\"/v1/tts-models\"",
+                                operationId: "GetSharedVoices",
+                                methodName: "GetSharedVoicesAsync",
+                                pathTemplate: "\"/v1/shared-voices\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -189,9 +305,9 @@ namespace Soniox
                         await global::Soniox.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Soniox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetTtsModels",
-                                methodName: "GetTtsModelsAsync",
-                                pathTemplate: "\"/v1/tts-models\"",
+                                operationId: "GetSharedVoices",
+                                methodName: "GetSharedVoicesAsync",
+                                pathTemplate: "\"/v1/shared-voices\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -230,9 +346,9 @@ namespace Soniox
                         await global::Soniox.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Soniox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetTtsModels",
-                                methodName: "GetTtsModelsAsync",
-                                pathTemplate: "\"/v1/tts-models\"",
+                                operationId: "GetSharedVoices",
+                                methodName: "GetSharedVoicesAsync",
+                                pathTemplate: "\"/v1/shared-voices\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -270,7 +386,7 @@ namespace Soniox
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessGetTtsModelsResponse(
+                ProcessGetSharedVoicesResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -278,9 +394,9 @@ namespace Soniox
                     await global::Soniox.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Soniox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetTtsModels",
-                                methodName: "GetTtsModelsAsync",
-                                pathTemplate: "\"/v1/tts-models\"",
+                                operationId: "GetSharedVoices",
+                                methodName: "GetSharedVoicesAsync",
+                                pathTemplate: "\"/v1/shared-voices\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -300,9 +416,9 @@ namespace Soniox
                     await global::Soniox.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Soniox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "GetTtsModels",
-                                methodName: "GetTtsModelsAsync",
-                                pathTemplate: "\"/v1/tts-models\"",
+                                operationId: "GetSharedVoices",
+                                methodName: "GetSharedVoicesAsync",
+                                pathTemplate: "\"/v1/shared-voices\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -317,6 +433,43 @@ namespace Soniox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
+                            // Invalid request.  Error types: - `invalid_request`: The `model` parameter is missing, or a filter or pagination value is invalid (unknown `gender` or `age`, a value longer than 40 characters, more than 10 `use_case` / `style` values, or `limit` outside 1-200). Inspect `validation_errors`. - `invalid_cursor`: The `cursor` parameter is invalid. Omit `cursor` to start pagination from the beginning.
+                            if ((int)__response.StatusCode == 400)
+                            {
+                                string? __content_400 = null;
+                                global::System.Exception? __exception_400 = null;
+                                global::Soniox.ApiError? __value_400 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_400 = global::Soniox.ApiError.FromJson(__content_400, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_400 = global::Soniox.ApiError.FromJson(__content_400, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_400 = __ex;
+                                }
+
+
+                                throw global::Soniox.ApiException<global::Soniox.ApiError>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_400,
+                                    responseBody: __content_400,
+                                    responseObject: __value_400,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // Authentication error.
                             if ((int)__response.StatusCode == 401)
                             {
@@ -349,6 +502,43 @@ namespace Soniox
                                     innerException: __exception_401,
                                     responseBody: __content_401,
                                     responseObject: __value_401,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // TTS model not found.  Error types: - `invalid_request`: No TTS model with this id exists. List the available models with `GET /v1/tts-models` and retry with one of their ids.
+                            if ((int)__response.StatusCode == 404)
+                            {
+                                string? __content_404 = null;
+                                global::System.Exception? __exception_404 = null;
+                                global::Soniox.ApiError? __value_404 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_404 = global::Soniox.ApiError.FromJson(__content_404, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_404 = global::Soniox.ApiError.FromJson(__content_404, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_404 = __ex;
+                                }
+
+
+                                throw global::Soniox.ApiException<global::Soniox.ApiError>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_404,
+                                    responseBody: __content_404,
+                                    responseObject: __value_404,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
@@ -441,7 +631,7 @@ namespace Soniox
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessGetTtsModelsResponseContent(
+                                ProcessGetSharedVoicesResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -450,9 +640,9 @@ namespace Soniox
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Soniox.GetTTSModelsResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Soniox.GetSharedVoicesResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Soniox.AutoSDKHttpResponse<global::Soniox.GetTTSModelsResponse>(
+                                    return new global::Soniox.AutoSDKHttpResponse<global::Soniox.GetSharedVoicesResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Soniox.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -482,9 +672,9 @@ namespace Soniox
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Soniox.GetTTSModelsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Soniox.GetSharedVoicesResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Soniox.AutoSDKHttpResponse<global::Soniox.GetTTSModelsResponse>(
+                                    return new global::Soniox.AutoSDKHttpResponse<global::Soniox.GetSharedVoicesResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Soniox.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,

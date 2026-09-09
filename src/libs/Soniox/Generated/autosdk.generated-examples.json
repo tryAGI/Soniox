@@ -178,6 +178,17 @@
     },
     {
       "Order": 17,
+      "Title": "Get shared voices",
+      "Slug": "get-shared-voices",
+      "Description": "Retrieves the shared voices built into a TTS model, optionally filtered by gender, age, accent, use case and style. All given filters must match. For the voices you have cloned yourself, see \u0060GET /v1/voices\u0060 instead.",
+      "Language": "http",
+      "Code": "### Get shared voices\n# @name get_shared_voices\nGET {{host}}/v1/shared-voices?model={{model}}\u0026gender={{gender}}\u0026age={{age}}\u0026accent={{accent}}\u0026use_case={{use_case}}\u0026style={{style}}\u0026limit=100\u0026cursor={{cursor}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Description: List of shared voices matching the filters.\n# Content-Type: application/json\n# 400\n# Description: Invalid request.\n\nError types:\n- \u0060invalid_request\u0060: The \u0060model\u0060 parameter is missing, or a filter or pagination value is invalid (unknown \u0060gender\u0060 or \u0060age\u0060, a value longer than 40 characters, more than 10 \u0060use_case\u0060 / \u0060style\u0060 values, or \u0060limit\u0060 outside 1-200). Inspect \u0060validation_errors\u0060.\n- \u0060invalid_cursor\u0060: The \u0060cursor\u0060 parameter is invalid. Omit \u0060cursor\u0060 to start pagination from the beginning.\n\n# Content-Type: application/json\n# 401\n# Description: Authentication error.\n# Content-Type: application/json\n# 404\n# Description: TTS model not found.\n\nError types:\n- \u0060invalid_request\u0060: No TTS model with this id exists. List the available models with \u0060GET /v1/tts-models\u0060 and retry with one of their ids.\n\n# Content-Type: application/json\n# 429\n# Description: Rate / capacity limit exceeded.\n\nError types:\n- \u0060limit_exceeded\u0060: The caller hit a per-minute request rate limit for model listing. The \u0060message\u0060 describes which limit was hit.\n\n# Content-Type: application/json\n# 500\n# Description: Internal server error.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "get_shared_voices",
+      "Setup": null
+    },
+    {
+      "Order": 18,
       "Title": "Get TTS models",
       "Slug": "get-tts-models",
       "Description": "Retrieves list of available TTS models and their attributes.",
@@ -188,7 +199,7 @@
       "Setup": "This example assumes \u0060using Soniox;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 18,
+      "Order": 19,
       "Title": "Get usage logs",
       "Slug": "get-usage-logs",
       "Description": "Returns per-request usage log entries for the project. The project is implied by the API key used for authentication. Filters by request end time. The window between start_time and end_time must not exceed 31 days. start_time must not be earlier than 91 days ago.",
@@ -199,7 +210,7 @@
       "Setup": null
     },
     {
-      "Order": 19,
+      "Order": 20,
       "Title": "Get usage summary",
       "Slug": "get-usage-summary",
       "Description": "Returns daily cost and activity for the project, broken down per model and summed across all models. The project is implied by the API key used for authentication.\n\nUsage is aggregated by whole UTC day. The window is half-open, \u0060[start_time, end_time)\u0060, and a day is included when the window covers any part of it, so an \u0060end_time\u0060 exactly at midnight excludes that day. The window must not cover more than 366 UTC days.",
