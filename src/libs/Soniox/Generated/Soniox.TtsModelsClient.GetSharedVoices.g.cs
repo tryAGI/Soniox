@@ -199,11 +199,11 @@ namespace Soniox
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddRequiredParameter("model", model)
-                                .AddOptionalParameter("gender", gender?.ToString())
-                                .AddOptionalParameter("age", age?.ToString())
+                                .AddOptionalParameter("gender", gender?.ToValueString())
+                                .AddOptionalParameter("age", age?.ToValueString())
                                 .AddOptionalParameter("accent", accent)
-                                .AddOptionalParameter("use_case", useCase?.ToString())
-                                .AddOptionalParameter("style", style?.ToString())
+                                .AddOptionalParameter("use_case", useCase, delimiter: ",", explode: true)
+                                .AddOptionalParameter("style", style, delimiter: ",", explode: true)
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("cursor", cursor)
                                 ;

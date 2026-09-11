@@ -117,6 +117,55 @@ public partial class Tests
     }
 
     [TestMethod]
+    public async Task SharedVoiceCatalog_SerializesFiltersAndPagination()
+    {
+        var handler = new RecordingHandler(_ => new HttpResponseMessage(HttpStatusCode.OK)
+        {
+            Content = new StringContent(
+                """{"voices":[],"next_page_cursor":"next-cursor"}""",
+                Encoding.UTF8,
+                "application/json"),
+        });
+
+        using var httpClient = new HttpClient(handler);
+        using var client = new SonioxClient("test-api-key", httpClient);
+
+        var response = await client.TtsModels.GetSharedVoicesAsync(
+            model: SonioxClient.DefaultTtsModel,
+            gender: TTSVoiceGender.Female,
+            age: TTSVoiceAge.MiddleAged,
+            accent: "british",
+            useCase: ["conversational", "narration"],
+            style: ["warm", "calm"],
+            limit: 200,
+            cursor: "current cursor");
+
+        response.Voices.Should().BeEmpty();
+        response.NextPageCursor.Should().Be("next-cursor");
+        handler.AuthorizationScheme.Should().Be("Bearer");
+        handler.AuthorizationValue.Should().Be("test-api-key");
+        handler.RequestUri!.AbsolutePath.Should().Be("/v1/shared-voices");
+
+        var queryParameters = handler.RequestUri.Query
+            .TrimStart('?')
+            .Split('&', StringSplitOptions.RemoveEmptyEntries)
+            .Select(Uri.UnescapeDataString)
+            .ToArray();
+        queryParameters.Should().Contain([
+            $"model={SonioxClient.DefaultTtsModel}",
+            "gender=female",
+            "age=middle_aged",
+            "accent=british",
+            "use_case=conversational",
+            "use_case=narration",
+            "style=warm",
+            "style=calm",
+            "limit=200",
+            "cursor=current cursor",
+        ]);
+    }
+
+    [TestMethod]
     public async Task VoiceCloning_UsesGeneratedVoiceManagementEndpoints()
     {
         var voiceId = Guid.NewGuid();
