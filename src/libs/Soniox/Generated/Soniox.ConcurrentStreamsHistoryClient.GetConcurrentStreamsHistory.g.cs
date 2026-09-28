@@ -152,8 +152,8 @@ namespace Soniox
                             __pathBuilder
                                 .AddRequiredParameter("start_time", startTime)
                                 .AddRequiredParameter("end_time", endTime)
-                                .AddRequiredParameter("period_sec", periodSec.ToString()!)
-                                .AddRequiredParameter("kind", kind.ToString()!)
+                                .AddRequiredParameter("period_sec", periodSec.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
+                                .AddRequiredParameter("kind", kind.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Soniox.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -195,10 +195,10 @@ namespace Soniox
                 PrepareGetConcurrentStreamsHistoryRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    startTime: startTime!,
-                    endTime: endTime!,
-                    periodSec: periodSec!,
-                    kind: kind!);
+                    startTime: startTime,
+                    endTime: endTime,
+                    periodSec: periodSec,
+                    kind: kind);
 
                 return __httpRequest;
             }
@@ -220,7 +220,7 @@ namespace Soniox
                                 pathTemplate: "\"/v1/concurrent-streams-history\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -254,7 +254,7 @@ namespace Soniox
                                 pathTemplate: "\"/v1/concurrent-streams-history\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -295,7 +295,7 @@ namespace Soniox
                                 pathTemplate: "\"/v1/concurrent-streams-history\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -343,7 +343,7 @@ namespace Soniox
                                 pathTemplate: "\"/v1/concurrent-streams-history\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -365,7 +365,7 @@ namespace Soniox
                                 pathTemplate: "\"/v1/concurrent-streams-history\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

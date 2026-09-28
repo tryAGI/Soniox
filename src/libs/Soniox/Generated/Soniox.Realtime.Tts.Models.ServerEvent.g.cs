@@ -42,8 +42,8 @@ namespace Soniox.Realtime.Tts
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.Realtime.Tts.TtsAudio PickTtsAudio() => IsTtsAudio
-            ? TtsAudio!
+        public global::Soniox.Realtime.Tts.TtsAudio PickTtsAudio() => TtsAudio is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TtsAudio' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Soniox.Realtime.Tts
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.Realtime.Tts.TtsTerminated PickTtsTerminated() => IsTtsTerminated
-            ? TtsTerminated!
+        public global::Soniox.Realtime.Tts.TtsTerminated PickTtsTerminated() => TtsTerminated is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TtsTerminated' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Soniox.Realtime.Tts
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.Realtime.Tts.TtsError PickTtsError() => IsTtsError
-            ? TtsError!
+        public global::Soniox.Realtime.Tts.TtsError PickTtsError() => TtsError is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TtsError' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -242,17 +242,17 @@ namespace Soniox.Realtime.Tts
                 Validate();
             }
 
-            if (IsTtsAudio && ttsAudio != null)
+            if (TtsAudio is { } __value0 && ttsAudio != null)
             {
-                return ttsAudio(TtsAudio!);
+                return ttsAudio(__value0);
             }
-            else if (IsTtsTerminated && ttsTerminated != null)
+            else if (TtsTerminated is { } __value1 && ttsTerminated != null)
             {
-                return ttsTerminated(TtsTerminated!);
+                return ttsTerminated(__value1);
             }
-            else if (IsTtsError && ttsError != null)
+            else if (TtsError is { } __value2 && ttsError != null)
             {
-                return ttsError(TtsError!);
+                return ttsError(__value2);
             }
 
             return default(TResult);
@@ -274,17 +274,17 @@ namespace Soniox.Realtime.Tts
                 Validate();
             }
 
-            if (IsTtsAudio)
+            if (TtsAudio is { } __value0)
             {
-                ttsAudio?.Invoke(TtsAudio!);
+                ttsAudio?.Invoke(__value0);
             }
-            else if (IsTtsTerminated)
+            else if (TtsTerminated is { } __value1)
             {
-                ttsTerminated?.Invoke(TtsTerminated!);
+                ttsTerminated?.Invoke(__value1);
             }
-            else if (IsTtsError)
+            else if (TtsError is { } __value2)
             {
-                ttsError?.Invoke(TtsError!);
+                ttsError?.Invoke(__value2);
             }
         }
 
@@ -302,17 +302,17 @@ namespace Soniox.Realtime.Tts
                 Validate();
             }
 
-            if (IsTtsAudio)
+            if (TtsAudio is { } __value0)
             {
-                ttsAudio?.Invoke(TtsAudio!);
+                ttsAudio?.Invoke(__value0);
             }
-            else if (IsTtsTerminated)
+            else if (TtsTerminated is { } __value1)
             {
-                ttsTerminated?.Invoke(TtsTerminated!);
+                ttsTerminated?.Invoke(__value1);
             }
-            else if (IsTtsError)
+            else if (TtsError is { } __value2)
             {
-                ttsError?.Invoke(TtsError!);
+                ttsError?.Invoke(__value2);
             }
         }
 
