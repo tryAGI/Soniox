@@ -132,13 +132,13 @@ namespace Soniox.Realtime.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Soniox.Realtime.RealtimeResult), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Soniox.Realtime.RealtimeResult?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Soniox.Realtime.RealtimeResult).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RealtimeResult!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRealtimeResult(), typeInfo);
             }
             else if (value.IsRealtimeError)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Soniox.Realtime.RealtimeError), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Soniox.Realtime.RealtimeError?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Soniox.Realtime.RealtimeError).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RealtimeError!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRealtimeError(), typeInfo);
             }
         }
     }

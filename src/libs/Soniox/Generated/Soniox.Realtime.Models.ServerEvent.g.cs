@@ -42,8 +42,8 @@ namespace Soniox.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.Realtime.RealtimeResult PickRealtimeResult() => IsRealtimeResult
-            ? RealtimeResult!
+        public global::Soniox.Realtime.RealtimeResult PickRealtimeResult() => RealtimeResult is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RealtimeResult' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Soniox.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.Realtime.RealtimeError PickRealtimeError() => IsRealtimeError
-            ? RealtimeError!
+        public global::Soniox.Realtime.RealtimeError PickRealtimeError() => RealtimeError is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RealtimeError' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Soniox.Realtime
                 Validate();
             }
 
-            if (IsRealtimeResult && realtimeResult != null)
+            if (RealtimeResult is { } __value0 && realtimeResult != null)
             {
-                return realtimeResult(RealtimeResult!);
+                return realtimeResult(__value0);
             }
-            else if (IsRealtimeError && realtimeError != null)
+            else if (RealtimeError is { } __value1 && realtimeError != null)
             {
-                return realtimeError(RealtimeError!);
+                return realtimeError(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Soniox.Realtime
                 Validate();
             }
 
-            if (IsRealtimeResult)
+            if (RealtimeResult is { } __value0)
             {
-                realtimeResult?.Invoke(RealtimeResult!);
+                realtimeResult?.Invoke(__value0);
             }
-            else if (IsRealtimeError)
+            else if (RealtimeError is { } __value1)
             {
-                realtimeError?.Invoke(RealtimeError!);
+                realtimeError?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Soniox.Realtime
                 Validate();
             }
 
-            if (IsRealtimeResult)
+            if (RealtimeResult is { } __value0)
             {
-                realtimeResult?.Invoke(RealtimeResult!);
+                realtimeResult?.Invoke(__value0);
             }
-            else if (IsRealtimeError)
+            else if (RealtimeError is { } __value1)
             {
-                realtimeError?.Invoke(RealtimeError!);
+                realtimeError?.Invoke(__value1);
             }
         }
 

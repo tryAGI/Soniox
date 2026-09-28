@@ -185,19 +185,19 @@ namespace Soniox.Realtime.Tts.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Soniox.Realtime.Tts.TtsAudio), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Soniox.Realtime.Tts.TtsAudio?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Soniox.Realtime.Tts.TtsAudio).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TtsAudio!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTtsAudio(), typeInfo);
             }
             else if (value.IsTtsTerminated)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Soniox.Realtime.Tts.TtsTerminated), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Soniox.Realtime.Tts.TtsTerminated?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Soniox.Realtime.Tts.TtsTerminated).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TtsTerminated!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTtsTerminated(), typeInfo);
             }
             else if (value.IsTtsError)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Soniox.Realtime.Tts.TtsError), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Soniox.Realtime.Tts.TtsError?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Soniox.Realtime.Tts.TtsError).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TtsError!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTtsError(), typeInfo);
             }
         }
     }
