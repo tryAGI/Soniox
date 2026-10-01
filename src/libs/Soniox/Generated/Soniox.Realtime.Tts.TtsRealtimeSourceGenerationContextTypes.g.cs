@@ -8,7 +8,7 @@ namespace Soniox.Realtime.Tts
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class JsonSerializerContextTypes
+    public sealed partial class TtsRealtimeSourceGenerationContextTypes
     {
         /// <summary>
         ///
