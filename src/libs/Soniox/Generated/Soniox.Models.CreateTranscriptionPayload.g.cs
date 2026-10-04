@@ -61,8 +61,8 @@ namespace Soniox
         /// Additional context to improve transcription accuracy and formatting of specialized terms.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<global::Soniox.StructuredContext, string, object>))]
-        public global::Soniox.AnyOf<global::Soniox.StructuredContext, string, object>? Context { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<global::Soniox.StructuredContext, string>))]
+        public global::Soniox.AnyOf<global::Soniox.StructuredContext, string>? Context { get; set; }
 
         /// <summary>
         /// URL to receive webhook notifications when transcription is completed or fails.
@@ -148,7 +148,7 @@ namespace Soniox
             bool? enableSpeakerDiarization,
             bool? enableLanguageIdentification,
             global::Soniox.TranslationConfig? translation,
-            global::Soniox.AnyOf<global::Soniox.StructuredContext, string, object>? context,
+            global::Soniox.AnyOf<global::Soniox.StructuredContext, string>? context,
             string? webhookUrl,
             string? webhookAuthHeaderName,
             string? webhookAuthHeaderValue,

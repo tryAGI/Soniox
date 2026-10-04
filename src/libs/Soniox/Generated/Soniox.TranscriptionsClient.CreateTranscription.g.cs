@@ -673,7 +673,7 @@ namespace Soniox
             bool? enableSpeakerDiarization = default,
             bool? enableLanguageIdentification = default,
             global::Soniox.TranslationConfig? translation = default,
-            global::Soniox.AnyOf<global::Soniox.StructuredContext, string, object>? context = default,
+            global::Soniox.AnyOf<global::Soniox.StructuredContext, string>? context = default,
             string? webhookUrl = default,
             string? webhookAuthHeaderName = default,
             string? webhookAuthHeaderValue = default,

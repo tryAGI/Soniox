@@ -165,7 +165,7 @@ namespace Soniox
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.AnyOf<global::Soniox.StructuredContext, string, object>? Type33 { get; set; }
+        public global::Soniox.AnyOf<global::Soniox.StructuredContext, string>? Type33 { get; set; }
         /// <summary>
         ///
         /// </summary>

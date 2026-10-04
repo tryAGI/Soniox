@@ -59,7 +59,7 @@ namespace Soniox
 
             typeof(global::Soniox.JsonConverters.GetConcurrentStreamsHistoryKind2NullableJsonConverter),
 
-            typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<global::Soniox.StructuredContext, string, object>),
+            typeof(global::Soniox.JsonConverters.AnyOfJsonConverter<global::Soniox.StructuredContext, string>),
 
             typeof(global::Soniox.JsonConverters.UnixTimestampJsonConverter),
         })]
@@ -99,7 +99,7 @@ namespace Soniox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CreateTranscriptionPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TranslationConfig))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.AnyOf<global::Soniox.StructuredContext, string, object>), TypeInfoPropertyName = "AnyOfStructuredContextStringObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.AnyOf<global::Soniox.StructuredContext, string>), TypeInfoPropertyName = "AnyOfStructuredContextString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.StructuredContext))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.StructuredContextGeneralItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.StructuredContextGeneralItem))]
