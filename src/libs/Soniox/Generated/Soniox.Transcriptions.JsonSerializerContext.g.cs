@@ -30,7 +30,7 @@ namespace Soniox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CreateTranscriptionPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TranslationConfig))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.AnyOf<global::Soniox.StructuredContext, string, object>), TypeInfoPropertyName = "AnyOfStructuredContextStringObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.AnyOf<global::Soniox.StructuredContext, string>), TypeInfoPropertyName = "AnyOfStructuredContextString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.StructuredContext))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.StructuredContextGeneralItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.StructuredContextGeneralItem))]
@@ -46,7 +46,7 @@ namespace Soniox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TranscriptionStatus?), TypeInfoPropertyName = "NullableTranscriptionStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.AnyOf<global::Soniox.StructuredContext, string, object>?), TypeInfoPropertyName = "NullableAnyOfStructuredContextStringObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.AnyOf<global::Soniox.StructuredContext, string>?), TypeInfoPropertyName = "NullableAnyOfStructuredContextString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.TranslationConfigType?), TypeInfoPropertyName = "NullableTranslationConfigType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.ApiErrorValidationError>))]
@@ -102,7 +102,7 @@ namespace Soniox
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
-            options.Converters.Add(new global::Soniox.JsonConverters.AnyOfJsonConverter<global::Soniox.StructuredContext, string, object>());
+            options.Converters.Add(new global::Soniox.JsonConverters.AnyOfJsonConverter<global::Soniox.StructuredContext, string>());
             options.Converters.Add(new global::Soniox.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
