@@ -16,7 +16,6 @@ public partial class Tests
         var configJson = JsonSerializer.Serialize(
             new Realtime.RealtimeConfig
             {
-                ApiKey = "test-key",
                 Model = SonioxClient.SttRealtimeV5ModelId,
                 AudioFormat = "auto",
                 LanguageHints = new[] { "en", "ru" },
@@ -25,6 +24,7 @@ public partial class Tests
             typeof(Realtime.RealtimeConfig),
             Realtime.RealtimeSourceGenerationContext.Default);
 
+        configJson.Should().NotContain("api_key");
         configJson.Should().Contain("\"model\":\"stt-rt-v5\"");
         configJson.Should().Contain("\"language_hints\":[\"en\",\"ru\"]");
 
@@ -67,7 +67,6 @@ public partial class Tests
         var configJson = JsonSerializer.Serialize(
             new Realtime.Tts.TtsConfig
             {
-                ApiKey = "test-key",
                 StreamId = "stream-001",
                 Model = SonioxClient.DefaultTtsModel,
                 Language = SonioxClient.DefaultTtsLanguage,
@@ -80,6 +79,7 @@ public partial class Tests
             typeof(Realtime.Tts.TtsConfig),
             Realtime.Tts.TtsRealtimeSourceGenerationContext.Default);
 
+        configJson.Should().NotContain("api_key");
         configJson.Should().Contain("\"stream_id\":\"stream-001\"");
         configJson.Should().Contain("\"return_timestamps\":true");
         configJson.Should().Contain("\"speed\":1.2");

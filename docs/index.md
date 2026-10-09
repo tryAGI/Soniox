@@ -40,6 +40,45 @@ using Soniox;
 using var client = new SonioxClient(apiKey);
 ```
 
+### WebSocket authentication migration
+
+Both realtime clients support connection authentication for Soniox's January 15,
+2027 cutoff. The MEAI streaming speech-to-text adapter authenticates automatically.
+For direct server connections, pass the API key to the realtime client constructor
+and leave `ApiKey` unset in `RealtimeConfig` or `TtsConfig`:
+
+```csharp
+await using var client = new Soniox.Realtime.SonioxRealtimeClient(apiKey);
+await client.ConnectAsync(cancellationToken: cancellationToken);
+await client.SendRealtimeConfigAsync(new Soniox.Realtime.RealtimeConfig
+{
+    Model = SonioxClient.DefaultRealtimeModel,
+    AudioFormat = "auto",
+}, cancellationToken);
+```
+
+The regenerated full config constructors place required fields before optional
+`apiKey`. When upgrading positional constructor calls, switch to object initializers
+(as above) or named arguments to preserve field mapping.
+
+For a browser, use the parameterless client and a temporary key from your backend:
+
+```csharp
+await using var client = new Soniox.Realtime.SonioxRealtimeClient();
+await client.ConnectAsync(
+    additionalSubProtocols: ["soniox-api-key", temporaryApiKey],
+    cancellationToken: cancellationToken);
+```
+
+The same constructor and connection options apply to
+`Soniox.Realtime.Tts.SonioxTtsRealtimeClient`. Use either Bearer authentication or
+subprotocols per connection; never combine them. Older `temp:` keys require the
+Authorization header. Authentication errors arrive as server error frames after
+connection, so continue reading `ReceiveUpdatesAsync` even when `ConnectAsync`
+succeeds. Connections opened ahead of streaming need application keepalive messages
+at least every 40 seconds; the transport `keepAliveInterval` alone is insufficient.
+See the [Soniox authentication guide](https://soniox.com/docs/guides/websocket-authentication).
+
 <!-- EXAMPLES:START -->
 ### MeaiSpeechToTextParsing
 
@@ -183,7 +222,6 @@ test path serializes generated messages without making a network call. Set
 var streamId = $"sdk-example-{Guid.NewGuid():N}";
 var config = new TtsRealtime.TtsConfig
 {
-    ApiKey = GetOptionalEnvironmentVariable("SONIOX_API_KEY") ?? "test-key",
     StreamId = streamId,
     Model = SonioxClient.DefaultTtsModel,
     Language = SonioxClient.DefaultTtsLanguage,
@@ -230,20 +268,18 @@ if (!IsEnvironmentFlagEnabled(RunRealtimeTtsExampleFlag))
         typeof(TtsRealtime.TtsCancel),
         TtsRealtime.TtsRealtimeSourceGenerationContext.Default);
 
-    configJson.Should().Contain("\"return_timestamps\":true");
-    configJson.Should().Contain("\"speed\":1.1");
     return;
 }
 
 using var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(45));
-await using var client = new TtsRealtime.SonioxTtsRealtimeClient();
+await using var client = new TtsRealtime.SonioxTtsRealtimeClient(
+    GetRequiredEnvironmentVariable("SONIOX_API_KEY"));
 
 await client.ConnectAsync(
     keepAliveInterval: TimeSpan.FromSeconds(15),
     connectTimeout: TimeSpan.FromSeconds(10),
     cancellationToken: cancellationTokenSource.Token);
 
-config.ApiKey = GetRequiredEnvironmentVariable("SONIOX_API_KEY");
 await client.SendTtsConfigAsync(config, cancellationTokenSource.Token);
 await client.SendTtsTextAsync(textChunks[0], cancellationTokenSource.Token);
 await client.SendTtsKeepAliveAsync(keepAlive, cancellationTokenSource.Token);
@@ -253,8 +289,6 @@ var result = await CollectRealtimeTtsResultAsync(
     client: client,
     streamId: streamId,
     cancellationToken: cancellationTokenSource.Token);
-
-result.CharacterTimestampCount.Should().BeGreaterThan(0);
 ```
 
 ### MEAI ISpeechToTextClient

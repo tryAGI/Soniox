@@ -65,14 +65,16 @@ using TtsRealtime = Soniox.Realtime.Tts;
 
 var streamId = $"sdk-example-{Guid.NewGuid():N}";
 
-await using var realtimeClient = new TtsRealtime.SonioxTtsRealtimeClient();
+await using var realtimeClient = new TtsRealtime.SonioxTtsRealtimeClient(
+    Environment.GetEnvironmentVariable("SONIOX_API_KEY") is { Length: > 0 } apiKey
+        ? apiKey
+        : throw new InvalidOperationException("SONIOX_API_KEY is required."));
 await realtimeClient.ConnectAsync(
     keepAliveInterval: TimeSpan.FromSeconds(15),
     connectTimeout: TimeSpan.FromSeconds(10));
 
 await realtimeClient.SendTtsConfigAsync(new TtsRealtime.TtsConfig
 {
-    ApiKey = Environment.GetEnvironmentVariable("SONIOX_API_KEY")!,
     StreamId = streamId,
     Model = SonioxClient.DefaultTtsModel,
     Language = SonioxClient.DefaultTtsLanguage,

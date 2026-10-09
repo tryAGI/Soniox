@@ -302,10 +302,57 @@ namespace Soniox.Realtime.Tts
         }
 
 
+        private string? _storedAuthorizationHeaderName;
+        private string? _storedAuthorizationHeaderScheme;
+        private string? _storedAuthorizationApiKey;
+
+        /// <summary>
+        /// Authorize using bearer authentication.
+        /// </summary>
+        /// <param name="apiKey"></param>
+        public void AuthorizeUsingBearer(
+            string apiKey)
+        {
+            apiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
+
+            _storedAuthorizationApiKey = apiKey;
+            _storedAuthorizationHeaderName = "Authorization";
+            _storedAuthorizationHeaderScheme = "bearer";
+        }
+
+        /// <summary>
+        /// Creates a new instance with bearer token authentication.
+        /// </summary>
+        /// <param name="apiKey"></param>
+        /// <param name="clientWebSocket"></param>
+        public SonioxTtsRealtimeClient(
+            string apiKey,
+            global::System.Net.WebSockets.ClientWebSocket? clientWebSocket = null) : this(clientWebSocket)
+        {
+            Authorizing(_clientWebSocket, ref apiKey);
+
+            AuthorizeUsingBearer(apiKey);
+
+            Authorized(_clientWebSocket);
+        }
 
 
 
 
+
+        private void ApplyStoredAuthorization(
+            bool useSubprotocolAuth)
+        {
+
+            if (_storedAuthorizationApiKey is not null &&
+                _storedAuthorizationHeaderName is not null)
+            {
+                var __authorizationValue = _storedAuthorizationHeaderScheme is not null
+                    ? $"{_storedAuthorizationHeaderScheme} {_storedAuthorizationApiKey}"
+                    : _storedAuthorizationApiKey;
+                _clientWebSocket.Options.SetRequestHeader(_storedAuthorizationHeaderName, __authorizationValue);
+            }
+        }
         private void RememberConnectionOptions(
             global::System.Uri uri,
             global::System.Collections.Generic.IDictionary<string, string>? additionalHeaders,
@@ -452,6 +499,7 @@ namespace Soniox.Realtime.Tts
                 _clientWebSocket.Options.KeepAliveInterval = keepAliveInterval.Value;
             }
 
+            ApplyStoredAuthorization(false);
 
             if (additionalHeaders is not null)
             {

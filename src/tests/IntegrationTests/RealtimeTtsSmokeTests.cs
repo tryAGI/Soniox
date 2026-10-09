@@ -35,7 +35,7 @@ public partial class Tests
     {
         var streamId = $"sdk-smoke-{Guid.NewGuid():N}";
         using var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(45));
-        await using var client = new TtsRealtime.SonioxTtsRealtimeClient();
+        await using var client = new TtsRealtime.SonioxTtsRealtimeClient(apiKey);
 
         try
         {
@@ -47,7 +47,6 @@ public partial class Tests
             await client.SendTtsConfigAsync(
                 new TtsRealtime.TtsConfig
                 {
-                    ApiKey = apiKey,
                     StreamId = streamId,
                     Model = SonioxClient.DefaultTtsModel,
                     Language = SonioxClient.DefaultTtsLanguage,

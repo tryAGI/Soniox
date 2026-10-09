@@ -11,6 +11,8 @@ servers:
   production:
     host: stt-rt.soniox.com
     protocol: wss
+    security:
+      - $ref: '#/components/securitySchemes/BearerAuth'
 
 defaultContentType: application/json
 
@@ -49,14 +51,19 @@ operations:
       - $ref: '#/channels/SpeechToText/messages/RealtimeError'
 
 components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Send the API key in the Authorization header when opening the WebSocket.
   schemas:
     RealtimeConfig:
       type: object
-      required: [api_key, model, audio_format]
+      required: [model, audio_format]
       properties:
         api_key:
           type: string
-          description: Soniox API key. Permanent and temporary API keys are supported.
+          description: Legacy message authentication supported until January 15, 2027. Omit when authenticating the connection; if supplied, it must match the connection key.
         model:
           type: string
           description: Realtime STT model id, for example stt-rt-v5.

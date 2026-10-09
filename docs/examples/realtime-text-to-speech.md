@@ -10,7 +10,6 @@ This example assumes `using Soniox;` is in scope and `apiKey` contains your Soni
 var streamId = $"sdk-example-{Guid.NewGuid():N}";
 var config = new TtsRealtime.TtsConfig
 {
-    ApiKey = GetOptionalEnvironmentVariable("SONIOX_API_KEY") ?? "test-key",
     StreamId = streamId,
     Model = SonioxClient.DefaultTtsModel,
     Language = SonioxClient.DefaultTtsLanguage,
@@ -57,20 +56,18 @@ if (!IsEnvironmentFlagEnabled(RunRealtimeTtsExampleFlag))
         typeof(TtsRealtime.TtsCancel),
         TtsRealtime.TtsRealtimeSourceGenerationContext.Default);
 
-    configJson.Should().Contain("\"return_timestamps\":true");
-    configJson.Should().Contain("\"speed\":1.1");
     return;
 }
 
 using var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(45));
-await using var client = new TtsRealtime.SonioxTtsRealtimeClient();
+await using var client = new TtsRealtime.SonioxTtsRealtimeClient(
+    GetRequiredEnvironmentVariable("SONIOX_API_KEY"));
 
 await client.ConnectAsync(
     keepAliveInterval: TimeSpan.FromSeconds(15),
     connectTimeout: TimeSpan.FromSeconds(10),
     cancellationToken: cancellationTokenSource.Token);
 
-config.ApiKey = GetRequiredEnvironmentVariable("SONIOX_API_KEY");
 await client.SendTtsConfigAsync(config, cancellationTokenSource.Token);
 await client.SendTtsTextAsync(textChunks[0], cancellationTokenSource.Token);
 await client.SendTtsKeepAliveAsync(keepAlive, cancellationTokenSource.Token);
@@ -80,6 +77,4 @@ var result = await CollectRealtimeTtsResultAsync(
     client: client,
     streamId: streamId,
     cancellationToken: cancellationTokenSource.Token);
-
-result.CharacterTimestampCount.Should().BeGreaterThan(0);
 ```

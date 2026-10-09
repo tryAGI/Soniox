@@ -146,8 +146,7 @@ public partial class SonioxClient : ISpeechToTextClient
         ArgumentNullException.ThrowIfNull(audioSpeechStream);
 
         // Pull the API key from the Authorizations list populated by the
-        // Bearer constructor. Soniox passes the key inside the initial JSON
-        // config message (not via the WebSocket's Authorization header).
+        // Bearer constructor, then authenticate the WebSocket upgrade request.
         string? apiKey = null;
         for (int i = 0; i < Authorizations.Count; i++)
         {
@@ -239,7 +238,7 @@ public partial class SonioxClient : ISpeechToTextClient
 
         string? responseId = Guid.NewGuid().ToString("N");
 
-        var realtime = new Realtime.SonioxRealtimeClient();
+        var realtime = new Realtime.SonioxRealtimeClient(apiKey);
         await using (realtime.ConfigureAwait(false))
         {
             await realtime.ConnectAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
@@ -253,7 +252,6 @@ public partial class SonioxClient : ISpeechToTextClient
             await realtime.SendRealtimeConfigAsync(
                 new Realtime.RealtimeConfig
                 {
-                    ApiKey = apiKey,
                     Model = model,
                     AudioFormat = audioFormat ?? "auto",
                     SampleRate = sampleRate,

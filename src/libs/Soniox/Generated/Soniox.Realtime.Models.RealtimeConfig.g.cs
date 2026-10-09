@@ -9,11 +9,10 @@ namespace Soniox.Realtime
     public sealed partial class RealtimeConfig
     {
         /// <summary>
-        /// Soniox API key. Permanent and temporary API keys are supported.
+        /// Legacy message authentication supported until January 15, 2027. Omit when authenticating the connection; if supplied, it must match the connection key.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("api_key")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ApiKey { get; set; }
+        public string? ApiKey { get; set; }
 
         /// <summary>
         /// Realtime STT model id, for example stt-rt-v5.
@@ -117,14 +116,14 @@ namespace Soniox.Realtime
         /// <summary>
         /// Initializes a new instance of the <see cref="RealtimeConfig" /> class.
         /// </summary>
-        /// <param name="apiKey">
-        /// Soniox API key. Permanent and temporary API keys are supported.
-        /// </param>
         /// <param name="model">
         /// Realtime STT model id, for example stt-rt-v5.
         /// </param>
         /// <param name="audioFormat">
         /// Audio format; use auto for containerized streams or raw_* values with sample_rate.
+        /// </param>
+        /// <param name="apiKey">
+        /// Legacy message authentication supported until January 15, 2027. Omit when authenticating the connection; if supplied, it must match the connection key.
         /// </param>
         /// <param name="sampleRate">
         /// Sample rate in Hz for raw audio.
@@ -167,9 +166,9 @@ namespace Soniox.Realtime
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RealtimeConfig(
-            string apiKey,
             string model,
             string audioFormat,
+            string? apiKey,
             int? sampleRate,
             int? numChannels,
             global::System.Collections.Generic.IList<string>? languageHints,
@@ -184,7 +183,7 @@ namespace Soniox.Realtime
             global::Soniox.Realtime.TranslationConfig? translation,
             string? clientReferenceId)
         {
-            this.ApiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
+            this.ApiKey = apiKey;
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.AudioFormat = audioFormat ?? throw new global::System.ArgumentNullException(nameof(audioFormat));
             this.SampleRate = sampleRate;

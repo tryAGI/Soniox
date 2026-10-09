@@ -11,6 +11,8 @@ servers:
   production:
     host: tts-rt.soniox.com
     protocol: wss
+    security:
+      - $ref: '#/components/securitySchemes/BearerAuth'
 
 defaultContentType: application/json
 
@@ -81,14 +83,19 @@ operations:
       - $ref: '#/channels/TextToSpeech/messages/TtsError'
 
 components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Send the API key in the Authorization header when opening the WebSocket.
   schemas:
     TtsConfig:
       type: object
-      required: [api_key, stream_id, model, language, voice, audio_format]
+      required: [stream_id, model, language, voice, audio_format]
       properties:
         api_key:
           type: string
-          description: Soniox API key. Permanent and temporary API keys are supported.
+          description: Legacy message authentication supported until January 15, 2027. Omit when authenticating the connection; if supplied, it must match the connection key.
         stream_id:
           type: string
           description: Client-generated stream identifier unique among active streams on the connection.

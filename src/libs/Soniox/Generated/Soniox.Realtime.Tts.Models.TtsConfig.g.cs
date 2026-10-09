@@ -9,11 +9,10 @@ namespace Soniox.Realtime.Tts
     public sealed partial class TtsConfig
     {
         /// <summary>
-        /// Soniox API key. Permanent and temporary API keys are supported.
+        /// Legacy message authentication supported until January 15, 2027. Omit when authenticating the connection; if supplied, it must match the connection key.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("api_key")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ApiKey { get; set; }
+        public string? ApiKey { get; set; }
 
         /// <summary>
         /// Client-generated stream identifier unique among active streams on the connection.
@@ -91,9 +90,6 @@ namespace Soniox.Realtime.Tts
         /// <summary>
         /// Initializes a new instance of the <see cref="TtsConfig" /> class.
         /// </summary>
-        /// <param name="apiKey">
-        /// Soniox API key. Permanent and temporary API keys are supported.
-        /// </param>
         /// <param name="streamId">
         /// Client-generated stream identifier unique among active streams on the connection.
         /// </param>
@@ -109,6 +105,9 @@ namespace Soniox.Realtime.Tts
         /// </param>
         /// <param name="audioFormat">
         /// Output audio format, for example wav, mp3, opus, flac, or raw PCM formats.
+        /// </param>
+        /// <param name="apiKey">
+        /// Legacy message authentication supported until January 15, 2027. Omit when authenticating the connection; if supplied, it must match the connection key.
         /// </param>
         /// <param name="sampleRate">
         /// Optional output sample rate in Hz.
@@ -129,19 +128,19 @@ namespace Soniox.Realtime.Tts
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public TtsConfig(
-            string apiKey,
             string streamId,
             string model,
             string language,
             string voice,
             string audioFormat,
+            string? apiKey,
             int? sampleRate,
             int? bitrate,
             string? clientReferenceId,
             bool? returnTimestamps,
             double? speed)
         {
-            this.ApiKey = apiKey ?? throw new global::System.ArgumentNullException(nameof(apiKey));
+            this.ApiKey = apiKey;
             this.StreamId = streamId ?? throw new global::System.ArgumentNullException(nameof(streamId));
             this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
             this.Language = language ?? throw new global::System.ArgumentNullException(nameof(language));
