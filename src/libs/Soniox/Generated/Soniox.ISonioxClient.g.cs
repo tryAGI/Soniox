@@ -93,6 +93,11 @@ namespace Soniox
         /// <summary>
         ///
         /// </summary>
+        public OrganizationClient Organization { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
         public TranscriptionsClient Transcriptions { get; }
 
         /// <summary>

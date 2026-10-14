@@ -377,23 +377,107 @@ namespace Soniox
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.UploadFileRequest? Type86 { get; set; }
+        public global::Soniox.GetOrganizationResponse? Type86 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public byte[]? Type87 { get; set; }
+        public global::Soniox.GetOrganizationBalanceResponse? Type87 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.CreateVoiceRequest? Type88 { get; set; }
+        public global::Soniox.GetOrganizationMonthlyUsageResponse? Type88 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.GetUsageLogsSort2? Type89 { get; set; }
+        public global::System.Collections.Generic.IList<global::Soniox.ProjectMonthlyUsageEntry>? Type89 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Soniox.GetConcurrentStreamsHistoryKind2? Type90 { get; set; }
+        public global::Soniox.ProjectMonthlyUsageEntry? Type90 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.GetOrganizationUsageSummaryResponse? Type91 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Soniox.OrganizationUsageSummaryProject>? Type92 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.OrganizationUsageSummaryProject? Type93 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.GetOrganizationLimitsResponse? Type94 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Soniox.RegionLimitsEntry>? Type95 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.RegionLimitsEntry? Type96 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.GetOrganizationProjectsResponse? Type97 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Soniox.OrganizationProjectEntry>? Type98 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.OrganizationProjectEntry? Type99 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.GetProjectApiKeysResponse? Type100 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Soniox.ProjectApiKeyEntry>? Type101 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.ProjectApiKeyEntry? Type102 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.CreateProjectApiKeyResponse? Type103 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Soniox.ApiKeyPermission>? Type104 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.ApiKeyPermission? Type105 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.CreateProjectApiKeyPayload? Type106 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.UploadFileRequest? Type107 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public byte[]? Type108 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.CreateVoiceRequest? Type109 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.GetUsageLogsSort2? Type110 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Soniox.GetConcurrentStreamsHistoryKind2? Type111 { get; set; }
 
         /// <summary>
         ///
@@ -475,5 +559,29 @@ namespace Soniox
         ///
         /// </summary>
         public global::System.Collections.Generic.List<global::Soniox.ConcurrentStreamsHistoryEntry>? ListType19 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Soniox.ProjectMonthlyUsageEntry>? ListType20 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Soniox.OrganizationUsageSummaryProject>? ListType21 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Soniox.RegionLimitsEntry>? ListType22 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Soniox.OrganizationProjectEntry>? ListType23 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Soniox.ProjectApiKeyEntry>? ListType24 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Soniox.ApiKeyPermission>? ListType25 { get; set; }
     }
 }

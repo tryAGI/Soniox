@@ -50,6 +50,20 @@ namespace Soniox
         public required string TotalDurationCostUsd { get; set; }
 
         /// <summary>
+        /// Part of `total_cost_usd` from requests made with an API key, in USD.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("total_api_cost_usd")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string TotalApiCostUsd { get; set; }
+
+        /// <summary>
+        /// Part of `total_cost_usd` from requests made in the Soniox Console playground, in USD.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("total_playground_cost_usd")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string TotalPlaygroundCostUsd { get; set; }
+
+        /// <summary>
         /// Cost per day, in USD, aligned to `days`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cost_usd")]
@@ -78,6 +92,20 @@ namespace Soniox
         public required global::System.Collections.Generic.IList<string> DurationCostUsd { get; set; }
 
         /// <summary>
+        /// Cost of requests made with an API key per day, in USD, aligned to `days`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("api_cost_usd")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<string> ApiCostUsd { get; set; }
+
+        /// <summary>
+        /// Cost of requests made in the Soniox Console playground per day, in USD, aligned to `days`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("playground_cost_usd")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<string> PlaygroundCostUsd { get; set; }
+
+        /// <summary>
         /// Number of requests over the window.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_num_requests")]
@@ -85,42 +113,42 @@ namespace Soniox
         public required int TotalNumRequests { get; set; }
 
         /// <summary>
-        ///
+        /// Input text tokens over the window.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_input_text_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int TotalInputTextTokens { get; set; }
 
         /// <summary>
-        ///
+        /// Input audio tokens over the window.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_input_audio_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int TotalInputAudioTokens { get; set; }
 
         /// <summary>
-        ///
+        /// Input audio over the window, in milliseconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_input_audio_duration_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int TotalInputAudioDurationMs { get; set; }
 
         /// <summary>
-        ///
+        /// Output text tokens over the window.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_output_text_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int TotalOutputTextTokens { get; set; }
 
         /// <summary>
-        ///
+        /// Output audio tokens over the window.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_output_audio_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int TotalOutputAudioTokens { get; set; }
 
         /// <summary>
-        ///
+        /// Output audio over the window, in milliseconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_output_audio_duration_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -141,42 +169,42 @@ namespace Soniox
         public required global::System.Collections.Generic.IList<int> NumRequests { get; set; }
 
         /// <summary>
-        ///
+        /// Input text tokens per day, aligned to `days`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_text_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<int> InputTextTokens { get; set; }
 
         /// <summary>
-        ///
+        /// Input audio tokens per day, aligned to `days`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_audio_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<int> InputAudioTokens { get; set; }
 
         /// <summary>
-        ///
+        /// Input audio per day, in milliseconds, aligned to `days`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_audio_duration_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<int> InputAudioDurationMs { get; set; }
 
         /// <summary>
-        ///
+        /// Output text tokens per day, aligned to `days`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_text_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<int> OutputTextTokens { get; set; }
 
         /// <summary>
-        ///
+        /// Output audio tokens per day, aligned to `days`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_audio_tokens")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<int> OutputAudioTokens { get; set; }
 
         /// <summary>
-        ///
+        /// Output audio per day, in milliseconds, aligned to `days`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_audio_duration_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -213,6 +241,12 @@ namespace Soniox
         /// <param name="totalDurationCostUsd">
         /// Total cost over the window for models billed by session duration rather than by tokens, in USD. `0` for Speech-to-Text and Text-to-Speech models.
         /// </param>
+        /// <param name="totalApiCostUsd">
+        /// Part of `total_cost_usd` from requests made with an API key, in USD.
+        /// </param>
+        /// <param name="totalPlaygroundCostUsd">
+        /// Part of `total_cost_usd` from requests made in the Soniox Console playground, in USD.
+        /// </param>
         /// <param name="costUsd">
         /// Cost per day, in USD, aligned to `days`.
         /// </param>
@@ -225,27 +259,57 @@ namespace Soniox
         /// <param name="durationCostUsd">
         /// Duration-billed cost per day, in USD, aligned to `days`.
         /// </param>
+        /// <param name="apiCostUsd">
+        /// Cost of requests made with an API key per day, in USD, aligned to `days`.
+        /// </param>
+        /// <param name="playgroundCostUsd">
+        /// Cost of requests made in the Soniox Console playground per day, in USD, aligned to `days`.
+        /// </param>
         /// <param name="totalNumRequests">
         /// Number of requests over the window.
         /// </param>
-        /// <param name="totalInputTextTokens"></param>
-        /// <param name="totalInputAudioTokens"></param>
-        /// <param name="totalInputAudioDurationMs"></param>
-        /// <param name="totalOutputTextTokens"></param>
-        /// <param name="totalOutputAudioTokens"></param>
-        /// <param name="totalOutputAudioDurationMs"></param>
+        /// <param name="totalInputTextTokens">
+        /// Input text tokens over the window.
+        /// </param>
+        /// <param name="totalInputAudioTokens">
+        /// Input audio tokens over the window.
+        /// </param>
+        /// <param name="totalInputAudioDurationMs">
+        /// Input audio over the window, in milliseconds.
+        /// </param>
+        /// <param name="totalOutputTextTokens">
+        /// Output text tokens over the window.
+        /// </param>
+        /// <param name="totalOutputAudioTokens">
+        /// Output audio tokens over the window.
+        /// </param>
+        /// <param name="totalOutputAudioDurationMs">
+        /// Output audio over the window, in milliseconds.
+        /// </param>
         /// <param name="totalDurationMs">
         /// Billed session duration over the window, in milliseconds, for models billed by duration. `0` for Speech-to-Text and Text-to-Speech models.
         /// </param>
         /// <param name="numRequests">
         /// Number of requests per day, aligned to `days`.
         /// </param>
-        /// <param name="inputTextTokens"></param>
-        /// <param name="inputAudioTokens"></param>
-        /// <param name="inputAudioDurationMs"></param>
-        /// <param name="outputTextTokens"></param>
-        /// <param name="outputAudioTokens"></param>
-        /// <param name="outputAudioDurationMs"></param>
+        /// <param name="inputTextTokens">
+        /// Input text tokens per day, aligned to `days`.
+        /// </param>
+        /// <param name="inputAudioTokens">
+        /// Input audio tokens per day, aligned to `days`.
+        /// </param>
+        /// <param name="inputAudioDurationMs">
+        /// Input audio per day, in milliseconds, aligned to `days`.
+        /// </param>
+        /// <param name="outputTextTokens">
+        /// Output text tokens per day, aligned to `days`.
+        /// </param>
+        /// <param name="outputAudioTokens">
+        /// Output audio tokens per day, aligned to `days`.
+        /// </param>
+        /// <param name="outputAudioDurationMs">
+        /// Output audio per day, in milliseconds, aligned to `days`.
+        /// </param>
         /// <param name="durationMs">
         /// Billed session duration per day, in milliseconds, aligned to `days`.
         /// </param>
@@ -261,10 +325,14 @@ namespace Soniox
             string totalInputCostUsd,
             string totalOutputCostUsd,
             string totalDurationCostUsd,
+            string totalApiCostUsd,
+            string totalPlaygroundCostUsd,
             global::System.Collections.Generic.IList<string> costUsd,
             global::System.Collections.Generic.IList<string> inputCostUsd,
             global::System.Collections.Generic.IList<string> outputCostUsd,
             global::System.Collections.Generic.IList<string> durationCostUsd,
+            global::System.Collections.Generic.IList<string> apiCostUsd,
+            global::System.Collections.Generic.IList<string> playgroundCostUsd,
             int totalNumRequests,
             int totalInputTextTokens,
             int totalInputAudioTokens,
@@ -289,10 +357,14 @@ namespace Soniox
             this.TotalInputCostUsd = totalInputCostUsd ?? throw new global::System.ArgumentNullException(nameof(totalInputCostUsd));
             this.TotalOutputCostUsd = totalOutputCostUsd ?? throw new global::System.ArgumentNullException(nameof(totalOutputCostUsd));
             this.TotalDurationCostUsd = totalDurationCostUsd ?? throw new global::System.ArgumentNullException(nameof(totalDurationCostUsd));
+            this.TotalApiCostUsd = totalApiCostUsd ?? throw new global::System.ArgumentNullException(nameof(totalApiCostUsd));
+            this.TotalPlaygroundCostUsd = totalPlaygroundCostUsd ?? throw new global::System.ArgumentNullException(nameof(totalPlaygroundCostUsd));
             this.CostUsd = costUsd ?? throw new global::System.ArgumentNullException(nameof(costUsd));
             this.InputCostUsd = inputCostUsd ?? throw new global::System.ArgumentNullException(nameof(inputCostUsd));
             this.OutputCostUsd = outputCostUsd ?? throw new global::System.ArgumentNullException(nameof(outputCostUsd));
             this.DurationCostUsd = durationCostUsd ?? throw new global::System.ArgumentNullException(nameof(durationCostUsd));
+            this.ApiCostUsd = apiCostUsd ?? throw new global::System.ArgumentNullException(nameof(apiCostUsd));
+            this.PlaygroundCostUsd = playgroundCostUsd ?? throw new global::System.ArgumentNullException(nameof(playgroundCostUsd));
             this.TotalNumRequests = totalNumRequests;
             this.TotalInputTextTokens = totalInputTextTokens;
             this.TotalInputAudioTokens = totalInputAudioTokens;

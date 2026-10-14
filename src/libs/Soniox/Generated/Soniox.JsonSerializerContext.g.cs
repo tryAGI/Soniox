@@ -51,6 +51,10 @@ namespace Soniox
 
             typeof(global::Soniox.JsonConverters.ConcurrentStreamKindNullableJsonConverter),
 
+            typeof(global::Soniox.JsonConverters.ApiKeyPermissionJsonConverter),
+
+            typeof(global::Soniox.JsonConverters.ApiKeyPermissionNullableJsonConverter),
+
             typeof(global::Soniox.JsonConverters.GetUsageLogsSort2JsonConverter),
 
             typeof(global::Soniox.JsonConverters.GetUsageLogsSort2NullableJsonConverter),
@@ -152,6 +156,27 @@ namespace Soniox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.ConcurrentStreamKind), TypeInfoPropertyName = "ConcurrentStreamKind2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.ConcurrentStreamsHistoryEntry>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.ConcurrentStreamsHistoryEntry))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetOrganizationResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetOrganizationBalanceResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetOrganizationMonthlyUsageResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.ProjectMonthlyUsageEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.ProjectMonthlyUsageEntry))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetOrganizationUsageSummaryResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.OrganizationUsageSummaryProject>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.OrganizationUsageSummaryProject))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetOrganizationLimitsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.RegionLimitsEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.RegionLimitsEntry))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetOrganizationProjectsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.OrganizationProjectEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.OrganizationProjectEntry))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.GetProjectApiKeysResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.ProjectApiKeyEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.ProjectApiKeyEntry))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CreateProjectApiKeyResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Soniox.ApiKeyPermission>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.ApiKeyPermission), TypeInfoPropertyName = "ApiKeyPermission2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CreateProjectApiKeyPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.UploadFileRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Soniox.CreateVoiceRequest))]
@@ -177,6 +202,12 @@ namespace Soniox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.DateTime>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<int>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.ConcurrentStreamsHistoryEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.ProjectMonthlyUsageEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.OrganizationUsageSummaryProject>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.RegionLimitsEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.OrganizationProjectEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.ProjectApiKeyEntry>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Soniox.ApiKeyPermission>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
