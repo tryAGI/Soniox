@@ -43,14 +43,14 @@ namespace Soniox
         public required global::System.DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Who created the key: the email address of a console user, or the admin key that created it.
+        /// Who created the key: the email address of a console user, or the organization API key that created it.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_by")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string CreatedBy { get; set; }
 
         /// <summary>
-        /// The admin key that created it. Null for a console-made key.
+        /// The organization API key that created it. Null for a console-made key.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_by_key_id")]
         public global::System.Guid? CreatedByKeyId { get; set; }
@@ -77,13 +77,13 @@ namespace Soniox
         /// When the key was created.
         /// </param>
         /// <param name="createdBy">
-        /// Who created the key: the email address of a console user, or the admin key that created it.
+        /// Who created the key: the email address of a console user, or the organization API key that created it.
         /// </param>
         /// <param name="name">
         /// Label of the API key. `null` for keys created without one.
         /// </param>
         /// <param name="createdByKeyId">
-        /// The admin key that created it. Null for a console-made key.
+        /// The organization API key that created it. Null for a console-made key.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

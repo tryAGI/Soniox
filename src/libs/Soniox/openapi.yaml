@@ -5939,11 +5939,11 @@ components:
           title: Created At
           type: string
         created_by:
-          description: The admin key that created it.
+          description: The organization API key that created it.
           title: Created By
           type: string
         created_by_key_id:
-          description: Id of the admin key that created this key.
+          description: Id of the organization API key that created this key.
           format: uuid
           title: Created By Key Id
           type: string
@@ -6023,7 +6023,7 @@ components:
           title: Created At
           type: string
         created_by:
-          description: 'Who created the key: the email address of a console user, or the admin key that created it.'
+          description: 'Who created the key: the email address of a console user, or the organization API key that created it.'
           title: Created By
           type: string
         created_by_key_id:
@@ -6031,7 +6031,7 @@ components:
             - format: uuid
               type: string
             - type: 'null'
-          description: The admin key that created it. Null for a console-made key.
+          description: The organization API key that created it. Null for a console-made key.
           title: Created By Key Id
       required:
         - id

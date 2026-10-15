@@ -50,14 +50,14 @@ namespace Soniox
         public required global::System.DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// The admin key that created it.
+        /// The organization API key that created it.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_by")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string CreatedBy { get; set; }
 
         /// <summary>
-        /// Id of the admin key that created this key.
+        /// Id of the organization API key that created this key.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created_by_key_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -88,10 +88,10 @@ namespace Soniox
         /// When the key was created.
         /// </param>
         /// <param name="createdBy">
-        /// The admin key that created it.
+        /// The organization API key that created it.
         /// </param>
         /// <param name="createdByKeyId">
-        /// Id of the admin key that created this key.
+        /// Id of the organization API key that created this key.
         /// </param>
         /// <param name="name">
         /// Label of the API key.
