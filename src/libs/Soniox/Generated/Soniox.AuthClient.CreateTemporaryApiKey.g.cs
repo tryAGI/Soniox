@@ -113,7 +113,7 @@ namespace Soniox
 
                             var __pathBuilder = new global::Soniox.PathBuilder(
                                 path: "/v1/auth/temporary-api-key",
-                                baseUri: HttpClient.BaseAddress);
+                                baseUri: HttpClient.BaseAddress ?? new global::System.Uri("https://api.soniox.com/", global::System.UriKind.RelativeOrAbsolute));
                             var __path = __pathBuilder.ToString();
                 __path = global::Soniox.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,

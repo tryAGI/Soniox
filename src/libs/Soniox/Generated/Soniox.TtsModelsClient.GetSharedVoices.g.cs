@@ -196,7 +196,7 @@ namespace Soniox
 
                             var __pathBuilder = new global::Soniox.PathBuilder(
                                 path: "/v1/shared-voices",
-                                baseUri: HttpClient.BaseAddress);
+                                baseUri: HttpClient.BaseAddress ?? new global::System.Uri("https://api.soniox.com/", global::System.UriKind.RelativeOrAbsolute));
                             __pathBuilder
                                 .AddRequiredParameter("model", model)
                                 .AddOptionalParameter("gender", gender?.ToValueString())

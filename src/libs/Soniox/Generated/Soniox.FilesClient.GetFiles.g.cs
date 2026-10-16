@@ -124,7 +124,7 @@ namespace Soniox
 
                             var __pathBuilder = new global::Soniox.PathBuilder(
                                 path: "/v1/files",
-                                baseUri: HttpClient.BaseAddress);
+                                baseUri: HttpClient.BaseAddress ?? new global::System.Uri("https://api.soniox.com/", global::System.UriKind.RelativeOrAbsolute));
                             __pathBuilder
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("cursor", cursor)

@@ -148,7 +148,7 @@ namespace Soniox
 
                             var __pathBuilder = new global::Soniox.PathBuilder(
                                 path: "/v1/concurrent-streams-history",
-                                baseUri: HttpClient.BaseAddress);
+                                baseUri: HttpClient.BaseAddress ?? new global::System.Uri("https://api.soniox.com/", global::System.UriKind.RelativeOrAbsolute));
                             __pathBuilder
                                 .AddRequiredParameter("start_time", startTime)
                                 .AddRequiredParameter("end_time", endTime)
