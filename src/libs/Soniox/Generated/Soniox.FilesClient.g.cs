@@ -37,14 +37,14 @@ namespace Soniox
 
         internal global::Soniox.AutoSDKServerConfiguration AutoSDKServerConfiguration { get; set; } = new global::Soniox.AutoSDKServerConfiguration();
 
-        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Soniox.FilesSourceGenerationContext.Default);
+        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext>? JsonSerializerContextProvider { get; set; }
 
         /// <summary>
         ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
-            get => JsonSerializerContextProvider.Value;
+            get => JsonSerializerContextProvider?.Value ?? global::Soniox.FilesSourceGenerationContext.Default;
             set => JsonSerializerContextProvider = new(() => value);
         }
 
