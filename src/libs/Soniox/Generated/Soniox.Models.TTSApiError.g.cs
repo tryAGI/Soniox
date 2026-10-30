@@ -17,7 +17,7 @@ namespace Soniox
 
         /// <summary>
         /// Machine-readable error category. Branch your client on this value, not on `error_message`.<br/>
-        /// See the [Errors reference](https://soniox.com/docs/api-reference/errors) for the full catalog.<br/>
+        /// See the [Errors reference](https://docs.soniox.com/api-reference/errors) for the full catalog.<br/>
         /// Examples: `invalid_request`, `unauthenticated`, `limit_exceeded`, `service_unavailable`, `internal_error`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error_type")]
@@ -60,7 +60,7 @@ namespace Soniox
         /// </param>
         /// <param name="errorType">
         /// Machine-readable error category. Branch your client on this value, not on `error_message`.<br/>
-        /// See the [Errors reference](https://soniox.com/docs/api-reference/errors) for the full catalog.<br/>
+        /// See the [Errors reference](https://docs.soniox.com/api-reference/errors) for the full catalog.<br/>
         /// Examples: `invalid_request`, `unauthenticated`, `limit_exceeded`, `service_unavailable`, `internal_error`.
         /// </param>
         /// <param name="errorMessage">

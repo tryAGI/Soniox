@@ -7,7 +7,7 @@ namespace Soniox
         /// <summary>
         /// Create temporary API key<br/>
         /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.<br/>
-        /// Use `single_use` and `max_session_duration_seconds` to limit how the key can be used by a client. See the [Temporary API keys guide](https://soniox.com/docs/guides/temporary-api-keys) for details.
+        /// Use `single_use` and `max_session_duration_seconds` to limit how the key can be used by a client. See the [Temporary API keys guide](https://docs.soniox.com/guides/temporary-api-keys) for details.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -21,7 +21,7 @@ namespace Soniox
         /// <summary>
         /// Create temporary API key<br/>
         /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.<br/>
-        /// Use `single_use` and `max_session_duration_seconds` to limit how the key can be used by a client. See the [Temporary API keys guide](https://soniox.com/docs/guides/temporary-api-keys) for details.
+        /// Use `single_use` and `max_session_duration_seconds` to limit how the key can be used by a client. See the [Temporary API keys guide](https://docs.soniox.com/guides/temporary-api-keys) for details.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -35,7 +35,7 @@ namespace Soniox
         /// <summary>
         /// Create temporary API key<br/>
         /// Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.<br/>
-        /// Use `single_use` and `max_session_duration_seconds` to limit how the key can be used by a client. See the [Temporary API keys guide](https://soniox.com/docs/guides/temporary-api-keys) for details.
+        /// Use `single_use` and `max_session_duration_seconds` to limit how the key can be used by a client. See the [Temporary API keys guide](https://docs.soniox.com/guides/temporary-api-keys) for details.
         /// </summary>
         /// <param name="usageType">
         /// Intended usage of the temporary API key.

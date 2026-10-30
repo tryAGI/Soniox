@@ -25,7 +25,7 @@ namespace Soniox
         public required string Language { get; set; }
 
         /// <summary>
-        /// Voice to use: a built-in voice name (for example `Adrian`) or the ID of a [cloned voice](https://soniox.com/docs/tts/concepts/voice-cloning).
+        /// Voice to use: a built-in voice name (for example `Adrian`) or the ID of a [cloned voice](https://docs.soniox.com/tts/concepts/voice-cloning).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -92,7 +92,7 @@ namespace Soniox
         /// Language code of the input text.
         /// </param>
         /// <param name="voice">
-        /// Voice to use: a built-in voice name (for example `Adrian`) or the ID of a [cloned voice](https://soniox.com/docs/tts/concepts/voice-cloning).
+        /// Voice to use: a built-in voice name (for example `Adrian`) or the ID of a [cloned voice](https://docs.soniox.com/tts/concepts/voice-cloning).
         /// </param>
         /// <param name="audioFormat">
         /// Output audio format (for example `mp3`, `wav`, `pcm_s16le`, `pcm_s16be`).
