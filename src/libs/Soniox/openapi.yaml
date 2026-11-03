@@ -60,7 +60,7 @@ paths:
                 message: The `cursor` parameter is invalid. Omit `cursor` to start pagination from the beginning.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#invalid-cursor
+                more_info: https://docs.soniox.com/api-reference/errors#invalid-cursor
         '401':
           description: Authentication error.
           content:
@@ -73,7 +73,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '429':
           description: |
             Rate / capacity limit exceeded.
@@ -90,7 +90,7 @@ paths:
                 message: Requests per minute limit for file management has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -103,7 +103,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: Retrieves list of uploaded files.
       tags:
         - Files
@@ -144,7 +144,7 @@ paths:
                     location: file.file
                     message: Field required
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#invalid-request
+                more_info: https://docs.soniox.com/api-reference/errors#invalid-request
         '401':
           description: Authentication error.
           content:
@@ -157,7 +157,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '429':
           description: |
             Rate / capacity limit exceeded.
@@ -174,7 +174,7 @@ paths:
                 message: Total file count limit has been exceeded for your organization. Please delete some.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -187,7 +187,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: Uploads a new file.
       tags:
         - Files
@@ -240,7 +240,7 @@ paths:
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
                 status_code: 401
                 validation_errors: [ ]
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
               schema:
                 $ref: '#/components/schemas/ApiError'
           description: Authentication error.
@@ -260,7 +260,7 @@ paths:
                 message: Requests per minute limit for file management has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           content:
             application/json:
@@ -271,7 +271,7 @@ paths:
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
                 status_code: 500
                 validation_errors: [ ]
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
               schema:
                 $ref: '#/components/schemas/ApiError'
           description: Internal server error.
@@ -317,7 +317,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '404':
           description: |
             File not found.
@@ -334,7 +334,7 @@ paths:
                 message: No file with this ID exists in your project. The file may have been deleted, the ID may be incorrect, or the file may belong to a different project. Verify the ID by listing files with GET /files.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#file-not-found
+                more_info: https://docs.soniox.com/api-reference/errors#file-not-found
         '429':
           description: |
             Rate / capacity limit exceeded.
@@ -351,7 +351,7 @@ paths:
                 message: Requests per minute limit for file management has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -364,7 +364,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: Retrieve metadata for an uploaded file.
       tags:
         - Files
@@ -396,7 +396,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '404':
           description: |
             File not found.
@@ -413,7 +413,7 @@ paths:
                 message: No file with this ID exists in your project. The file may have been deleted, the ID may be incorrect, or the file may belong to a different project. Verify the ID by listing files with GET /files.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#file-not-found
+                more_info: https://docs.soniox.com/api-reference/errors#file-not-found
         '429':
           description: |
             Rate / capacity limit exceeded.
@@ -430,7 +430,7 @@ paths:
                 message: Requests per minute limit for file management has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -443,7 +443,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: Permanently deletes specified file. If a transcription that has not started processing yet still references the file, that transcription fails with `file_not_found`, so delete the file only after the transcription reaches `completed` or `error`.
       tags:
         - Files
@@ -494,8 +494,10 @@ paths:
                     language_hints:
                       - en
                       - fr
-                    context: extra context for the transcription
+                    enable_speaker_diarization: false
+                    enable_language_identification: false
                     audio_duration_ms: 16079
+                    error_type: null
                     error_message: null
                     webhook_url: https://example.com/webhook
                     webhook_auth_header_name: Authorization
@@ -519,7 +521,7 @@ paths:
                 message: The `cursor` parameter is invalid. Omit `cursor` to start pagination from the beginning.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#invalid-cursor
+                more_info: https://docs.soniox.com/api-reference/errors#invalid-cursor
         '401':
           description: Authentication error.
           content:
@@ -532,7 +534,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '429':
           description: |
             Rate / capacity limit exceeded.
@@ -549,7 +551,7 @@ paths:
                 message: Requests per minute limit for async transcription has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -562,7 +564,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: Retrieves list of transcriptions.
       tags:
         - Transcriptions
@@ -590,8 +592,10 @@ paths:
                 language_hints:
                   - en
                   - fr
-                context: extra context for the transcription
+                enable_speaker_diarization: false
+                enable_language_identification: false
                 audio_duration_ms: 0
+                error_type: null
                 error_message: null
                 webhook_url: https://example.com/webhook
                 webhook_auth_header_name: Authorization
@@ -617,7 +621,7 @@ paths:
                     location: body.payload.model
                     message: Invalid model
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#invalid-request
+                more_info: https://docs.soniox.com/api-reference/errors#invalid-request
         '401':
           description: Authentication error.
           content:
@@ -630,7 +634,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '402':
           description: |
             Balance or budget exhausted.
@@ -649,7 +653,7 @@ paths:
                 message: Organization balance exhausted. Please either add funds manually or enable autopay.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#organization-balance-exhausted
+                more_info: https://docs.soniox.com/api-reference/errors#organization-balance-exhausted
         '429':
           description: |
             Rate / capacity limit exceeded.
@@ -666,7 +670,7 @@ paths:
                 message: Total transcription count limit for your organization has been exceeded. Please delete some.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -679,7 +683,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: Creates a new transcription.
       tags:
         - Transcriptions
@@ -716,7 +720,7 @@ paths:
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
                 status_code: 401
                 validation_errors: []
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
               schema:
                 $ref: '#/components/schemas/ApiError'
           description: Authentication error.
@@ -736,7 +740,7 @@ paths:
                 message: Requests per minute limit for async transcription has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           content:
             application/json:
@@ -747,7 +751,7 @@ paths:
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
                 status_code: 500
                 validation_errors: []
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
               schema:
                 $ref: '#/components/schemas/ApiError'
           description: Internal server error.
@@ -786,8 +790,10 @@ paths:
                 language_hints:
                   - en
                   - fr
-                context: extra context for the transcription
+                enable_speaker_diarization: false
+                enable_language_identification: false
                 audio_duration_ms: 16079
+                error_type: null
                 error_message: null
                 webhook_url: https://example.com/webhook
                 webhook_auth_header_name: Authorization
@@ -806,7 +812,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '404':
           description: |
             Transcription not found.
@@ -823,7 +829,7 @@ paths:
                 message: No transcription with this ID exists in your project. It may have been deleted, the ID may be incorrect, or the transcription may belong to a different project. Verify the ID by listing transcriptions with GET /transcriptions.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#transcription-not-found
+                more_info: https://docs.soniox.com/api-reference/errors#transcription-not-found
         '429':
           description: |
             Rate / capacity limit exceeded.
@@ -840,7 +846,7 @@ paths:
                 message: Requests per minute limit for async transcription has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -853,7 +859,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: Retrieves detailed information about a specific transcription.
       tags:
         - Transcriptions
@@ -885,7 +891,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '404':
           description: |
             Transcription not found.
@@ -902,7 +908,7 @@ paths:
                 message: No transcription with this ID exists in your project. It may have been deleted, the ID may be incorrect, or the transcription may belong to a different project. Verify the ID by listing transcriptions with GET /transcriptions.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#transcription-not-found
+                more_info: https://docs.soniox.com/api-reference/errors#transcription-not-found
         '409':
           description: |
             Invalid transcription state.
@@ -919,7 +925,7 @@ paths:
                 message: This transcription is currently being processed and cannot be deleted yet. Wait until `status` reaches `completed` or `error` (check via GET /transcriptions/{id}), then retry the delete.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#transcription-invalid-state
+                more_info: https://docs.soniox.com/api-reference/errors#transcription-invalid-state
         '429':
           description: |
             Rate / capacity limit exceeded.
@@ -936,7 +942,7 @@ paths:
                 message: Requests per minute limit for async transcription has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -949,7 +955,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: Permanently deletes a transcription. Files uploaded through the Files API are not deleted; use the delete file endpoint to remove them. Cannot delete transcriptions that are currently processing.
       tags:
         - Transcriptions
@@ -998,7 +1004,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '404':
           description: |
             Transcription not found.
@@ -1015,7 +1021,7 @@ paths:
                 message: No transcription with this ID exists in your project. It may have been deleted, the ID may be incorrect, or the transcription may belong to a different project. Verify the ID by listing transcriptions with GET /transcriptions.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#transcription-not-found
+                more_info: https://docs.soniox.com/api-reference/errors#transcription-not-found
         '409':
           description: |
             Invalid transcription state.
@@ -1036,7 +1042,7 @@ paths:
                 message: The transcript is not ready yet — transcription is still in progress. Poll GET /transcriptions/{id} until `status` is `completed`, or configure a webhook when creating the transcription to be notified when it finishes.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#transcription-invalid-state
+                more_info: https://docs.soniox.com/api-reference/errors#transcription-invalid-state
         '429':
           description: |
             Rate / capacity limit exceeded.
@@ -1053,7 +1059,7 @@ paths:
                 message: Requests per minute limit for async transcription has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -1066,7 +1072,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: Retrieves the full transcript text and detailed tokens for a completed transcription. Only available for successfully completed transcriptions.
       tags:
         - Transcriptions
@@ -1412,7 +1418,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '500':
           description: Internal server error.
           content:
@@ -1425,7 +1431,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: Retrieves list of available models and their attributes.
       tags:
         - Models
@@ -1455,7 +1461,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '429':
           description: |
             Rate / capacity limit exceeded.
@@ -1472,7 +1478,7 @@ paths:
                 message: Requests per minute limit for model listing has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -1485,7 +1491,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: Retrieves list of available TTS models and their attributes.
       tags:
         - TTS Models
@@ -1639,7 +1645,7 @@ paths:
                     location: query.gender
                     message: Input should be 'male', 'female' or 'neutral'
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#invalid-request
+                more_info: https://docs.soniox.com/api-reference/errors#invalid-request
         '401':
           description: Authentication error.
           content:
@@ -1652,7 +1658,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '404':
           description: |
             TTS model not found.
@@ -1669,7 +1675,7 @@ paths:
                 message: TTS model 'tts-rt-v0' not found.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#invalid-request
+                more_info: https://docs.soniox.com/api-reference/errors#invalid-request
         '429':
           description: |
             Rate / capacity limit exceeded.
@@ -1686,7 +1692,7 @@ paths:
                 message: Requests per minute limit for model listing has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -1699,7 +1705,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: Retrieves the shared voices built into a TTS model, optionally filtered by gender, age, accent, use case and style. All given filters must match. For the voices you have cloned yourself, see `GET /v1/voices` instead.
       tags:
         - TTS Models
@@ -1767,7 +1773,7 @@ paths:
             - `Client reference ID is too long (max length 256).`
             - `Invalid voice '<voice>' for model '<model>'.`
             - `Invalid language '<language>' for model '<model>'.`
-            - `The requested model is not available. See https://soniox.com/docs/tts/models for the list of supported TTS models.` (`error_type: model_not_available`)
+            - `The requested model is not available. See https://docs.soniox.com/tts/models for the list of supported TTS models.` (`error_type: model_not_available`)
           content:
             application/json:
               schema:
@@ -1776,7 +1782,7 @@ paths:
                 error_code: 400
                 error_type: invalid_request
                 error_message: 'Missing required field: model'
-                more_info: https://soniox.com/docs/api-reference/errors#invalid-request
+                more_info: https://docs.soniox.com/api-reference/errors#invalid-request
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
         '401':
           description: |
@@ -1788,7 +1794,7 @@ paths:
             - `Missing API key. Provide it as an Authorization header (e.g. 'Authorization: Bearer <SONIOX_API_KEY>'). You can get an API key at https://console.soniox.com.`
             - `Authorization header must use the Bearer scheme (e.g. 'Authorization: Bearer <SONIOX_API_KEY>'). You can get an API key at https://console.soniox.com.`
             - `Incorrect API key provided. You can get an API key at https://console.soniox.com`
-            - `Invalid or expired temporary API key. Create a new temporary API key and retry. See https://soniox.com/docs/guides/temporary-api-keys for details.`
+            - `Invalid or expired temporary API key. Create a new temporary API key and retry. See https://docs.soniox.com/authentication/temporary-api-keys for details.`
             - The temporary API key cannot be used for this action. Each temporary API key is scoped to a specific `usage_type`; create a new key with the correct usage type.
           content:
             application/json:
@@ -1798,7 +1804,7 @@ paths:
                 error_code: 401
                 error_type: unauthenticated
                 error_message: Incorrect API key provided. You can get an API key at https://console.soniox.com
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
         '402':
           description: |
@@ -1822,13 +1828,14 @@ paths:
                 error_code: 402
                 error_type: organization_balance_exhausted
                 error_message: Organization balance exhausted. Please either add funds manually or enable autopay.
-                more_info: https://soniox.com/docs/api-reference/errors#organization-balance-exhausted
+                more_info: https://docs.soniox.com/api-reference/errors#organization-balance-exhausted
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
         '403':
           description: |
-            The temporary API key in use was created with a `max_session_duration_seconds` cap,
-            and that duration has elapsed for the current session. Create a new temporary API key
-            to start a new session.
+            The temporary API key's session duration has elapsed.
+
+            The key was created with a `max_session_duration_seconds` cap, and that duration has
+            elapsed for the current session. Create a new temporary API key to start a new session.
 
             `error_type`: [`temp_api_key_session_expired`](https://docs.soniox.com/api-reference/errors#temp-api-key-session-expired).
 
@@ -1842,7 +1849,7 @@ paths:
                 error_code: 403
                 error_type: temp_api_key_session_expired
                 error_message: Temporary API key session duration limit exceeded. Create a new temporary API key to start a new session.
-                more_info: https://soniox.com/docs/api-reference/errors#temp-api-key-session-expired
+                more_info: https://docs.soniox.com/api-reference/errors#temp-api-key-session-expired
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
         '408':
           description: |
@@ -1857,7 +1864,7 @@ paths:
                 error_code: 408
                 error_type: request_timeout
                 error_message: Request timeout.
-                more_info: https://soniox.com/docs/api-reference/errors#request-timeout
+                more_info: https://docs.soniox.com/api-reference/errors#request-timeout
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
         '429':
           description: |
@@ -1879,7 +1886,7 @@ paths:
                 error_code: 429
                 error_type: limit_exceeded
                 error_message: Requests per minute limit for text-to-speech has been exceeded for your organization.
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
         '500':
           description: |
@@ -1898,7 +1905,7 @@ paths:
                 error_code: 500
                 error_type: internal_error
                 error_message: The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our support email support@soniox.com if you keep seeing this error.
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
         '503':
           description: |
@@ -1917,7 +1924,7 @@ paths:
                 error_code: 503
                 error_type: service_unavailable
                 error_message: 'Cannot continue request (code 11). Please restart the request. Refer to: https://soniox.com/url/cannot-continue-request'
-                more_info: https://soniox.com/docs/api-reference/errors#service-unavailable
+                more_info: https://docs.soniox.com/api-reference/errors#service-unavailable
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
       description: Generates audio from text using the TTS REST endpoint.
       tags:
@@ -1976,7 +1983,7 @@ paths:
                     location: body.payload.expires_in_seconds
                     message: Input should be less than or equal to 3600
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#invalid-request
+                more_info: https://docs.soniox.com/api-reference/errors#invalid-request
         '401':
           description: Authentication error.
           content:
@@ -1989,7 +1996,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '429':
           description: |
             Rate / capacity limit exceeded.
@@ -2006,7 +2013,7 @@ paths:
                 message: Requests per minute limit for temporary API key creation has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -2019,11 +2026,11 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: |
         Creates a short-lived API key for specific temporary use cases. The key will automatically expire after the specified duration.
 
-        Use `single_use` and `max_session_duration_seconds` to limit how the key can be used by a client. See the [Temporary API keys guide](https://docs.soniox.com/guides/temporary-api-keys) for details.
+        Use `single_use` and `max_session_duration_seconds` to limit how the key can be used by a client. See the [Temporary API keys guide](https://docs.soniox.com/authentication/temporary-api-keys) for details.
       tags:
         - Auth
       requestBody:
@@ -2138,7 +2145,7 @@ paths:
                     location: query.payload
                     message: The period between start_time and end_time must not exceed 31 days.
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#invalid-request
+                more_info: https://docs.soniox.com/api-reference/errors#invalid-request
         '401':
           description: Authentication error.
           content:
@@ -2151,7 +2158,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '429':
           description: |
             Rate / capacity limit exceeded.
@@ -2168,7 +2175,7 @@ paths:
                 message: Requests per minute limit for usage logs has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -2181,7 +2188,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: Returns per-request usage log entries for the project. The project is implied by the API key used for authentication. Filters by request end time. The window between start_time and end_time must not exceed 31 days. start_time must not be earlier than 91 days ago.
       tags:
         - Usage logs
@@ -2278,7 +2285,7 @@ paths:
                     - 0
                     - 0
                 models:
-                  - model: stt-async-v5
+                  - model: stt-async-v6
                     days:
                       - '2026-04-01'
                       - '2026-04-02'
@@ -2417,7 +2424,7 @@ paths:
                     location: query.payload
                     message: The window covers 517 UTC days, which exceeds the maximum of 366.
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#invalid-request
+                more_info: https://docs.soniox.com/api-reference/errors#invalid-request
         '401':
           description: Authentication error.
           content:
@@ -2430,7 +2437,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '404':
           description: |
             Not found.
@@ -2457,7 +2464,7 @@ paths:
                 message: Requests per minute limit has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -2470,7 +2477,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: |
         Returns daily cost and activity for the project, broken down per model and summed across all models. The project is implied by the API key used for authentication.
 
@@ -2647,7 +2654,7 @@ paths:
                     location: query.payload
                     message: For period_sec=60, the window between `start_time` and `end_time` must not exceed 7 days.
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#invalid-request
+                more_info: https://docs.soniox.com/api-reference/errors#invalid-request
         '401':
           description: Authentication error.
           content:
@@ -2660,7 +2667,7 @@ paths:
                 message: Incorrect API key provided. You can get an API key at https://console.soniox.com
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#unauthenticated
+                more_info: https://docs.soniox.com/api-reference/errors#unauthenticated
         '429':
           description: |
             Rate / capacity limit exceeded.
@@ -2677,7 +2684,7 @@ paths:
                 message: Requests per minute limit has been exceeded for your organization.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#limit-exceeded
+                more_info: https://docs.soniox.com/api-reference/errors#limit-exceeded
         '500':
           description: Internal server error.
           content:
@@ -2690,7 +2697,7 @@ paths:
                 message: The server encountered an error. Please try again. If the issue persists contact support@soniox.com.
                 validation_errors: []
                 request_id: 3d37a3bd-5078-47ee-a369-b204e3bbedda
-                more_info: https://soniox.com/docs/api-reference/errors#internal-error
+                more_info: https://docs.soniox.com/api-reference/errors#internal-error
       description: |
         Returns historical concurrent stream counts for the project, aggregated per period. The project is implied by the API key used for authentication. Region-scoped.
 
@@ -3544,6 +3551,8 @@ components:
         audio_url: https://soniox.com/media/examples/coffee_shop.mp3
         client_reference_id: some_internal_id
         created_at: '2024-11-26T00:00:00Z'
+        enable_language_identification: false
+        enable_speaker_diarization: false
         error_message: null
         error_type: null
         file_id: null
@@ -3842,21 +3851,25 @@ components:
             - two_way
           title: Type
           type: string
+          description: '`one_way` translates into `target_language`. `two_way` translates between `language_a` and `language_b`.'
         target_language:
           anyOf:
             - type: string
             - type: 'null'
           title: Target Language
+          description: Language to translate the transcript into. Required for `one_way`.
         language_a:
           anyOf:
             - type: string
             - type: 'null'
           title: Language A
+          description: First language for two-way translation. Required for `two_way`.
         language_b:
           anyOf:
             - type: string
             - type: 'null'
           title: Language B
+          description: Second language for two-way translation. Required for `two_way`.
       required:
         - type
       title: TranslationConfig
@@ -6234,9 +6247,11 @@ components:
     PublicApiAuth:
       type: http
       scheme: bearer
+      description: A project API key.
     OrganizationApiKeyAuth:
       type: http
       scheme: bearer
+      description: An [organization API key](https://docs.soniox.com/console/organization-api).
 servers:
   - url: https://api.soniox.com
     description: Soniox API

@@ -4,7 +4,7 @@
 namespace Soniox
 {
     /// <summary>
-    ///
+    /// `one_way` translates into `target_language`. `two_way` translates between `language_a` and `language_b`.
     /// </summary>
     public enum TranslationConfigType
     {
